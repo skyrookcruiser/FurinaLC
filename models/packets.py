@@ -87,16 +87,22 @@ class ReqPacket_ExitExpDungeon(BaseModel):
     isWin: int = 0
     supportCharacterId: int = 0
     supportParticipate: bool = False
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
     usedDanteAbilityCount: int = 0
 
 
 class ResPacket_ExitExpDungeon(BaseModel):
     userExp: int = 0
-    personalityinfos: List[StagePersonalityInfoFormat] = []
+    personalityinfos: List[
+        StagePersonalityInfoFormat
+    ] = []
     acquiredtickets: List[Element] = []
     rewards: List[Element] = []
-    clearInfo: ExpDungeonClearInfoFormat = ExpDungeonClearInfoFormat()
+    clearInfo: ExpDungeonClearInfoFormat = (
+        ExpDungeonClearInfoFormat()
+    )
 
 
 class ReqPacket_SkipExpDungeon(BaseModel):
@@ -116,25 +122,37 @@ class ReqPacket_EnterThreadDungeon(BaseModel):
 
 class ResPacket_EnterThreadDungeon(BaseModel):
     isClear: int = 0
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ReqPacket_ExitThreadDungeon(BaseModel):
     isWin: int = 0
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     usedDanteAbilityCount: int = 0
 
 
 class ResPacket_ExitThreadDungeon(BaseModel):
     userExp: int = 0
     rewards: List[Element] = []
-    clearInfo: ThreadDungeonClearInfoFormat = ThreadDungeonClearInfoFormat()
+    clearInfo: ThreadDungeonClearInfoFormat = (
+        ThreadDungeonClearInfoFormat()
+    )
 
 
 class ResPacket_GetDailyDungeonClearInfo(BaseModel):
-    expDungeonClearInfo: List[ExpDungeonClearInfoFormat] = []
-    threadDungeonClearInfo: List[ThreadDungeonClearInfoFormat] = []
+    expDungeonClearInfo: List[
+        ExpDungeonClearInfoFormat
+    ] = []
+    threadDungeonClearInfo: List[
+        ThreadDungeonClearInfoFormat
+    ] = []
 
 
 class ReqPacket_SkipThreadDungeon(BaseModel):
@@ -167,13 +185,17 @@ class ResPacket_GetDanteNoteState(BaseModel):
     todayPage: int = 0
 
 
-class ReqPacket_GetStageProgressRateRewardCommand(BaseModel):
+class ReqPacket_GetStageProgressRateRewardCommand(
+    BaseModel
+):
     mainchapterid: int = 0
     subchapterid: int = 0
     rewardType: int = 0
 
 
-class ResPacket_GetStageProgressRateRewardCommand(BaseModel):
+class ResPacket_GetStageProgressRateRewardCommand(
+    BaseModel
+):
     rewardList: List[Element] = []
 
 
@@ -186,7 +208,9 @@ class ReqPacket_EnterStageBattleCommand(BaseModel):
 
 
 class ResPacket_EnterStageBattleCommand(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ReqPacket_ExitStageBattleCommand(BaseModel):
@@ -197,13 +221,19 @@ class ReqPacket_ExitStageBattleCommand(BaseModel):
     iswin: bool = False
     turn: int = 0
     formationid: int = 0
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
     supportCharacterId: int = 0
     supportPersonalityId: int = 0
     supportEgoIds: List[int] = []
     supportParticipate: bool = False
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
-    missionConditionContexts: List[MissionConditionContextFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
+    missionConditionContexts: List[
+        MissionConditionContextFormat
+    ] = []
     usedDanteAbilityCount: int = 0
 
 
@@ -212,13 +242,17 @@ class ResPacket_ExitStageBattleCommand(BaseModel):
     iswin: bool = False
     cleartype: int = 0
     addexptouser: int = 0
-    personalityinfos: List[StagePersonalityInfoFormat] = []
+    personalityinfos: List[
+        StagePersonalityInfoFormat
+    ] = []
     expticket: List[Element] = []
     rewarditem: List[Element] = []
     exrewarditem: List[Element] = []
     firstrewarditem: List[Element] = []
     givebackstaminabyDefeat: Element = Element()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ReqPacket_GetDungeonSaveInfoAll(BaseModel):
@@ -226,18 +260,26 @@ class ReqPacket_GetDungeonSaveInfoAll(BaseModel):
 
 
 class ResPacket_GetDungeonSaveInfoAll(BaseModel):
-    storySaveInfo: StoryDungeonSaveInfoFormat = StoryDungeonSaveInfoFormat()
-    mirrorOriginSaveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-    railwaySaveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
-    storyMirrorSaveInfo: StoryMirrorDungeonSaveInfoFormat = (
-        StoryMirrorDungeonSaveInfoFormat()
+    storySaveInfo: StoryDungeonSaveInfoFormat = (
+        StoryDungeonSaveInfoFormat()
     )
-    mirrorDungeonClearInfos: List[MirrorDungeonClearInfoFormat] = []
-    mirrorDungeonHistories: List[MirrorDungeonHistoryFormat] = []
+    mirrorOriginSaveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+    railwaySaveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
+    storyMirrorSaveInfo: StoryMirrorDungeonSaveInfoFormat = StoryMirrorDungeonSaveInfoFormat()
+    mirrorDungeonClearInfos: List[
+        MirrorDungeonClearInfoFormat
+    ] = []
+    mirrorDungeonHistories: List[
+        MirrorDungeonHistoryFormat
+    ] = []
 
 
 class ResPacket_GetStoryDungeonSaveInfo(BaseModel):
-    saveInfo: StoryDungeonSaveInfoFormat = StoryDungeonSaveInfoFormat()
+    saveInfo: StoryDungeonSaveInfoFormat = (
+        StoryDungeonSaveInfoFormat()
+    )
 
 
 class ReqPacket_EnterStoryDungeon(BaseModel):
@@ -245,11 +287,15 @@ class ReqPacket_EnterStoryDungeon(BaseModel):
     subchapterid: int = 0
     nodeid: int = 0
     stageid: int = 0
-    personalities: List[StoryDungeonSaveUnitInfoFormat] = []
+    personalities: List[
+        StoryDungeonSaveUnitInfoFormat
+    ] = []
 
 
 class ResPacket_EnterStoryDungeon(BaseModel):
-    saveInfo: StoryDungeonSaveInfoFormat = StoryDungeonSaveInfoFormat()
+    saveInfo: StoryDungeonSaveInfoFormat = (
+        StoryDungeonSaveInfoFormat()
+    )
     nodesRecord: List[int] = []
 
 
@@ -258,7 +304,9 @@ class ReqPacket_ReEnterStoryDungeonCommand(BaseModel):
 
 
 class ResPacket_ReEnterStoryDungeon(BaseModel):
-    saveInfo: StoryDungeonSaveInfoFormat = StoryDungeonSaveInfoFormat()
+    saveInfo: StoryDungeonSaveInfoFormat = (
+        StoryDungeonSaveInfoFormat()
+    )
     nodesRecord: List[int] = []
     statistics: List[DungeonStatisticsDataFormat] = []
 
@@ -271,11 +319,15 @@ class ReqPacket_ExitStoryDungeonCommand(BaseModel):
 
 
 class ResPacket_ExitStoryDungeonCommand(BaseModel):
-    saveInfo: StoryDungeonSaveInfoFormat = StoryDungeonSaveInfoFormat()
+    saveInfo: StoryDungeonSaveInfoFormat = (
+        StoryDungeonSaveInfoFormat()
+    )
     iswin: bool = False
     cleartype: int = 0
     addexptouser: int = 0
-    personalityinfos: List[StagePersonalityInfoFormat] = []
+    personalityinfos: List[
+        StagePersonalityInfoFormat
+    ] = []
     expticket: List[Element] = []
     rewarditem: List[Element] = []
     exrewarditem: List[Element] = []
@@ -285,7 +337,9 @@ class ResPacket_ExitStoryDungeonCommand(BaseModel):
     isGacksung: bool = False
 
 
-class ReqPacket_EnterStoryDungeonMapNodeCommand(BaseModel):
+class ReqPacket_EnterStoryDungeonMapNodeCommand(
+    BaseModel
+):
     floornumber: int = 0
     sectornumber: int = 0
     nodeid: int = 0
@@ -293,70 +347,112 @@ class ReqPacket_EnterStoryDungeonMapNodeCommand(BaseModel):
     participatedPIds: List[int] = []
 
 
-class ResPacket_EnterStoryDungeonMapNodeCommand(BaseModel):
+class ResPacket_EnterStoryDungeonMapNodeCommand(
+    BaseModel
+):
     node: DungeonMapNodeFormat = DungeonMapNodeFormat()
     nr: int = 0
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ReqPacket_UpdateStoryDungeonMapNodeCommand(BaseModel):
-    choiceEventData: DungeonChoiceEventSaveDataFormat = (
-        DungeonChoiceEventSaveDataFormat()
-    )
-    dungeonUnitList: List[StoryDungeonSaveUnitInfoFormat] = []
+class ReqPacket_UpdateStoryDungeonMapNodeCommand(
+    BaseModel
+):
+    choiceEventData: DungeonChoiceEventSaveDataFormat = DungeonChoiceEventSaveDataFormat()
+    dungeonUnitList: List[
+        StoryDungeonSaveUnitInfoFormat
+    ] = []
     updatedEgoGifts: List[DungeonMapEgoGiftFormat] = []
 
 
-class ResPacket_UpdateStoryDungeonMapNodeCommand(BaseModel):
-    prevChoiceEvent: List[DungeonChoiceEventSaveDataFormat] = []
+class ResPacket_UpdateStoryDungeonMapNodeCommand(
+    BaseModel
+):
+    prevChoiceEvent: List[
+        DungeonChoiceEventSaveDataFormat
+    ] = []
     currentEgoGifts: List[DungeonMapEgoGiftFormat] = []
     isAllDie: int = 0
 
 
-class ReqPacket_EnterStoryDungeonMapNodeBattleAfterChoice(BaseModel):
-    dungeonUnitList: List[StoryDungeonSaveUnitInfoFormat] = []
+class ReqPacket_EnterStoryDungeonMapNodeBattleAfterChoice(
+    BaseModel
+):
+    dungeonUnitList: List[
+        StoryDungeonSaveUnitInfoFormat
+    ] = []
     participatedPids: List[int] = []
     abnormalityids: List[int] = []
 
 
-class ResPacket_EnterStoryDungeonMapNodeBattleAfterChoice(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_EnterStoryDungeonMapNodeBattleAfterChoice(
+    BaseModel
+):
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     isAllDie: int = 0
 
 
-class ReqPacket_ExitStoryDungeonMapNodeCommand(BaseModel):
+class ReqPacket_ExitStoryDungeonMapNodeCommand(
+    BaseModel
+):
     noderesult: int = 0
-    choiceEventData: DungeonChoiceEventSaveDataFormat = (
-        DungeonChoiceEventSaveDataFormat()
+    choiceEventData: DungeonChoiceEventSaveDataFormat = DungeonChoiceEventSaveDataFormat()
+    dungeonunitlist: List[
+        StoryDungeonSaveUnitInfoFormat
+    ] = []
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
     )
-    dungeonunitlist: List[StoryDungeonSaveUnitInfoFormat] = []
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     openedNode: int = 0
     isupdatedEgoSkillStock: int = 0
-    egoSkillStockList: List[DungeonEgoSkillStockFormat] = []
+    egoSkillStockList: List[
+        DungeonEgoSkillStockFormat
+    ] = []
     updatedEgoGifts: List[DungeonMapEgoGiftFormat] = []
     statistics: List[DungeonStatisticsDataFormat] = []
     usedDanteAbilityCount: int = 0
 
 
-class ResPacket_ExitStoryDungeonMapNodeCommand(BaseModel):
-    saveInfo: StoryDungeonSaveInfoFormat = StoryDungeonSaveInfoFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_ExitStoryDungeonMapNodeCommand(
+    BaseModel
+):
+    saveInfo: StoryDungeonSaveInfoFormat = (
+        StoryDungeonSaveInfoFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     acquiredEgogifts: List[DungeonMapEgoGiftFormat] = []
     isAllDie: int = 0
 
 
 class ReqPacket_UpdateStoryDungeonUnits(BaseModel):
-    dungeonunitlist: List[StoryDungeonSaveUnitInfoFormat] = []
+    dungeonunitlist: List[
+        StoryDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ResPacket_ReturnSavePointStoryDungeonMap(BaseModel):
-    currentInfo: StoryDungeonCurrentInfoFormat = StoryDungeonCurrentInfoFormat()
+class ResPacket_ReturnSavePointStoryDungeonMap(
+    BaseModel
+):
+    currentInfo: StoryDungeonCurrentInfoFormat = (
+        StoryDungeonCurrentInfoFormat()
+    )
 
 
-class ResPacket_ExitStoryDungeonMapNodeByForcely(BaseModel):
-    currentInfo: StoryDungeonCurrentInfoFormat = StoryDungeonCurrentInfoFormat()
+class ResPacket_ExitStoryDungeonMapNodeByForcely(
+    BaseModel
+):
+    currentInfo: StoryDungeonCurrentInfoFormat = (
+        StoryDungeonCurrentInfoFormat()
+    )
     isAllDie: int = 0
 
 
@@ -377,16 +473,24 @@ class ReqPacket_GetAbnormalityLogData(BaseModel):
 
 
 class ResPacket_GetAbnormalityLogData(BaseModel):
-    logdatas: List[AbnormalityUnlockInformationFormat] = []
+    logdatas: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ReqPacket_UpdateAbnormalityLogData(BaseModel):
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ResPacket_UpdateAbnormalityLogData(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ReqPacket_GetStoryDungeonNodeRecord(BaseModel):
@@ -439,7 +543,9 @@ class ResPacket_UseGachaPityPoint(BaseModel):
 
 
 class ResPacket_ClaimClosedGachaRewards(BaseModel):
-    pityPointDataList: List[PityExpirationUIPopup_PityPoint] = []
+    pityPointDataList: List[
+        PityExpirationUIPopup_PityPoint
+    ] = []
 
 
 class ReqPacket_Purchase(BaseModel):
@@ -520,7 +626,9 @@ class ReqPacket_UsePersonalityExpItem(BaseModel):
 
 
 class ResPacket_UsePersonalityExpItem(BaseModel):
-    resultPersonality: PersonalityFormat = PersonalityFormat()
+    resultPersonality: PersonalityFormat = (
+        PersonalityFormat()
+    )
 
 
 class ReqPacket_UseEgoGacksungItem(BaseModel):
@@ -539,7 +647,9 @@ class ResPacket_LoadUserDataAll(BaseModel):
     )
     isExistReceiveFriendRequest: bool = False
     danteNoteTodayPage: int = 0
-    dailyLoginRewardStates: List[DailyLoginRewardStateFormat] = []
+    dailyLoginRewardStates: List[
+        DailyLoginRewardStateFormat
+    ] = []
     dailyLoginWeekId: int = 0
     dailyLoginId: int = 0
     showedWeekByMinistory: int = 0
@@ -718,12 +828,18 @@ class ReqPacket_CompleteMinistory(BaseModel):
 
 
 class ResPacket_GetMirrorDungeonSaveInfoAll(BaseModel):
-    originSaveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-    simulationsaveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+    originSaveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+    simulationsaveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
 class ResPacket_GetMirrorDungeonSaveInfo(BaseModel):
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
 class ReqPacket_EnterMirrorDungeonCommand(BaseModel):
@@ -733,8 +849,12 @@ class ReqPacket_EnterMirrorDungeonCommand(BaseModel):
 
 
 class ResPacket_EnterMirrorDungeonCommand(BaseModel):
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-    recentCharacterList: List[MirrorDungeonGetCharacterInfoFormat] = []
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+    recentCharacterList: List[
+        MirrorDungeonGetCharacterInfoFormat
+    ] = []
 
 
 class ReqPacket_ReEnterMirrorDungeonCommand(BaseModel):
@@ -744,35 +864,57 @@ class ReqPacket_ReEnterMirrorDungeonCommand(BaseModel):
 
 
 class ReqPacket_UpdateMirrorDungeonCommand(BaseModel):
-    characterInfos: List[MirrorDungeonGetCharacterInfoFormat] = []
+    characterInfos: List[
+        MirrorDungeonGetCharacterInfoFormat
+    ] = []
     formation: List[MirrorDungeonFormationFormat] = []
     isOrigin: int = 0
 
 
 class ResPacket_UpdateMirrorDungeonCommand(BaseModel):
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
-class ReqPacket_SelectFormationAndCreateThemePoolMirrorDungeonCommand(BaseModel):
-    characterInfos: List[MirrorDungeonGetCharacterInfoFormat] = []
+class ReqPacket_SelectFormationAndCreateThemePoolMirrorDungeonCommand(
+    BaseModel
+):
+    characterInfos: List[
+        MirrorDungeonGetCharacterInfoFormat
+    ] = []
     formation: List[MirrorDungeonFormationFormat] = []
     isOrigin: int = 0
 
 
-class ResPacket_SelectFormationAndCreateThemePoolMirrorDungeonCommand(BaseModel):
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+class ResPacket_SelectFormationAndCreateThemePoolMirrorDungeonCommand(
+    BaseModel
+):
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
-class ResPacket_RecreateThemeFloorPoolMirrorDungeonCommand(BaseModel):
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+class ResPacket_RecreateThemeFloorPoolMirrorDungeonCommand(
+    BaseModel
+):
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
-class ReqPacket_SelectThemeFloorMirrorDungeonCommand(BaseModel):
+class ReqPacket_SelectThemeFloorMirrorDungeonCommand(
+    BaseModel
+):
     selectedThemeFoorId: int = 0
 
 
-class ResPacket_SelectThemeFloorMirrorDungeonCommand(BaseModel):
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+class ResPacket_SelectThemeFloorMirrorDungeonCommand(
+    BaseModel
+):
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
 class ResPacket_ExitMirrorDungeonCommand(BaseModel):
@@ -781,76 +923,126 @@ class ResPacket_ExitMirrorDungeonCommand(BaseModel):
     statistics: List[DungeonStatisticsDataFormat] = []
 
 
-class ReqPacket_AcquireMirrorDungeonLastReward(BaseModel):
+class ReqPacket_AcquireMirrorDungeonLastReward(
+    BaseModel
+):
     useEnkephalinModule: int = 0
     usehardbonus: int = 0
     useweeklybonus: int = 0
     isOrigin: int = 0
 
 
-class ResPacket_AcquireMirrorDungeonLastReward(BaseModel):
+class ResPacket_AcquireMirrorDungeonLastReward(
+    BaseModel
+):
     rewardList: List[Element] = []
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-    acquiredChip: MirrorDungeonAcquiredChipFormat = MirrorDungeonAcquiredChipFormat()
-    history: MirrorDungeonHistoryFormat = MirrorDungeonHistoryFormat()
-    startBuffInfo: MirrorDungeonStartBuffInfoFormat = MirrorDungeonStartBuffInfoFormat()
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+    acquiredChip: MirrorDungeonAcquiredChipFormat = (
+        MirrorDungeonAcquiredChipFormat()
+    )
+    history: MirrorDungeonHistoryFormat = (
+        MirrorDungeonHistoryFormat()
+    )
+    startBuffInfo: MirrorDungeonStartBuffInfoFormat = (
+        MirrorDungeonStartBuffInfoFormat()
+    )
 
 
-class ReqPacket_EnterMirrorDungeonMapNodeCommand(BaseModel):
-    currentnode: DungeonMapNodeFormat = DungeonMapNodeFormat()
+class ReqPacket_EnterMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentnode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
+    )
     abnormalityids: List[int] = []
     participatedPIds: List[int] = []
     isOrigin: int = 0
 
 
-class ResPacket_EnterMirrorDungeonMapNodeCommand(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_EnterMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     passingNodeIds: List[int] = []
-    currentNode: DungeonMapNodeFormat = DungeonMapNodeFormat()
+    currentNode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
+    )
     shopInfo: UserMirrorDungeonShopDataFormat = ()
     egogifts: List[DungeonMapEgoGiftFormat] = []
     prevdul: List[MirrorDungeonPrevUnitInfoFormat] = []
     preves: List[int] = []
 
 
-class ReqPacket_UpdateMirrorDungeonMapNodeCommand(BaseModel):
-    currentnode: DungeonMapNodeFormat = DungeonMapNodeFormat()
-    choiceEventData: DungeonChoiceEventSaveDataFormat = (
-        DungeonChoiceEventSaveDataFormat()
+class ReqPacket_UpdateMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentnode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
     )
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
+    choiceEventData: DungeonChoiceEventSaveDataFormat = DungeonChoiceEventSaveDataFormat()
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
     updatedEgoGifts: List[DungeonMapEgoGiftFormat] = []
     isOrigin: int = 0
 
 
-class ResPacket_UpdateMirrorDungeonMapNodeCommand(BaseModel):
-    prevChoiceEvent: List[DungeonChoiceEventSaveDataFormat] = []
+class ResPacket_UpdateMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    prevChoiceEvent: List[
+        DungeonChoiceEventSaveDataFormat
+    ] = []
     currentEgoGifts: List[DungeonMapEgoGiftFormat] = []
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_EnterMirrordungeonMapNodeBattleAfterChoice(BaseModel):
+class ReqPacket_EnterMirrordungeonMapNodeBattleAfterChoice(
+    BaseModel
+):
     participatedPids: List[int] = []
     abnormalityids: List[int] = []
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
     isOrigin: int = 0
 
 
-class ResPacket_EnterMirrordungeonMapNodeBattleAfterChoice(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_EnterMirrordungeonMapNodeBattleAfterChoice(
+    BaseModel
+):
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ReqPacket_ExitMirrorDungeonMapNodeCommand(BaseModel):
-    currentnode: DungeonMapNodeFormat = DungeonMapNodeFormat()
-    dungeonunitlist: List[MirrorDungeonSaveUnitInfoFormat] = []
-    noderesult: int = 0
-    choiceEventData: DungeonChoiceEventSaveDataFormat = (
-        DungeonChoiceEventSaveDataFormat()
+class ReqPacket_ExitMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentnode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
     )
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    dungeonunitlist: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    noderesult: int = 0
+    choiceEventData: DungeonChoiceEventSaveDataFormat = DungeonChoiceEventSaveDataFormat()
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     isupdatedEgoSkillStock: int = 0
-    egoSkillStockList: List[DungeonEgoSkillStockFormat] = []
+    egoSkillStockList: List[
+        DungeonEgoSkillStockFormat
+    ] = []
     updatedEgoGifts: List[DungeonMapEgoGiftFormat] = []
     statistics: List[DungeonStatisticsDataFormat] = []
     usedDanteAbilityCount: int = 0
@@ -858,13 +1050,21 @@ class ReqPacket_ExitMirrorDungeonMapNodeCommand(BaseModel):
     isOrigin: int = 0
 
 
-class ResPacket_ExitMirrorDungeonMapNodeCommand(BaseModel):
-    currentInfo: MirrorDungeonCurrentInfoFormat = MirrorDungeonCurrentInfoFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_ExitMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentInfo: MirrorDungeonCurrentInfoFormat = (
+        MirrorDungeonCurrentInfoFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ReqPacket_UpdateMirrorDungeonUnits(BaseModel):
-    dungeonunitlist: List[MirrorDungeonSaveUnitInfoFormat] = []
+    dungeonunitlist: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
     isOrigin: int = 0
 
 
@@ -872,87 +1072,151 @@ class ReqPacket_MirrorDungeonCommon(BaseModel):
     isOrigin: int = 0
 
 
-class ResPacket_ExitMirrorDungeonMapNodeByForcely(BaseModel):
-    currentInfo: MirrorDungeonCurrentInfoFormat = MirrorDungeonCurrentInfoFormat()
-
-
-class ReqPacket_AcquireRewardEgoGiftsMirrorDungeonCommand(BaseModel):
-    selectIndexList: List[int] = []
-    isOrigin: int = 0
-
-
-class ResPacket_AcquireRewardEgoGiftsMirrorDungeonCommand(BaseModel):
-    egoGifts: List[DungeonMapEgoGiftFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    saveinfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-
-
-class ReqPacket_AcquireRewardEgoGiftsWithEnemyBufMirrorDungeonCommand(BaseModel):
-    selectIndexList: List[int] = []
-    isOrigin: int = 0
-
-
-class ResPacket_AcquireRewardEgoGiftsWithEnemyBufMirrorDungeonCommand(BaseModel):
-    egoGifts: List[DungeonMapEgoGiftFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    levelAdders: List[int] = []
-    saveinfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-
-
-class ResPacket_RejectRewardEgoGiftsMirrorDungeonCommand(BaseModel):
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-    saveinfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-
-
-class ResPacket_RejectRewardEgoGiftWithEnemyBufsMirrorDungeonCommand(BaseModel):
-    egoGifts: List[DungeonMapEgoGiftFormat] = []
-    levelAdders: List[int] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-    saveinfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-
-
-class ReqPacket_AcquireCharacterEventDataMirrorDungeonCommand(BaseModel):
-    acquirePersonalities: List[MirrorDungeonGetCharacterInfoFormat] = []
-    isOrigin: int = 0
-
-
-class ResPacket_AcquireCharacterEventDataMirrorDungeonCommand(BaseModel):
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-
-
-class ReqPacket_PersonalityLevelUpEventMirrorDungeonCommand(BaseModel):
-    levelUpPersonalityFormat: RandomDungeonLevelUpPersonalityInfoFormat = (
-        RandomDungeonLevelUpPersonalityInfoFormat()
+class ResPacket_ExitMirrorDungeonMapNodeByForcely(
+    BaseModel
+):
+    currentInfo: MirrorDungeonCurrentInfoFormat = (
+        MirrorDungeonCurrentInfoFormat()
     )
-    isOrigin: int = 0
 
 
-class ResPacket_PersonalityLevelUpEventMirrorDungeonCommand(BaseModel):
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-
-
-class ReqPacket_AcquireMirrorDungeonBattleRewardCommand(BaseModel):
+class ReqPacket_AcquireRewardEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
     selectIndexList: List[int] = []
     isOrigin: int = 0
 
 
-class ResPacket_AcquireMirrorDungeonBattleRewardCommand(BaseModel):
-    saveinfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
+class ResPacket_AcquireRewardEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
+    egoGifts: List[DungeonMapEgoGiftFormat] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    saveinfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
 
 
-class ResPacket_GetMirrorDungeonEgoGiftRecordCommand(BaseModel):
+class ReqPacket_AcquireRewardEgoGiftsWithEnemyBufMirrorDungeonCommand(
+    BaseModel
+):
+    selectIndexList: List[int] = []
+    isOrigin: int = 0
+
+
+class ResPacket_AcquireRewardEgoGiftsWithEnemyBufMirrorDungeonCommand(
+    BaseModel
+):
+    egoGifts: List[DungeonMapEgoGiftFormat] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    levelAdders: List[int] = []
+    saveinfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+
+
+class ResPacket_RejectRewardEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+    saveinfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+
+
+class ResPacket_RejectRewardEgoGiftWithEnemyBufsMirrorDungeonCommand(
+    BaseModel
+):
+    egoGifts: List[DungeonMapEgoGiftFormat] = []
+    levelAdders: List[int] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+    saveinfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+
+
+class ReqPacket_AcquireCharacterEventDataMirrorDungeonCommand(
+    BaseModel
+):
+    acquirePersonalities: List[
+        MirrorDungeonGetCharacterInfoFormat
+    ] = []
+    isOrigin: int = 0
+
+
+class ResPacket_AcquireCharacterEventDataMirrorDungeonCommand(
+    BaseModel
+):
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+
+
+class ReqPacket_PersonalityLevelUpEventMirrorDungeonCommand(
+    BaseModel
+):
+    levelUpPersonalityFormat: RandomDungeonLevelUpPersonalityInfoFormat = RandomDungeonLevelUpPersonalityInfoFormat()
+    isOrigin: int = 0
+
+
+class ResPacket_PersonalityLevelUpEventMirrorDungeonCommand(
+    BaseModel
+):
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+
+
+class ReqPacket_AcquireMirrorDungeonBattleRewardCommand(
+    BaseModel
+):
+    selectIndexList: List[int] = []
+    isOrigin: int = 0
+
+
+class ResPacket_AcquireMirrorDungeonBattleRewardCommand(
+    BaseModel
+):
+    saveinfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+
+
+class ResPacket_GetMirrorDungeonEgoGiftRecordCommand(
+    BaseModel
+):
     acquiredegogifts: List[int] = []
 
 
-class ReqPacket_UnLockMirrorDungeonEgoGiftCommand(BaseModel):
+class ReqPacket_UnLockMirrorDungeonEgoGiftCommand(
+    BaseModel
+):
     egogiftIds: List[int] = []
 
 
-class ReqPacket_SendMirrorDungeonLogErrorCommand(BaseModel):
+class ReqPacket_SendMirrorDungeonLogErrorCommand(
+    BaseModel
+):
     type: int = Field(default=0, alias="type_")
 
 
@@ -963,29 +1227,51 @@ class ReqPacket_PurchaseHealMirrorDungeon(BaseModel):
 
 class ResPacket_PurchaseHealMirrorDungeon(BaseModel):
     cost: int = 0
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
 
 
-class ReqPacket_PurchaseFormationMirrorDungeon(BaseModel):
+class ReqPacket_PurchaseFormationMirrorDungeon(
+    BaseModel
+):
     formation: List[MirrorDungeonFormationFormat] = []
 
 
-class ResPacket_PurchaseFormationMirrorDungeon(BaseModel):
+class ResPacket_PurchaseFormationMirrorDungeon(
+    BaseModel
+):
     cost: int = 0
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
-    prevUnitInfo: MirrorDungeonPrevUnitInfoFormat = MirrorDungeonPrevUnitInfoFormat()
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
+    prevUnitInfo: MirrorDungeonPrevUnitInfoFormat = (
+        MirrorDungeonPrevUnitInfoFormat()
+    )
 
 
-class ReqPacket_PurchaseUpgradePersonalityMirrorDungeon(BaseModel):
+class ReqPacket_PurchaseUpgradePersonalityMirrorDungeon(
+    BaseModel
+):
     idx: int = 0
 
 
-class ResPacket_PurchaseUpgradePersonalityMirrorDungeon(BaseModel):
+class ResPacket_PurchaseUpgradePersonalityMirrorDungeon(
+    BaseModel
+):
     cost: int = 0
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
 
 
 class ReqPacket_PurchaseEgoGiftMirrorDungeon(BaseModel):
@@ -995,8 +1281,12 @@ class ReqPacket_PurchaseEgoGiftMirrorDungeon(BaseModel):
 class ResPacket_PurchaseEgoGiftMirrorDungeon(BaseModel):
     cost: int = 0
     egogifts: List[DungeonMapEgoGiftFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
 class ReqPacket_SellEgoGift(BaseModel):
@@ -1008,51 +1298,81 @@ class ResPacket_SellEgoGift(BaseModel):
     egogifts: List[DungeonMapEgoGiftFormat] = []
 
 
-class ReqPacket_RefreshShopEgoGiftsMirrorDungeonCommand(BaseModel):
+class ReqPacket_RefreshShopEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
     isPaidWithChip: bool = False
     keyword: str = ""
     isOrigin: int = 0
 
 
-class ResPacket_RefreshShopEgoGiftsMirrorDungeonCommand(BaseModel):
+class ResPacket_RefreshShopEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
     consumedChipIn: int = 0
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
 
 
-class ReqPacket_GetStartBuffFInfoMirrorDungeon(BaseModel):
+class ReqPacket_GetStartBuffFInfoMirrorDungeon(
+    BaseModel
+):
     dungeonid: int = 0
 
 
-class ResPacket_GetStartBuffFInfoMirrorDungeon(BaseModel):
-    startBuffInfo: MirrorDungeonStartBuffInfoFormat = MirrorDungeonStartBuffInfoFormat()
+class ResPacket_GetStartBuffFInfoMirrorDungeon(
+    BaseModel
+):
+    startBuffInfo: MirrorDungeonStartBuffInfoFormat = (
+        MirrorDungeonStartBuffInfoFormat()
+    )
 
 
-class ReqPacket_PurchaseStartBuffMirrorDungeon(BaseModel):
-    dungeonid: int = 0
-    buffids: List[int] = []
-
-
-class ResPacket_PurchaseStartBuffMirrorDungeon(BaseModel):
-    startBuffInfo: MirrorDungeonStartBuffInfoFormat = MirrorDungeonStartBuffInfoFormat()
-
-
-class ReqPacket_EnableSpecialStartBuffMirrorDungeon(BaseModel):
-    dungeonid: int = 0
-    buffids: List[int] = []
-
-
-class ResPacket_EnableSpecialStartBuffMirrorDungeon(BaseModel):
-    startBuffInfo: MirrorDungeonStartBuffInfoFormat = MirrorDungeonStartBuffInfoFormat()
-
-
-class ReqPacket_DisableStartBuffMirrorDungeon(BaseModel):
+class ReqPacket_PurchaseStartBuffMirrorDungeon(
+    BaseModel
+):
     dungeonid: int = 0
     buffids: List[int] = []
 
 
-class ResPacket_DisableStartBuffMirrorDungeon(BaseModel):
-    startBuffInfo: MirrorDungeonStartBuffInfoFormat = MirrorDungeonStartBuffInfoFormat()
+class ResPacket_PurchaseStartBuffMirrorDungeon(
+    BaseModel
+):
+    startBuffInfo: MirrorDungeonStartBuffInfoFormat = (
+        MirrorDungeonStartBuffInfoFormat()
+    )
+
+
+class ReqPacket_EnableSpecialStartBuffMirrorDungeon(
+    BaseModel
+):
+    dungeonid: int = 0
+    buffids: List[int] = []
+
+
+class ResPacket_EnableSpecialStartBuffMirrorDungeon(
+    BaseModel
+):
+    startBuffInfo: MirrorDungeonStartBuffInfoFormat = (
+        MirrorDungeonStartBuffInfoFormat()
+    )
+
+
+class ReqPacket_DisableStartBuffMirrorDungeon(
+    BaseModel
+):
+    dungeonid: int = 0
+    buffids: List[int] = []
+
+
+class ResPacket_DisableStartBuffMirrorDungeon(
+    BaseModel
+):
+    startBuffInfo: MirrorDungeonStartBuffInfoFormat = (
+        MirrorDungeonStartBuffInfoFormat()
+    )
 
 
 class ReqPacket_RemoveMirrorDungeonEgoGift(BaseModel):
@@ -1063,8 +1383,12 @@ class ResPacket_RemoveMirrorDungeonEgoGift(BaseModel):
     egs: List[DungeonMapEgoGiftFormat] = []
 
 
-class ResPacket_MirrorDungeonGiveUpSelectingEgoGift(BaseModel):
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
+class ResPacket_MirrorDungeonGiveUpSelectingEgoGift(
+    BaseModel
+):
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
 
 
 class ReqPacket_GetMirrorDungeonPreset(BaseModel):
@@ -1073,7 +1397,9 @@ class ReqPacket_GetMirrorDungeonPreset(BaseModel):
 
 
 class ResPacket_GetMirrorDungeonPreset(BaseModel):
-    recentCharacterList: List[MirrorDungeonFormationFormat] = []
+    recentCharacterList: List[
+        MirrorDungeonFormationFormat
+    ] = []
 
 
 class ReqPacket_GetMirrorDungeonRewardChip(BaseModel):
@@ -1081,80 +1407,132 @@ class ReqPacket_GetMirrorDungeonRewardChip(BaseModel):
 
 
 class ResPacket_GetMirrorDungeonRewardChip(BaseModel):
-    acquiredChip: MirrorDungeonAcquiredChipFormat = MirrorDungeonAcquiredChipFormat()
-    rewardList: List[MirrorDungeonAcquiredRewardFormat] = []
+    acquiredChip: MirrorDungeonAcquiredChipFormat = (
+        MirrorDungeonAcquiredChipFormat()
+    )
+    rewardList: List[
+        MirrorDungeonAcquiredRewardFormat
+    ] = []
 
 
-class ReqPacket_SelectMirrorDungeonRandomPickFormation(BaseModel):
+class ReqPacket_SelectMirrorDungeonRandomPickFormation(
+    BaseModel
+):
     dungeonid: int = 0
     idx: int = 0
 
 
-class ResPacket_SelectMirrorDungeonRandomPickFormation(BaseModel):
+class ResPacket_SelectMirrorDungeonRandomPickFormation(
+    BaseModel
+):
     formation: List[MirrorDungeonFormationFormat] = []
 
 
-class ReqPacket_AcquireStartEgoGiftsMirrorDungeonCommand(BaseModel):
+class ReqPacket_AcquireStartEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
     selectedSetId: int = 0
     selectedEgoGiftIds: List[int] = []
     isOrigin: int = 0
 
 
-class ResPacket_AcquireStartEgoGiftsMirrorDungeonCommand(BaseModel):
+class ResPacket_AcquireStartEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
     egoGifts: List[DungeonMapEgoGiftFormat] = []
-    startEgoGiftPoolSets: List[MirrorDungeonEgoGiftPoolSetFormat] = []
+    startEgoGiftPoolSets: List[
+        MirrorDungeonEgoGiftPoolSetFormat
+    ] = []
     startEgoGiftCreatedCount: int = 0
 
 
-class ReqPacket_RefreshStartEgoGiftsMirrorDungeonCommand(BaseModel):
+class ReqPacket_RefreshStartEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
     isOrigin: int = 0
 
 
-class ResPacket_RefreshStartEgoGiftsMirrorDungeonCommand(BaseModel):
-    startEgoGiftPoolSets: List[MirrorDungeonEgoGiftPoolSetFormat] = []
+class ResPacket_RefreshStartEgoGiftsMirrorDungeonCommand(
+    BaseModel
+):
+    startEgoGiftPoolSets: List[
+        MirrorDungeonEgoGiftPoolSetFormat
+    ] = []
     startEgoGiftCreatedCount: int = 0
 
 
-class ReqPacket_UpgradeEgoGiftMirrorDungeonCommand(BaseModel):
+class ReqPacket_UpgradeEgoGiftMirrorDungeonCommand(
+    BaseModel
+):
     egoGiftId: int = 0
     isOrigin: int = 0
 
 
-class ResPacket_UpgradeEgoGiftMirrorDungeonCommand(BaseModel):
+class ResPacket_UpgradeEgoGiftMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
-    egoGift: DungeonMapEgoGiftFormat = DungeonMapEgoGiftFormat()
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
+    egoGift: DungeonMapEgoGiftFormat = (
+        DungeonMapEgoGiftFormat()
+    )
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_CombineEgoGiftMirrorDungeonCommand(BaseModel):
+class ReqPacket_CombineEgoGiftMirrorDungeonCommand(
+    BaseModel
+):
     materialEgoGiftIds: List[int] = []
     keyword: str = ""
     isOrigin: int = 0
 
 
-class ResPacket_CombineEgoGiftMirrorDungeonCommand(BaseModel):
-    resultEgoGift: DungeonMapEgoGiftFormat = DungeonMapEgoGiftFormat()
+class ResPacket_CombineEgoGiftMirrorDungeonCommand(
+    BaseModel
+):
+    resultEgoGift: DungeonMapEgoGiftFormat = (
+        DungeonMapEgoGiftFormat()
+    )
     isSuccess: bool = False
     egoGifts: List[DungeonMapEgoGiftFormat] = []
-    dungeonUnitList: List[MirrorDungeonSaveUnitInfoFormat] = []
+    dungeonUnitList: List[
+        MirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ResPacket_PreviewMirrorDungeonExitReward(BaseModel):
-    acquiredChip: MirrorDungeonAcquiredChipFormat = MirrorDungeonAcquiredChipFormat()
+class ResPacket_PreviewMirrorDungeonExitReward(
+    BaseModel
+):
+    acquiredChip: MirrorDungeonAcquiredChipFormat = (
+        MirrorDungeonAcquiredChipFormat()
+    )
     rewardList: List[MirrorDungeonExitRewardFormat] = []
 
 
-class ReqPacket_AcquireMirrorDungeonExitReward(BaseModel):
+class ReqPacket_AcquireMirrorDungeonExitReward(
+    BaseModel
+):
     useEnkephalinModule: bool = False
     chanceConsumption: int = 0
 
 
-class ResPacket_AcquireMirrorDungeonExitReward(BaseModel):
+class ResPacket_AcquireMirrorDungeonExitReward(
+    BaseModel
+):
     rewardList: List[Element] = []
-    saveInfo: MirrorDungeonSaveInfoFormat = MirrorDungeonSaveInfoFormat()
-    acquiredChip: MirrorDungeonAcquiredChipFormat = MirrorDungeonAcquiredChipFormat()
-    history: MirrorDungeonHistoryFormat = MirrorDungeonHistoryFormat()
-    startBuffInfo: MirrorDungeonStartBuffInfoFormat = MirrorDungeonStartBuffInfoFormat()
+    saveInfo: MirrorDungeonSaveInfoFormat = (
+        MirrorDungeonSaveInfoFormat()
+    )
+    acquiredChip: MirrorDungeonAcquiredChipFormat = (
+        MirrorDungeonAcquiredChipFormat()
+    )
+    history: MirrorDungeonHistoryFormat = (
+        MirrorDungeonHistoryFormat()
+    )
+    startBuffInfo: MirrorDungeonStartBuffInfoFormat = (
+        MirrorDungeonStartBuffInfoFormat()
+    )
 
 
 class ReqPacket_AcquireMissionRewardsCommand(BaseModel):
@@ -1187,7 +1565,9 @@ class ReqPacket_UpdateTermsOfUseState(BaseModel):
 
 
 class ResPacket_GetTheaterInfo(BaseModel):
-    theaterInfo: UserTheaterInfoFormat = UserTheaterInfoFormat()
+    theaterInfo: UserTheaterInfoFormat = (
+        UserTheaterInfoFormat()
+    )
 
 
 class ReqPacket_CompleteTheaterStory(BaseModel):
@@ -1197,7 +1577,9 @@ class ReqPacket_CompleteTheaterStory(BaseModel):
 class ResPacket_CompleteTheaterStory(BaseModel):
     isRewarded: bool = False
     acquiredElements: List[Element] = []
-    theaterInfo: UserTheaterInfoFormat = UserTheaterInfoFormat()
+    theaterInfo: UserTheaterInfoFormat = (
+        UserTheaterInfoFormat()
+    )
 
 
 class ReqPacket_UpdateFormationCommand(BaseModel):
@@ -1209,9 +1591,13 @@ class ResPacket_GetUserBanners(BaseModel):
 
 
 class ResPacket_GetFriendsData(BaseModel):
-    friendprofileList: List[UserPublicProfileFormat] = []
+    friendprofileList: List[
+        UserPublicProfileFormat
+    ] = []
     sendprofileList: List[UserPublicProfileFormat] = []
-    receiveprofileList: List[UserPublicProfileFormat] = []
+    receiveprofileList: List[
+        UserPublicProfileFormat
+    ] = []
 
 
 class ReqPacket_FindFriend(BaseModel):
@@ -1220,11 +1606,15 @@ class ReqPacket_FindFriend(BaseModel):
 
 class ResPacket_FindFriend(BaseModel):
     success: bool = False
-    friendprofile: UserPublicProfileFormat = UserPublicProfileFormat()
+    friendprofile: UserPublicProfileFormat = (
+        UserPublicProfileFormat()
+    )
 
 
 class ResPacket_GetRecommendFriends(BaseModel):
-    recomendedFriends: List[UserPublicProfileFormat] = []
+    recomendedFriends: List[
+        UserPublicProfileFormat
+    ] = []
 
 
 class ReqPacket_SendFriendRequest(BaseModel):
@@ -1233,7 +1623,9 @@ class ReqPacket_SendFriendRequest(BaseModel):
 
 class ResPacket_SendFriendRequest(BaseModel):
     success: int = 0
-    receiverprofile: UserPublicProfileFormat = UserPublicProfileFormat()
+    receiverprofile: UserPublicProfileFormat = (
+        UserPublicProfileFormat()
+    )
 
 
 class ReqPacket_AcceptReceivedFriendRequest(BaseModel):
@@ -1256,20 +1648,32 @@ class ReqPacket_DeleteFriend(BaseModel):
     deletedPublicUID: str = ""
 
 
-class ReqPacket_GetFriendSupportPersonalities(BaseModel):
+class ReqPacket_GetFriendSupportPersonalities(
+    BaseModel
+):
     publicUID: str = ""
 
 
-class ResPacket_GetFriendSupportPersonalities(BaseModel):
-    supportpersonalities: List[SupportPersonalitySlotFormat] = []
+class ResPacket_GetFriendSupportPersonalities(
+    BaseModel
+):
+    supportpersonalities: List[
+        SupportPersonalitySlotFormat
+    ] = []
 
 
-class ReqPacket_GetFriendSupportPersonalitiesByCharacterId(BaseModel):
+class ReqPacket_GetFriendSupportPersonalitiesByCharacterId(
+    BaseModel
+):
     characterid: int = 0
 
 
-class ResPacket_GetFriendSupportPersonalitiesByCharacterId(BaseModel):
-    supportpersonalities: List[SupportPersonalityFormat] = []
+class ResPacket_GetFriendSupportPersonalitiesByCharacterId(
+    BaseModel
+):
+    supportpersonalities: List[
+        SupportPersonalityFormat
+    ] = []
 
 
 class ReqPacket_UpdateUserProfile(BaseModel):
@@ -1278,13 +1682,17 @@ class ReqPacket_UpdateUserProfile(BaseModel):
     sentenceId: int = 0
     wordId: int = 0
     banners: List[UserPublicBannerFormat] = []
-    supportPersonalities: List[SupportPersonalitySlotFormat] = []
+    supportPersonalities: List[
+        SupportPersonalitySlotFormat
+    ] = []
 
 
 class ResPacket_GetProfileTicketDecoDatas(BaseModel):
     leftBorders: List[UserProfileBorderFormat] = []
     rightBorders: List[UserProfileBorderFormat] = []
-    egoBackgrounds: List[UserProfileEgobackgroundFormat] = []
+    egoBackgrounds: List[
+        UserProfileEgobackgroundFormat
+    ] = []
 
 
 class ReqPacket_UpdateProfileTicketDeco(BaseModel):
@@ -1315,63 +1723,105 @@ class ReqPacket_ExchangeTwine(BaseModel):
     paidPieces: List[ItemFormat] = []
 
 
-class ReqPacket_AcquireEgoGiftEventStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_AcquireEgoGiftEventStoryMirrorDungeonCommand(
+    BaseModel
+):
     selectIndexList: List[int] = []
 
 
-class ResPacket_AcquireEgoGiftEventStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_AcquireEgoGiftEventStoryMirrorDungeonCommand(
+    BaseModel
+):
     egoGifts: List[DungeonMapEgoGiftFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
 
 
-class ReqPacket_AcquireCharacterEventDataStoryMirrorDungeonCommand(BaseModel):
-    acquirePersonalities: List[StoryMirrorDungeonGetCharacterInfoFormat] = []
+class ReqPacket_AcquireCharacterEventDataStoryMirrorDungeonCommand(
+    BaseModel
+):
+    acquirePersonalities: List[
+        StoryMirrorDungeonGetCharacterInfoFormat
+    ] = []
 
 
-class ResPacket_AcquireCharacterEventDataStoryMirrorDungeonCommand(BaseModel):
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
+class ResPacket_AcquireCharacterEventDataStoryMirrorDungeonCommand(
+    BaseModel
+):
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
 
 
-class ReqPacket_PersonalityLevelUpEventStoryMirrorDungeonCommand(BaseModel):
-    levelUpPersonalityFormat: StoryMirrorDungeonLevelUpPersonalityInfoFormat = (
-        StoryMirrorDungeonLevelUpPersonalityInfoFormat()
-    )
+class ReqPacket_PersonalityLevelUpEventStoryMirrorDungeonCommand(
+    BaseModel
+):
+    levelUpPersonalityFormat: StoryMirrorDungeonLevelUpPersonalityInfoFormat = StoryMirrorDungeonLevelUpPersonalityInfoFormat()
 
 
-class ResPacket_PersonalityLevelUpEventStoryMirrorDungeonCommand(BaseModel):
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
+class ResPacket_PersonalityLevelUpEventStoryMirrorDungeonCommand(
+    BaseModel
+):
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
 
 
-class ReqPacket_EnterStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_EnterStoryMirrorDungeonCommand(
+    BaseModel
+):
     dungeonid: int = 0
     idx: int = 0
 
 
-class ResPacket_EnterStoryMirrorDungeonCommand(BaseModel):
-    saveInfo: StoryMirrorDungeonSaveInfoFormat = StoryMirrorDungeonSaveInfoFormat()
+class ResPacket_EnterStoryMirrorDungeonCommand(
+    BaseModel
+):
+    saveInfo: StoryMirrorDungeonSaveInfoFormat = (
+        StoryMirrorDungeonSaveInfoFormat()
+    )
 
 
-class ReqPacket_ReEnterStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_ReEnterStoryMirrorDungeonCommand(
+    BaseModel
+):
     dungeonid: int = 0
 
 
-class ReqPacket_UpdateStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_UpdateStoryMirrorDungeonCommand(
+    BaseModel
+):
     formation: List[MirrorDungeonFormationFormat] = []
 
 
-class ResPacket_UpdateStoryMirrorDungeonCommand(BaseModel):
-    saveInfo: StoryMirrorDungeonSaveInfoFormat = StoryMirrorDungeonSaveInfoFormat()
+class ResPacket_UpdateStoryMirrorDungeonCommand(
+    BaseModel
+):
+    saveInfo: StoryMirrorDungeonSaveInfoFormat = (
+        StoryMirrorDungeonSaveInfoFormat()
+    )
 
 
-class ResPacket_ExitStoryMirrorDungeonCommand(BaseModel):
-    saveInfo: StoryMirrorDungeonSaveInfoFormat = StoryMirrorDungeonSaveInfoFormat()
+class ResPacket_ExitStoryMirrorDungeonCommand(
+    BaseModel
+):
+    saveInfo: StoryMirrorDungeonSaveInfoFormat = (
+        StoryMirrorDungeonSaveInfoFormat()
+    )
     isclear: int = 0
     statistics: List[DungeonStatisticsDataFormat] = []
     cleartype: int = 0
     adduserexp: int = 0
-    personalityinfos: List[StagePersonalityInfoFormat] = []
+    personalityinfos: List[
+        StagePersonalityInfoFormat
+    ] = []
     normalrewards: List[Element] = []
     exrewards: List[Element] = []
     firstrewarditem: List[Element] = []
@@ -1379,204 +1829,340 @@ class ResPacket_ExitStoryMirrorDungeonCommand(BaseModel):
     givebackstaminabyDefeat: Element = Element()
 
 
-class ReqPacket_EnterStoryMirrorDungeonMapNodeCommand(BaseModel):
-    currentnode: DungeonMapNodeFormat = DungeonMapNodeFormat()
+class ReqPacket_EnterStoryMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentnode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
+    )
     abnormalityids: List[int] = []
     participatedPIds: List[int] = []
 
 
-class ResPacket_EnterStoryMirrorDungeonMapNodeCommand(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_EnterStoryMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     passingNodeIds: List[int] = []
-    currentNode: DungeonMapNodeFormat = DungeonMapNodeFormat()
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    currentNode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
+    )
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
     egogifts: List[DungeonMapEgoGiftFormat] = []
     prevdul: List[MirrorDungeonPrevUnitInfoFormat] = []
     preves: List[int] = []
 
 
-class ReqPacket_UpdateStoryMirrorDungeonMapNodeCommand(BaseModel):
-    currentnode: DungeonMapNodeFormat = DungeonMapNodeFormat()
-    choiceEventData: DungeonChoiceEventSaveDataFormat = (
-        DungeonChoiceEventSaveDataFormat()
+class ReqPacket_UpdateStoryMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentnode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
     )
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    choiceEventData: DungeonChoiceEventSaveDataFormat = DungeonChoiceEventSaveDataFormat()
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
     updatedEgoGifts: List[DungeonMapEgoGiftFormat] = []
 
 
-class ResPacket_UpdateStoryMirrorDungeonMapNodeCommand(BaseModel):
-    prevChoiceEvent: List[DungeonChoiceEventSaveDataFormat] = []
+class ResPacket_UpdateStoryMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    prevChoiceEvent: List[
+        DungeonChoiceEventSaveDataFormat
+    ] = []
     currentEgoGifts: List[DungeonMapEgoGiftFormat] = []
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_EnterStoryMirrorDungeonMapNodeBattleAfterChoiceCommand(BaseModel):
+class ReqPacket_EnterStoryMirrorDungeonMapNodeBattleAfterChoiceCommand(
+    BaseModel
+):
     participatedPids: List[int] = []
     abnormalityids: List[int] = []
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ResPacket_EnterStoryMirrorDungeonMapNodeBattleAfterChoiceCommand(BaseModel):
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_EnterStoryMirrorDungeonMapNodeBattleAfterChoiceCommand(
+    BaseModel
+):
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ReqPacket_ExitStoryMirrorDungeonMapNodeCommand(BaseModel):
-    currentnode: DungeonMapNodeFormat = DungeonMapNodeFormat()
-    dungeonunitlist: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    noderesult: int = 0
-    choiceEventData: DungeonChoiceEventSaveDataFormat = (
-        DungeonChoiceEventSaveDataFormat()
+class ReqPacket_ExitStoryMirrorDungeonMapNodeCommand(
+    BaseModel
+):
+    currentnode: DungeonMapNodeFormat = (
+        DungeonMapNodeFormat()
     )
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    dungeonunitlist: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
+    noderesult: int = 0
+    choiceEventData: DungeonChoiceEventSaveDataFormat = DungeonChoiceEventSaveDataFormat()
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     isupdatedEgoSkillStock: int = 0
-    egoSkillStockList: List[DungeonEgoSkillStockFormat] = []
+    egoSkillStockList: List[
+        DungeonEgoSkillStockFormat
+    ] = []
     updatedEgoGifts: List[DungeonMapEgoGiftFormat] = []
     statistics: List[DungeonStatisticsDataFormat] = []
     usedDanteAbilityCount: int = 0
 
 
-class ResPacket_ExitStoryMirrorDungeonMapNodeCommand(BaseModel):
+class ResPacket_ExitStoryMirrorDungeonMapNodeCommand(
+    BaseModel
+):
     currentInfo: StoryMirrorDungeonCurrentInfoFormat = (
         StoryMirrorDungeonCurrentInfoFormat()
     )
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
 class ResPacket_NULL(BaseModel):
     pass
 
 
-class ReqPacket_UpdateStoryMirrorDungeonUnitsCommand(BaseModel):
-    dungeonunitlist: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+class ReqPacket_UpdateStoryMirrorDungeonUnitsCommand(
+    BaseModel
+):
+    dungeonunitlist: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_AcquireRewardEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_AcquireRewardEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     selectIndexList: List[int] = []
 
 
-class ResPacket_AcquireRewardEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_AcquireRewardEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     egoGifts: List[DungeonMapEgoGiftFormat] = []
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
 class ReqPacket_NULL(BaseModel):
     pass
 
 
-class ResPacket_RejectRewardEgoGiftsStoryMirrorDungeonCommand(BaseModel):
-    remainRewardEvent: List[RandomDungeonEncounterRewardEventInfoFormat] = []
+class ResPacket_RejectRewardEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
+    remainRewardEvent: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
 
 
-class ReqPacket_PurchaseHealStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_PurchaseHealStoryMirrorDungeonCommand(
+    BaseModel
+):
     idx: int = 0
     pid: int = 0
 
 
-class ResPacket_PurchaseHealStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_PurchaseHealStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
 
 
-class ReqPacket_PurchaseFormationStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_PurchaseFormationStoryMirrorDungeonCommand(
+    BaseModel
+):
     formation: List[MirrorDungeonFormationFormat] = []
 
 
-class ResPacket_PurchaseFormationStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_PurchaseFormationStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
-    prevUnitInfo: MirrorDungeonPrevUnitInfoFormat = MirrorDungeonPrevUnitInfoFormat()
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
+    prevUnitInfo: MirrorDungeonPrevUnitInfoFormat = (
+        MirrorDungeonPrevUnitInfoFormat()
+    )
 
 
-class ReqPacket_PurchaseUpgradePersonalityStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_PurchaseUpgradePersonalityStoryMirrorDungeonCommand(
+    BaseModel
+):
     idx: int = 0
 
 
-class ResPacket_PurchaseUpgradePersonalityStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_PurchaseUpgradePersonalityStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
 
 
-class ReqPacket_PurchaseEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_PurchaseEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     idx: int = 0
 
 
-class ResPacket_PurchaseEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_PurchaseEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
     egogifts: List[DungeonMapEgoGiftFormat] = []
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_SellEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_SellEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     id: int = 0
 
 
-class ResPacket_SellEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_SellEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
     egogifts: List[DungeonMapEgoGiftFormat] = []
 
 
-class ReqPacket_AcquireStartEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_AcquireStartEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     selectedSetId: int = 0
     selectedEgoGiftIds: List[int] = []
 
 
-class ResPacket_AcquireStartEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_AcquireStartEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     egoGifts: List[DungeonMapEgoGiftFormat] = []
-    startEgoGiftPoolSets: List[MirrorDungeonEgoGiftPoolSetFormat] = []
+    startEgoGiftPoolSets: List[
+        MirrorDungeonEgoGiftPoolSetFormat
+    ] = []
     startEgoGiftCreatedCount: int = 0
 
 
-class ReqPacket_UpgradeEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_UpgradeEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     egoGiftId: int = 0
 
 
-class ResPacket_UpgradeEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_UpgradeEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
-    egoGift: DungeonMapEgoGiftFormat = DungeonMapEgoGiftFormat()
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    egoGift: DungeonMapEgoGiftFormat = (
+        DungeonMapEgoGiftFormat()
+    )
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_CombineEgoGiftStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_CombineEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
     materialEgoGiftIds: List[int] = []
     keyword: str = ""
 
 
-class ResPacket_CombineEgoGiftStoryMirrorDungeonCommand(BaseModel):
-    resultEgoGift: DungeonMapEgoGiftFormat = DungeonMapEgoGiftFormat()
+class ResPacket_CombineEgoGiftStoryMirrorDungeonCommand(
+    BaseModel
+):
+    resultEgoGift: DungeonMapEgoGiftFormat = (
+        DungeonMapEgoGiftFormat()
+    )
     isSuccess: bool = False
     egoGifts: List[DungeonMapEgoGiftFormat] = []
-    dungeonUnitList: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
+    dungeonUnitList: List[
+        StoryMirrorDungeonSaveUnitInfoFormat
+    ] = []
 
 
-class ReqPacket_RefreshStartEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_RefreshStartEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     pass
 
 
-class ResPacket_RefreshStartEgoGiftsStoryMirrorDungeonCommand(BaseModel):
-    startEgoGiftPoolSets: List[MirrorDungeonEgoGiftPoolSetFormat] = []
+class ResPacket_RefreshStartEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
+    startEgoGiftPoolSets: List[
+        MirrorDungeonEgoGiftPoolSetFormat
+    ] = []
     startEgoGiftCreatedCount: int = 0
 
 
-class ReqPacket_RefreshShopEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ReqPacket_RefreshShopEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     keyword: str = ""
 
 
-class ResPacket_RefreshShopEgoGiftsStoryMirrorDungeonCommand(BaseModel):
+class ResPacket_RefreshShopEgoGiftsStoryMirrorDungeonCommand(
+    BaseModel
+):
     cost: int = 0
-    shopInfo: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    shopInfo: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
 
 
-class ReqPacket_RemoveStoryMirrorDungeonEgoGift(BaseModel):
+class ReqPacket_RemoveStoryMirrorDungeonEgoGift(
+    BaseModel
+):
     egogiftId: int = 0
 
 
-class ResPacket_RemoveStoryMirrorDungeonEgoGift(BaseModel):
+class ResPacket_RemoveStoryMirrorDungeonEgoGift(
+    BaseModel
+):
     egs: List[DungeonMapEgoGiftFormat] = []
 
 
@@ -1586,69 +2172,111 @@ class ReqPacket_EnterRailwayDungeon(BaseModel):
 
 
 class ResPacket_EnterRailwayDungeon(BaseModel):
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
-    startNodeData: RailwayNodeDataFormat = RailwayNodeDataFormat()
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
+    startNodeData: RailwayNodeDataFormat = (
+        RailwayNodeDataFormat()
+    )
 
 
-class ReqPacket_EnterRailwayDungeonMapNodeCommand(BaseModel):
+class ReqPacket_EnterRailwayDungeonMapNodeCommand(
+    BaseModel
+):
     dungeonId: int = 0
     nodeid: int = 0
     abnormalityids: List[int] = []
     participatedPIds: List[int] = []
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ResPacket_EnterRailwayDungeonMapNodeCommand(BaseModel):
+class ResPacket_EnterRailwayDungeonMapNodeCommand(
+    BaseModel
+):
     nodeid: int = 0
     deletedNodeIds: List[int] = []
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     prevStatusData: List[RailwayUnitStatusFormat] = []
     prevEgoStockData: List[RailwayEGOStockFormat] = []
-    prevEnemyData: SaveDataForRailwayDungeon = SaveDataForRailwayDungeon()
+    prevEnemyData: SaveDataForRailwayDungeon = (
+        SaveDataForRailwayDungeon()
+    )
     prevClearNodeId: int = 0
     currentNodeId: int = 0
 
 
-class ReqPacket_GetRailwayDungeonNodeAndLogAllCommand(BaseModel):
+class ReqPacket_GetRailwayDungeonNodeAndLogAllCommand(
+    BaseModel
+):
     dungeonId: int = 0
 
 
-class ResPacket_GetRailwayDungeonNodeAndLogAllCommand(BaseModel):
+class ResPacket_GetRailwayDungeonNodeAndLogAllCommand(
+    BaseModel
+):
     nodeDatas: List[RailwayNodeDataFormat] = []
     logDatas: List[RailwayLogDataFormat] = []
 
 
-class ReqPacket_ExitRailwayDungeonMapNodeCommand(BaseModel):
+class ReqPacket_ExitRailwayDungeonMapNodeCommand(
+    BaseModel
+):
     dungeonId: int = 0
     nodeid: int = 0
     unitStatusList: List[RailwayUnitStatusFormat] = []
     egoSkillStockList: List[RailwayEGOStockFormat] = []
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
     statistics: List[RailwayStatisticsDataFormat] = []
     usedDanteAbilityCount: int = 0
     clearTurn: int = 0
     iswin: bool = False
-    enemy: SaveDataForRailwayDungeon = SaveDataForRailwayDungeon()
+    enemy: SaveDataForRailwayDungeon = (
+        SaveDataForRailwayDungeon()
+    )
 
 
-class ResPacket_ExitRailwayDungeonMapNodeCommand(BaseModel):
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
-    nodeData: RailwayNodeDataFormat = RailwayNodeDataFormat()
+class ResPacket_ExitRailwayDungeonMapNodeCommand(
+    BaseModel
+):
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
+    nodeData: RailwayNodeDataFormat = (
+        RailwayNodeDataFormat()
+    )
     updateNodeDatas: List[RailwayNodeDataFormat] = []
 
 
-class ReqPacket_ExitRailwayDungeonRestNodeCommand(BaseModel):
+class ReqPacket_ExitRailwayDungeonRestNodeCommand(
+    BaseModel
+):
     dungeonId: int = 0
     nodeid: int = 0
     personalities: List[RailwayUnitInfoFormat] = []
 
 
-class ResPacket_ExitRailwayDungeonRestNodeCommand(BaseModel):
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
+class ResPacket_ExitRailwayDungeonRestNodeCommand(
+    BaseModel
+):
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
     deletedNodeIds: List[int] = []
-    nodeData: RailwayNodeDataFormat = RailwayNodeDataFormat()
+    nodeData: RailwayNodeDataFormat = (
+        RailwayNodeDataFormat()
+    )
 
 
 class ReqPacket_ExitRailwayDungeonCommand(BaseModel):
@@ -1658,43 +2286,81 @@ class ReqPacket_ExitRailwayDungeonCommand(BaseModel):
 
 class ResPacket_ExitRailwayDungeonCommand(BaseModel):
     isclear: bool = False
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
-    currentLog: RailwayLogDataFormat = RailwayLogDataFormat()
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
+    currentLog: RailwayLogDataFormat = (
+        RailwayLogDataFormat()
+    )
     rewards: List[Element] = []
 
 
-class ReqPacket_GiveUpRailwayDungeonNodeCommand(BaseModel):
+class ReqPacket_GiveUpRailwayDungeonNodeCommand(
+    BaseModel
+):
     dungeonId: int = 0
     nodeid: int = 0
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ResPacket_GiveUpRailwayDungeonNodeCommand(BaseModel):
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
-    nodeData: RailwayNodeDataFormat = RailwayNodeDataFormat()
+class ResPacket_GiveUpRailwayDungeonNodeCommand(
+    BaseModel
+):
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
+    nodeData: RailwayNodeDataFormat = (
+        RailwayNodeDataFormat()
+    )
 
 
-class ReqPacket_GiveUpRailwayDungeonNodeInBattle(BaseModel):
+class ReqPacket_GiveUpRailwayDungeonNodeInBattle(
+    BaseModel
+):
     dungeonid: int = 0
     nodeid: int = 0
-    battlePassParameters: BattlePassParameterFormat = BattlePassParameterFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    battlePassParameters: BattlePassParameterFormat = (
+        BattlePassParameterFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ResPacket_GiveUpRailwayDungeonNodeInBattle(BaseModel):
-    nodeData: RailwayNodeDataFormat = RailwayNodeDataFormat()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+class ResPacket_GiveUpRailwayDungeonNodeInBattle(
+    BaseModel
+):
+    nodeData: RailwayNodeDataFormat = (
+        RailwayNodeDataFormat()
+    )
+    abnormalityLogs: List[
+        AbnormalityUnlockInformationFormat
+    ] = []
 
 
-class ReqPacket_SelectRailwayDungeonBuffCommand(BaseModel):
+class ReqPacket_SelectRailwayDungeonBuffCommand(
+    BaseModel
+):
     dungeonId: int = 0
-    selectedBuffs: List[RailwayBuffSetRequestFormat] = []
+    selectedBuffs: List[
+        RailwayBuffSetRequestFormat
+    ] = []
 
 
-class ResPacket_SelectRailwayDungeonBuffCommand(BaseModel):
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
-    nodeData: RailwayNodeDataFormat = RailwayNodeDataFormat()
+class ResPacket_SelectRailwayDungeonBuffCommand(
+    BaseModel
+):
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
+    nodeData: RailwayNodeDataFormat = (
+        RailwayNodeDataFormat()
+    )
 
 
 class ReqPacket_AcquireRailwayDungeonReward(BaseModel):
@@ -1702,5 +2368,7 @@ class ReqPacket_AcquireRailwayDungeonReward(BaseModel):
 
 
 class ResPacket_AcquireRailwayDungeonReward(BaseModel):
-    saveInfo: RailwayDungeonSaveInfoFormat = RailwayDungeonSaveInfoFormat()
+    saveInfo: RailwayDungeonSaveInfoFormat = (
+        RailwayDungeonSaveInfoFormat()
+    )
     rewardList: List[Element] = []

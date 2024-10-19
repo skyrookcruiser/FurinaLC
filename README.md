@@ -1,3 +1,6 @@
+# POSS
+POSS (Piece Of Shyt Server) is Y. Corp's Singularity. A shitty server reimplementation for Limbus Company.
+
 ## Requirements
 
 ### Python [3.12]
@@ -6,59 +9,24 @@
 - uvicorn v0.31.1
 - pymongo v4.10.1
 - ruff v0.6.9 (optional)
+- uv v0.4.22 (optional)
 
 ### MongoDB
-- [Community Edition](https://www.mongodb.com/try/download/community-edition)
+- Windows: [Community Edition](https://www.mongodb.com/try/download/community-edition)
+- Arch Linux: `yay -S mongodb-bin` then `sudo systemctl start mongodb`
+
+### Mitmproxy
+- Windows: https://mitmproxy.org/
+- Arch Linux: `yay -S mitmproxy`
 
 ## Tutorial
 
-#### 1. Clone this repo
+1. Clone this repo
+2. Run `uv run -m solemn.database --setup`
+3. Run `uv run -m server`
+4. Run `mitmproxy -s redirect.py`
+4. Open Limbus Company and enjoy
 
-#### 2. Create a MongoDB connection with default settings
+If you don't want to use uv, replace `uv run` with `python`.
 
-#### 3. Run `python -m solemn.database --setup`
-#### 4. Run `python -m server`
-#### 5. Play the game
-
-### Note: You will need a proxy to redirect traffic from the client to this private server. Two examples that you can use, and how to set them up:
-<details>
-<summary>Fiddler</summary>
-
-#### Paste this in FiddlerScript menu and save
-```
-import System;
-import System.Windows.Forms;
-import Fiddler;
-import System.Text.RegularExpressions;
-
-class Handlers
-{
-    static function OnBeforeRequest(oS: Session) {
-        if (oS.host.EndsWith(".limbuscompanyapi.com") || 
-        oS.host.EndsWith(".limbuscompanyapi-2.com")) {
-            oS.oRequest.headers.UriScheme = "http";
-            oS.host = "127.0.0.1";
-            oS.port = 21000;
-        }
-    }
-};
-```
-</details>
-
-<details>
-<summary>FireflySR Proxy</summary>
-
-#### Edit the config.json with this
-```
-{
-  "DestinationHost": "localhost",
-  "DestinationPort": 21000,
-  "RedirectDomains": [
-    ".limbuscompanyapi.com",
-    ".limbuscompanyapi-2.com",
-  ],
-  < !! The rest of the config.json !! >
-}
-```
-
-</details>
+If you want to contribute, please do install `ruff`.

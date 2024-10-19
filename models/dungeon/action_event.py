@@ -25,7 +25,9 @@ class Result(BaseModel):
     resultIndex: int = 0
     resultCondition: str = ""
     nextEventID: Optional[int] = 0
-    eventResultDataList: Optional[List[EventResultData]] = None
+    eventResultDataList: Optional[
+        List[EventResultData]
+    ] = None
 
 
 class EachOption(BaseModel):

@@ -1,4 +1,7 @@
-from models.types import FormationFormat, FormationDetailFormat
+from models.types import (
+    FormationFormat,
+    FormationDetailFormat,
+)
 
 formation_list = [
     FormationFormat(

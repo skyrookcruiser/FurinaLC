@@ -120,7 +120,9 @@ class StoryDungeonCurrentInfoFormat(BaseModel):
 
 class StoryDungeonSaveInfoFormat(BaseModel):
     dungeonid: int = 0
-    currentinfo: StoryDungeonCurrentInfoFormat = StoryDungeonCurrentInfoFormat()
+    currentinfo: StoryDungeonCurrentInfoFormat = (
+        StoryDungeonCurrentInfoFormat()
+    )
 
 
 class MirrorDungeonSaveUnitInfoFormat(BaseModel):
@@ -155,7 +157,9 @@ class ThemeFloorPool(BaseModel):
     upegs: List[int] = []
 
 
-class RandomDungeonEncounterRewardEventInfoFormat(BaseModel):
+class RandomDungeonEncounterRewardEventInfoFormat(
+    BaseModel
+):
     rt: str = ""
     se: int = 0
     sh: int = 0
@@ -192,10 +196,14 @@ class MirrorDungeonCurrentInfoFormat(BaseModel):
     tfs: List[RandomDungeonMapThemeFormat] = []
     tfps: List[ThemeFloorPool] = []
     tfpsCreated: int = 0
-    rre: List[RandomDungeonEncounterRewardEventInfoFormat] = []
+    rre: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
     ri: int = 0
     cost: int = 0
-    shop: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    shop: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
     prevdul: List[MirrorDungeonPrevUnitInfoFormat] = []
     preves: List[int] = []
     leveladders: List[int] = []
@@ -223,7 +231,9 @@ class RandomDungeonMapNodeFormatForMapFormat(BaseModel):
 
 
 class RandomDungeonMapFormat(BaseModel):
-    ns: List[RandomDungeonMapNodeFormatForMapFormat] = []
+    ns: List[
+        RandomDungeonMapNodeFormatForMapFormat
+    ] = []
 
 
 class DungeonStatisticsDataFormat(BaseModel):
@@ -235,8 +245,12 @@ class DungeonStatisticsDataFormat(BaseModel):
 class MirrorDungeonSaveInfoFormat(BaseModel):
     dungeonId: int = 0
     idx: int = 0
-    currentInfo: MirrorDungeonCurrentInfoFormat = MirrorDungeonCurrentInfoFormat()
-    dungeonMap: RandomDungeonMapFormat = RandomDungeonMapFormat()
+    currentInfo: MirrorDungeonCurrentInfoFormat = (
+        MirrorDungeonCurrentInfoFormat()
+    )
+    dungeonMap: RandomDungeonMapFormat = (
+        RandomDungeonMapFormat()
+    )
     choiceEventList: List[int] = []
     addUserExp: int = 0
     statistics: List[DungeonStatisticsDataFormat] = []
@@ -307,7 +321,9 @@ class RailwayDungeonSaveInfoFormat(BaseModel):
     personalities: List[RailwayUnitInfoFormat] = []
     payreward: int = 0
     rewardstate: int = 0
-    extrarewardstate: List[RailwayExtraRewardStateFormat] = []
+    extrarewardstate: List[
+        RailwayExtraRewardStateFormat
+    ] = []
     firstcleardate: str = ""
     currentclearrotation: int = 0
     lastenternodeid: int = 0
@@ -315,7 +331,9 @@ class RailwayDungeonSaveInfoFormat(BaseModel):
     buffsets: List[RailwayBuffSetFormat] = []
     initseed: int = 0
     currentseed: int = 0
-    enemySaveData: SaveDataForRailwayDungeon = SaveDataForRailwayDungeon()
+    enemySaveData: SaveDataForRailwayDungeon = (
+        SaveDataForRailwayDungeon()
+    )
 
 
 class StoryMirrorDungeonSaveUnitInfoFormat(BaseModel):
@@ -341,8 +359,12 @@ class StoryMirrorDungeonCurrentInfoFormat(BaseModel):
     ess: List[DungeonEgoSkillStockFormat] = []
     eid: int = 0
     dul: List[StoryMirrorDungeonSaveUnitInfoFormat] = []
-    rre: List[RandomDungeonEncounterRewardEventInfoFormat] = []
-    shop: UserMirrorDungeonShopDataFormat = UserMirrorDungeonShopDataFormat()
+    rre: List[
+        RandomDungeonEncounterRewardEventInfoFormat
+    ] = []
+    shop: UserMirrorDungeonShopDataFormat = (
+        UserMirrorDungeonShopDataFormat()
+    )
     cost: int = 0
     prevdul: List[MirrorDungeonPrevUnitInfoFormat] = []
     preves: List[int] = []
@@ -355,7 +377,9 @@ class StoryMirrorDungeonSaveInfoFormat(BaseModel):
     currentinfo: StoryMirrorDungeonCurrentInfoFormat = (
         StoryMirrorDungeonCurrentInfoFormat()
     )
-    map: RandomDungeonMapFormat = RandomDungeonMapFormat()
+    map: RandomDungeonMapFormat = (
+        RandomDungeonMapFormat()
+    )
     choiceeventlist: List[int] = []
     statistics: List[DungeonStatisticsDataFormat] = []
 
@@ -367,7 +391,9 @@ class MirrorDungeonClearInfoFormat(BaseModel):
     defeatnumber: int = 0
 
 
-class MirrorDungeonPersonalityRestStatusFormat(BaseModel):
+class MirrorDungeonPersonalityRestStatusFormat(
+    BaseModel
+):
     pid: int = 0
     cnt: int = 0
 
@@ -381,10 +407,10 @@ class MirrorDungeonPrevPlayRecordFormat(BaseModel):
 
 class MirrorDungeonHistoryFormat(BaseModel):
     dungeonid: int = 0
-    restStatuses: List[MirrorDungeonPersonalityRestStatusFormat] = []
-    prevPlayRecord: MirrorDungeonPrevPlayRecordFormat = (
-        MirrorDungeonPrevPlayRecordFormat()
-    )
+    restStatuses: List[
+        MirrorDungeonPersonalityRestStatusFormat
+    ] = []
+    prevPlayRecord: MirrorDungeonPrevPlayRecordFormat = MirrorDungeonPrevPlayRecordFormat()
 
 
 class GachaLogDetail(BaseModel):
@@ -444,7 +470,9 @@ class UserPublicBannerFormat(BaseModel):
 
 
 class UserPublicProfileWithSupportersFormat(BaseModel):
-    support_personalities: List[SupportPersonalitySlotFormat] = []
+    support_personalities: List[
+        SupportPersonalitySlotFormat
+    ] = []
     public_uid: str = ""
     illust_id: int = 0
     illust_gacksung_level: int = 0
@@ -562,7 +590,9 @@ class MirrorDungeonStartBuffInfoFormat(BaseModel):
     chip: int = 0
 
 
-class RandomDungeonLevelUpPersonalityInfoFormat(BaseModel):
+class RandomDungeonLevelUpPersonalityInfoFormat(
+    BaseModel
+):
     pid: int = 0
     ego: DungeonEgoFormat = DungeonEgoFormat()
 
@@ -646,13 +676,17 @@ class UserProfileEgobackgroundFormat(BaseModel):
     date: str = ""
 
 
-class StoryMirrorDungeonGetCharacterInfoFormat(BaseModel):
+class StoryMirrorDungeonGetCharacterInfoFormat(
+    BaseModel
+):
     pid: int = 0
     egos: List[DungeonEgoFormat] = []
     sp: int = 0
 
 
-class StoryMirrorDungeonLevelUpPersonalityInfoFormat(BaseModel):
+class StoryMirrorDungeonLevelUpPersonalityInfoFormat(
+    BaseModel
+):
     pid: int = 0
     egos: List[DungeonEgoFormat] = []
 
@@ -694,7 +728,9 @@ class RailwayNodeDataFormat(BaseModel):
     clearturn: int = 0
     playturn: int = 0
     statistics: List[RailwayStatisticsDataFormat] = []
-    enemy: SaveDataForRailwayDungeon = SaveDataForRailwayDungeon()
+    enemy: SaveDataForRailwayDungeon = (
+        SaveDataForRailwayDungeon()
+    )
     nodestate: int = 0
 
 
@@ -713,7 +749,9 @@ class RailwayLogDataFormat(BaseModel):
     idx: int = 0
     personalities: List[RailwayUnitInfoFormat] = []
     statistics: List[RailwayStatisticsDataFormat] = []
-    detailstatistics: List[RailwayDetailStatisticsDataFormat] = []
+    detailstatistics: List[
+        RailwayDetailStatisticsDataFormat
+    ] = []
     clearturn: int = 0
     turnspernode: List[RailwayTurnsPerNode] = []
     clearrotation: int = 0
@@ -836,15 +874,21 @@ class UpdatedFormat(BaseModel):
     itemList: List[ItemFormat] = []
     chanceList: List[ChanceFormat] = []
     battlePass: BattlePassFormat = BattlePassFormat()
-    mainChapterStateList: List[MainChapterStateFormat] = []
+    mainChapterStateList: List[
+        MainChapterStateFormat
+    ] = []
     mailList: List[MailFormat] = []
     announcer: AnnouncerFormat = AnnouncerFormat()
     membershipList: List[MembershipFormat] = []
     gachaList: List[GachaRecordFormat] = []
     userUnlockCodeList: List[UnlockCodeFormat] = []
-    eventRewardStateList: List[EventRewardStateFormat] = []
+    eventRewardStateList: List[
+        EventRewardStateFormat
+    ] = []
     isUpdateUserBanner: bool = False
     isResetMirrorDungeon: bool = False
     missionList: List[MissionFormat] = []
-    missionConditionList: List[MissionConditionFormat] = []
+    missionConditionList: List[
+        MissionConditionFormat
+    ] = []
     danteAbilityList: List[DanteAbilityFormat] = []

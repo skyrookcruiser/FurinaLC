@@ -42,7 +42,9 @@ class EventResultData(BaseModel):
     resultIndex: int = 0
     resultCondition: str = ""
     nextEventID: int = 0
-    eventResultDataList: Optional[List[ResultFormWrapper]] = None
+    eventResultDataList: Optional[
+        List[ResultFormWrapper]
+    ] = None
 
 
 class EventResult(BaseModel):

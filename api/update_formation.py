@@ -1,17 +1,28 @@
 from fastapi import Request, HTTPException
-from models.packets import ReqPacket_UpdateFormationCommand, ResPacket_NULL
+from models.packets import (
+    ReqPacket_UpdateFormationCommand,
+    ResPacket_NULL,
+)
 from models.server import RequestPacket, ResponsePacket
-from models.types import FormationFormat, FormationDetailFormat, UpdatedFormat, UserInfo
-from solemn.formation_util import modify_formation_by_id
-from util.user import get_user
+from models.types import (
+    FormationFormat,
+    FormationDetailFormat,
+    UpdatedFormat,
+)
+from solemn.modify_util import modify_formation_by_id
+from util.data import get_user
 
 
 async def handle(request: Request):
     req_body = await request.json()
-    req_packet = RequestPacket[ReqPacket_UpdateFormationCommand].parse_obj(req_body)
+    req_packet = RequestPacket[
+        ReqPacket_UpdateFormationCommand
+    ].parse_obj(req_body)
 
     formation_id = req_packet.parameters.formation.id
-    formation_details = req_packet.parameters.formation.formationDetails
+    formation_details = (
+        req_packet.parameters.formation.formationDetails
+    )
 
     success = False
     for detail in formation_details:
@@ -28,7 +39,8 @@ async def handle(request: Request):
 
     if not success:
         raise HTTPException(
-            status_code=404, detail="Formation not found or update failed."
+            status_code=404,
+            detail="Formation not found or update failed.",
         )
 
     updated_formation = FormationFormat(
@@ -50,6 +62,8 @@ async def handle(request: Request):
     )
 
     res_packet = ResPacket_NULL()
-    response = ResponsePacket[ResPacket_NULL](updated=res_update, result=res_packet)
+    response = ResponsePacket[ResPacket_NULL](
+        updated=res_update, result=res_packet
+    )
 
     return response

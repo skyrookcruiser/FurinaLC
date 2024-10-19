@@ -15,6 +15,8 @@ async def handle(request: Request):
             )
         ],
     )
-    response = ResponsePacket[ResPacket_RefreshMailbox](result=res_packet)
+    response = ResponsePacket[ResPacket_RefreshMailbox](
+        result=res_packet
+    )
 
     return response.dict()

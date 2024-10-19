@@ -1,8 +1,5 @@
-# Gatekeep if ever published
-middleware/
-
 # to see routes and their packet types
-server.rs
+server.txt
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template

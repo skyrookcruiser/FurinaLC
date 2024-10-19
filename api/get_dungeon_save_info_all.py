@@ -1,5 +1,7 @@
 from fastapi import Request
-from models.packets import ResPacket_GetDungeonSaveInfoAll
+from models.packets import (
+    ResPacket_GetDungeonSaveInfoAll,
+)
 from models.server import ResponsePacket
 from models.types import (
     StoryDungeonSaveInfoFormat,
@@ -43,13 +45,12 @@ async def handle(request: Request):
         mirrorDungeonHistories=[
             MirrorDungeonHistoryFormat(
                 dungeonid=4,
-                idx=0,
-                clearnumber=404,
-                defeatnumber=404,
             ),
         ],
     )
 
-    response = ResponsePacket[ResPacket_GetDungeonSaveInfoAll](result=res_packet)
+    response = ResponsePacket[
+        ResPacket_GetDungeonSaveInfoAll
+    ](result=res_packet)
 
     return response.dict()

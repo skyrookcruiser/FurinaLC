@@ -11,12 +11,18 @@ from models.types import (
     MailFormat,
 )
 from models.server import ResponsePacket
-from solemn.personality_util import get_personality
-from solemn.formation_util import get_formation
-from solemn.ego_util import get_ego
-from solemn.item_util import get_item
-from util.user import get_user
-from util.data import get_formatted_user_codes, load_main_chapter_state
+from solemn.get_util import (
+    get_personality,
+    get_formation,
+    get_ego,
+    get_item,
+)
+from util.data import (
+    get_formatted_user_codes,
+    load_main_chapter_state,
+    get_user,
+)
+from util.time import get_curr_time
 
 
 async def handle(request: Request):
@@ -86,7 +92,7 @@ async def handle(request: Request):
             sentence_id=36,
             word_id=3,
             level=404,
-            date="2024-03-24T20:00:00.000Z",
+            date=get_curr_time(),
             banners=[
                 UserPublicBannerFormat(
                     id=35,
@@ -124,8 +130,8 @@ async def handle(request: Request):
         danteNoteTodayPage=49,
         dailyLoginWeekId=-1,
     )
-    response = ResponsePacket[ResPacket_LoadUserDataAll](
-        updated=res_update, result=res_packet
-    )
+    response = ResponsePacket[
+        ResPacket_LoadUserDataAll
+    ](updated=res_update, result=res_packet)
 
     return response.dict()

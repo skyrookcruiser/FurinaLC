@@ -6,4 +6,7 @@ item_list = [
     ItemFormat(item_id=301, num=404),
 ]
 
-item_dicts = [{"item_id": i.item_id, "num": i.num} for i in item_list]
+item_dicts = [
+    {"item_id": i.item_id, "num": i.num}
+    for i in item_list
+]
