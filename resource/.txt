@@ -1,2 +1,0 @@
-// limbus resources here
-// too lazy to copypaste the files, ill do it when we actually need it

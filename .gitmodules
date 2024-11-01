@@ -1,0 +1,3 @@
+[submodule "resource/LimbusStaticData"]
+	path = resource/LimbusStaticData
+	url = https://github.com/LEAGUE-OF-NINE/LimbusStaticData.git
