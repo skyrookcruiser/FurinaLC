@@ -3,7 +3,7 @@ name = "furinalc"
 version = "0.1.0"
 description = "limbus company server reimplementation"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.115.4",
     "pydantic>=2.9.2",
@@ -11,6 +11,9 @@ dependencies = [
     "uv>=0.4.29",
     "uvicorn>=0.32.0",
 ]
+
+[tool.ruff]
+exclude = ["./limbus/crypto.py"]
 
 [tool.ruff.lint]
 ignore = ["F403", "E741", "F405"]

@@ -1,6 +1,6 @@
-from fastapi import Request
-from limbus.responses import Sc, RspNULL
+from limbus.requests import Cs, ReqNull
+from limbus.responses import Sc, RspNull
 
 
-async def handle(req: Request):
-    return Sc[RspNULL](result=RspNULL()).dict()
+async def handle(req: Cs[ReqNull]):
+    return Sc[RspNull](result=RspNull()).dict()

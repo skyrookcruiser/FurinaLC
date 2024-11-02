@@ -1256,7 +1256,7 @@ class MailLog(BaseModel):
 
 class TermsOfUseState(BaseModel):
     version: int = 0
-    state: int = 0
+    state: TERMSOFUSE_STATE = TERMSOFUSE_STATE.NONE
 
 
 class ServerUserAuth(BaseModel):

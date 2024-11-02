@@ -13,7 +13,7 @@ class Sc(BaseModel, Generic[A]):
     result: A
 
 
-class RspNULL(BaseModel):
+class RspNull(BaseModel):
     pass
 
 

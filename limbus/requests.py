@@ -10,7 +10,7 @@ class Cs(BaseModel, Generic[A]):
     parameters: A
 
 
-class ReqNULL(BaseModel):
+class ReqNull(BaseModel):
     pass
 
 
