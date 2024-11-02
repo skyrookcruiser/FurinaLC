@@ -3,4 +3,4 @@ from limbus.responses import Sc, RspCheckClientVersion
 
 
 async def handle(req: Cs[ReqNull]):
-    return Sc[RspCheckClientVersion](result=RspCheckClientVersion()).dict()
+    return Sc[RspCheckClientVersion](result=RspCheckClientVersion())

@@ -8,7 +8,7 @@ async def handle(req: Cs[ReqSignInAsSteam]):
     # TODO: do something with steamToken
     # maybe to create a user, then assign uid,
     # and only access db with that uid yeah?
-    token = req.parameters.steamToken
+    # token = req.parameters.steamToken
     user_id = 1
     auth = UserAuthFormat(
         last_update_date=get_date_time(),
@@ -17,7 +17,7 @@ async def handle(req: Cs[ReqSignInAsSteam]):
         public_id=user_id,
         data_version=16,
         db_id=0,
-        auth_code=token,
+        auth_code="yulian",
     )
     rsp = RspSignInAsSteam(
         userAuth=auth,
@@ -25,4 +25,4 @@ async def handle(req: Cs[ReqSignInAsSteam]):
         walletCurrency="IDR",
     )
 
-    return Sc[RspSignInAsSteam](result=rsp).dict()
+    return Sc[RspSignInAsSteam](result=rsp)

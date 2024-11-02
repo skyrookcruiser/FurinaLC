@@ -3,10 +3,8 @@ from server.middleware import add_middleware
 from server.api import add_api_handler
 from server.iap import add_iap_handler
 from server.login import add_login_handler
+from server.config import HOST, PORT
 import uvicorn
-
-HOST = "127.0.0.1"
-PORT = 21000
 
 
 def start_server():
@@ -17,3 +15,7 @@ def start_server():
     add_login_handler(app)
 
     uvicorn.run(app, host=HOST, port=PORT)
+
+
+if __name__ == "__main__":
+    start_server()

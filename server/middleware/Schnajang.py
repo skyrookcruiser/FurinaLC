@@ -10,7 +10,7 @@ async def handle(req: Request, call_next):
     if req_seed:
         try:
             deobfuscated_body = deobfuscate(await req.body(), int(req_seed))
-            print("REQ:      " + decode_bytes(deobfuscated_body))
+            print("RECV:     " + decode_bytes(deobfuscated_body))
             req._body = deobfuscated_body
 
         except Exception as e:
@@ -30,7 +30,7 @@ async def handle(req: Request, call_next):
         res = await call_next(req)
         res_body = getattr(res, "body", b"".join([c async for c in res.body_iterator]))
         res_seed = generate_seed()
-        print("RSP:      " + decode_bytes(res_body))
+        print("SEND:     " + decode_bytes(res_body))
         obfuscated_body = obfuscate(res_body, res_seed)
 
         return Response(

@@ -10,7 +10,7 @@ class Sc(BaseModel, Generic[A]):
     state: str = "ok"
     updated: Optional[UpdatedFormat] = None
     synchronized: Optional[SynchronizedFormat] = None
-    result: A
+    result: Optional[A] = None
 
 
 class RspNull(BaseModel):

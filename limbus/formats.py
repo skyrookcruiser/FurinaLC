@@ -1,6 +1,6 @@
 from enum import IntEnum, StrEnum
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 
 class MISSION_CATEGORY(IntEnum):
@@ -1269,22 +1269,22 @@ class ServerUserAuth(BaseModel):
 
 class UpdatedFormat(BaseModel):
     isInitialized: bool = False
-    userInfo: UserInfo = UserInfo()
-    personalityList: List[PersonalityFormat] = []
-    egoList: List[EgoFormat] = []
-    formationList: List[FormationFormat] = []
-    lobbyCG: LobbyCgFormat = LobbyCgFormat()
-    itemList: List[ItemFormat] = []
-    chanceList: List[ChanceFormat] = []
-    battlePass: BattlePassFormat = BattlePassFormat()
-    mainChapterStateList: List[MainChapterStateFormat] = []
-    mailList: List[MailFormat] = []
-    announcer: AnnouncerFormat = AnnouncerFormat()
-    membershipList: List[MembershipFormat] = []
-    gachaList: List[GachaRecordFormat] = []
-    userUnlockCodeList: List[UnlockCodeFormat] = []
-    eventRewardStateList: List[EventRewardStateFormat] = []
-    isUpdateUserBanner: bool = False
-    isResetMirrorDungeon: bool = False
-    missionList: List[MissionFormat] = []
-    danteAbilityList: List[DanteAbilityFormat] = []
+    userInfo: Optional[UserInfo] = None
+    personalityList: Optional[List[PersonalityFormat]] = None
+    egoList: Optional[List[EgoFormat]] = None
+    formationList: Optional[List[FormationFormat]] = None
+    lobbyCG: Optional[LobbyCgFormat] = None
+    itemList: Optional[List[ItemFormat]] = None
+    chanceList: Optional[List[ChanceFormat]] = None
+    battlePass: Optional[BattlePassFormat] = None
+    mainChapterStateList: Optional[List[MainChapterStateFormat]] = None
+    mailList: Optional[List[MailFormat]] = None
+    announcer: Optional[AnnouncerFormat] = None
+    membershipList: Optional[List[MembershipFormat]] = None
+    gachaList: Optional[List[GachaRecordFormat]] = None
+    userUnlockCodeList: Optional[List[UnlockCodeFormat]] = None
+    eventRewardStateList: Optional[List[EventRewardStateFormat]] = None
+    isUpdateUserBanner: Optional[bool] = None
+    isResetMirrorDungeon: Optional[bool] = None
+    missionList: Optional[List[MissionFormat]] = None
+    danteAbilityList: Optional[List[DanteAbilityFormat]] = None

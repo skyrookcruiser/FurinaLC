@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Generic, TypeVar
+from typing import List, Generic, TypeVar, Optional
 from limbus.formats import *
 
 A = TypeVar("A")
@@ -7,7 +7,7 @@ A = TypeVar("A")
 
 class Cs(BaseModel, Generic[A]):
     userAuth: UserAuthFormat = UserAuthFormat()
-    parameters: A
+    parameters: Optional[A] = None
 
 
 class ReqNull(BaseModel):

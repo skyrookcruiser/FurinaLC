@@ -10,4 +10,4 @@ async def handle(req: Cs[ReqNull]):
     )
     rsp = RspGetTermsOfUseStateAll(version=1, termsOfUseStateList=[state])
 
-    return Sc[RspGetTermsOfUseStateAll](result=rsp).dict()
+    return Sc[RspGetTermsOfUseStateAll](result=rsp)
