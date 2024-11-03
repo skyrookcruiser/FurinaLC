@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 import os
 
-FOLDER = "./LimbusStaticData/StaticData/static-data/ego"
+FOLDER = "./resources/LimbusStaticData/StaticData/static-data/ego"
 
 
 class EgoCorrosionChanceData(BaseModel):

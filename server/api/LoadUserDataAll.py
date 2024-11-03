@@ -43,4 +43,3 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
     rsp = RspLoadUserDataAll()
 
     return Sc[RspLoadUserDataAll](result=rsp)
-

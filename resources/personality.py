@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 import os
 
-FOLDER = "./LimbusStaticData/StaticData/static-data/personality"
+FOLDER = "./resources/LimbusStaticData/StaticData/static-data/personality"
 
 
 class AttributeData(BaseModel):
