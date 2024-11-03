@@ -1224,7 +1224,7 @@ class AccountInfoFormat(BaseModel):
 class BattlePassMissionState(BaseModel):
     id: int = 0
     count: int = 0
-    state: int = 0
+    state: MISSION_STATE = MISSION_STATE.NONE
 
 
 class BattlePassFormat(BaseModel):
