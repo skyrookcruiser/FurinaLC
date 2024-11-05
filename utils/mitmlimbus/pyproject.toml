@@ -1,0 +1,10 @@
+[project]
+name = "mitmlimbus"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.27.2",
+    "mitmproxy>=11.0.0",
+    "pydantic>=2.9.2",
+]
