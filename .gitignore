@@ -2,5 +2,3 @@ __move__/
 __pycache__/
 .venv
 .ruff_cache
-redirect.py
-scrape.py

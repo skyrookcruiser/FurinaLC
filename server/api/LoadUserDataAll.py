@@ -46,53 +46,63 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
     update = UpdatedFormat(
         isInitialized=True,
         userInfo=UserInfo(
-            uid=user_auth.uid,
-            level=404,
-            last_stamina_recover=user_auth.last_login_date
+            uid=user_auth.uid, level=404, last_stamina_recover=user_auth.last_login_date
         ),
-        personalityList=[PersonalityFormat(
-            personality_id=10101,
-            level=50,
-            exp=0,
-            gacksung=4,
-            order_id=1,
-            gacksung_illust_type=1,
-            acquire_time=user_auth.last_login_date
-        )],
-        egoList=[EgoFormat(
-            ego_id=20101,
-            gacksung=4,
-            acquire_time=user_auth.last_login_date
-        )],
-        formationList=[FormationFormat(
-            id=0,
-            formationDetails=[FormationDetailFormat(
-                personalityId=10101,
-                egos=[20101],
-                isParticipated=True,
-                participationOrder=1,
-            )],
-            formationNameElement=[FormationNameElement(
-                k=1,
-                v=1,
-            )]
-        )],
+        personalityList=[
+            PersonalityFormat(
+                personality_id=10101,
+                level=50,
+                exp=0,
+                gacksung=4,
+                order_id=1,
+                gacksung_illust_type=1,
+                acquire_time=user_auth.last_login_date,
+            )
+        ],
+        egoList=[
+            EgoFormat(ego_id=20101, gacksung=4, acquire_time=user_auth.last_login_date)
+        ],
+        formationList=[
+            FormationFormat(
+                id=0,
+                formationDetails=[
+                    FormationDetailFormat(
+                        personalityId=10101,
+                        egos=[20101],
+                        isParticipated=True,
+                        participationOrder=1,
+                    )
+                ],
+                formationNameElement=[
+                    FormationNameElement(
+                        k=1,
+                        v=1,
+                    )
+                ],
+            )
+        ],
         lobbyCG=LobbyCgFormat(
             characterId=1,
-            lobbycgdetails=[LobbyCgDetailFormat(
-                id=10101,
-                g=1,
-            )],
+            lobbycgdetails=[
+                LobbyCgDetailFormat(
+                    id=10101,
+                    g=1,
+                )
+            ],
             isShowProfile=True,
         ),
-        itemList=[ItemFormat(
-            item_id=1,
-            num=9999,
-        )],
-        chanceList=[ChanceFormat(
-            id=1,
-            value=1,
-        )],
+        itemList=[
+            ItemFormat(
+                item_id=1,
+                num=9999,
+            )
+        ],
+        chanceList=[
+            ChanceFormat(
+                id=1,
+                value=1,
+            )
+        ],
         battlePass=BattlePassFormat(
             is_limbus=True,
             level=5000,
@@ -101,98 +111,114 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             ex_reward_level=5000,
             limbus_apply_level=0,
             rewards_state=[1],
-            missions_state=[BattlePassMissionState(
-                id=100,
-                count=100,
-                state=MISSION_STATE.REWARDED
-            )],
+            missions_state=[
+                BattlePassMissionState(id=100, count=100, state=MISSION_STATE.REWARDED)
+            ],
             special_product_state=0,
             ex_reward_limbus_level=5000,
         ),
-        mainChapterStateList=[MainChapterStateFormat(
-            id=1,
-            subcss=[SubChapterStateFormat(
+        mainChapterStateList=[
+            MainChapterStateFormat(
                 id=1,
-                nss=[NodeStateFormat(
-                    id=1,
-                    ct=1,
-                    cn=1,
-                    dn=1,
-                )],
-                rss=[1]
-            )]
-        )],
-        mailList=[MailFormat(
-            mail_id=1,
-            sent_date="",
-            expiry_date="",
-            content_id=0,
-            attachments=[Element(
-                type=STR_ELEMENT_TYPE.ITEM,
-                _type=ELEMENT_TYPE.ITEM,
-                id=1,
-                num=1,
-                tags=[""],
-            )],
-            parameters=[""],
-        )],
+                subcss=[
+                    SubChapterStateFormat(
+                        id=1,
+                        nss=[
+                            NodeStateFormat(
+                                id=1,
+                                ct=1,
+                                cn=1,
+                                dn=1,
+                            )
+                        ],
+                        rss=[1],
+                    )
+                ],
+            )
+        ],
+        mailList=[
+            MailFormat(
+                mail_id=1,
+                sent_date="",
+                expiry_date="",
+                content_id=0,
+                attachments=[
+                    Element(
+                        type=STR_ELEMENT_TYPE.ITEM,
+                        _type=ELEMENT_TYPE.ITEM,
+                        id=1,
+                        num=1,
+                        tags=[""],
+                    )
+                ],
+                parameters=[""],
+            )
+        ],
         announcer=AnnouncerFormat(
             announcer_ids=[9],
             cur_announcer_ids=[9],
         ),
-        membershipList=[MembershipFormat(
-            iap_id=0,
-            expiry_date="datetime"
-        )],
-        gachaList=[GachaRecordFormat(
-            gachaId=197,
-            pityPoint=199,
-        )],
-        userUnlockCodeList=[UnlockCodeFormat(
-            unlockcode=100,
-            expireDate="datetime",
-        )],
-        eventRewardStateList=[EventRewardStateFormat(
-            eventID=1,
-            rewardID=1,
-            count=1,
-        )],
+        membershipList=[MembershipFormat(iap_id=0, expiry_date="datetime")],
+        gachaList=[
+            GachaRecordFormat(
+                gachaId=197,
+                pityPoint=199,
+            )
+        ],
+        userUnlockCodeList=[
+            UnlockCodeFormat(
+                unlockcode=100,
+                expireDate="datetime",
+            )
+        ],
+        eventRewardStateList=[
+            EventRewardStateFormat(
+                eventID=1,
+                rewardID=1,
+                count=1,
+            )
+        ],
         isUpdateUserBanner=False,
         isResetMirrorDungeon=False,
-        missionList=[MissionFormat(
-            category=MISSION_CATEGORY.UNRECOGNIZED,
-            id=0,
-            state=MISSION_STATE.UNRECOGNIZED,
-            initconditionvalue=-1,
-            conditionvalue=-1,
-            expiredate="datetime"
-        )],
-        danteAbilityList=[DanteAbilityFormat(
-            category=DANTE_ABILITY_CATEGORY.DEFAULT,
-            abilityids=[1],
-            remaincount=100,
-        )],
+        missionList=[
+            MissionFormat(
+                category=MISSION_CATEGORY.UNRECOGNIZED,
+                id=0,
+                state=MISSION_STATE.UNRECOGNIZED,
+                initconditionvalue=-1,
+                conditionvalue=-1,
+                expiredate="datetime",
+            )
+        ],
+        danteAbilityList=[
+            DanteAbilityFormat(
+                category=DANTE_ABILITY_CATEGORY.DEFAULT,
+                abilityids=[1],
+                remaincount=100,
+            )
+        ],
     )
 
     user = UserPublicProfileWithSupportersFormat(
-        support_personalities=[SupportPersonalitySlotFormat(
-            idx=1,
-            pid=1,
-            l=1,
-            egos=[ProfileEgoContainIndexFormat(
+        support_personalities=[
+            SupportPersonalitySlotFormat(
                 idx=1,
-                id=1,
-                g=1,
-            )],
-            gl=1,
-            gi=1,
-        )],
+                pid=1,
+                l=1,
+                egos=[
+                    ProfileEgoContainIndexFormat(
+                        idx=1,
+                        id=1,
+                        g=1,
+                    )
+                ],
+                gl=1,
+                gi=1,
+            )
+        ],
     )
 
-    daily = DailyLoginRewardStateFormat(
-        weekid=0,
-        id=0
-    )
+    daily = DailyLoginRewardStateFormat(weekid=0, id=0)
 
     rsp = RspLoadUserDataAll(
         profile=user,
@@ -200,7 +226,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         dailyLoginRewardStates=[daily],
         dailyLoginWeekId=-1,
         showedWeekByMinistory=-1,
-        date=user_auth.last_login_date
+        date=user_auth.last_login_date,
     )
 
     return Sc[RspLoadUserDataAll](
