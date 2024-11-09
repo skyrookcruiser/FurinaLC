@@ -41,7 +41,7 @@ from database.personality import get_personality_formats_by_uid
 from database.item import get_item_formats_by_uid
 from resources.stage_node_reward import create_main_chapter_state_list
 from resources.unlockcode_subchapter import create_unlock_code_format_list
-
+from resources.chance import create_chance_format_list
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
     user_auth = req.userAuth
@@ -84,15 +84,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             isShowProfile=True,
         ),
         itemList=get_item_formats_by_uid(user_auth.uid),
-        # TODO: parse this shit from chance static data
-        # btw, the chance here isn't like gacha drop chance
-        # but rather how many more times can you win/claim something
-        chanceList=[
-            # ChanceFormat(
-            #     id=1,
-            #     value=1,
-            # )
-        ],
+        chanceList=create_chance_format_list(),
         # TODO: make this maxed out bp lv5000 because its funny
         # mission should be parsed from staticdata, methinks
         battlePass=BattlePassFormat(

@@ -5,6 +5,7 @@ from pathlib import Path
 
 FILE = "./resources/LimbusStaticData/StaticData/static-data/unlockcode/unlockcode-subchapter/unlockcode-subchapter.json"
 
+
 class UnlockCodeSubChapterData(BaseModel):
     id: int
     unlockcodeType: str
