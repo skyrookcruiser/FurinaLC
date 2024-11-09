@@ -39,6 +39,7 @@ from utils import get_date_time
 from database.ego import get_ego_formats_by_uid
 from database.personality import get_personality_formats_by_uid
 from database.item import get_item_formats_by_uid
+from database.announcer import get_announcer_format_by_uid
 from resources.stage_node_reward import create_main_chapter_state_list
 from resources.unlockcode_subchapter import create_unlock_code_format_list
 from resources.chance import create_chance_format_list
@@ -108,11 +109,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             #     parameters=[""],
             # )
         ],
-        # TODO: Parse announcer static data and make DB for it
-        announcer=AnnouncerFormat(
-            announcer_ids=list(range(100)),
-            cur_announcer_ids=[9],
-        ),
+        announcer=get_announcer_format_by_uid(),
         # TODO: make p2w account fr
         membershipList=[
             # MembershipFormat(iap_id=0, expiry_date="datetime")

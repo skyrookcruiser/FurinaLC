@@ -1,11 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from pathlib import Path
-from utils import get_date_time
 from limbus.formats import ChanceFormat
-# class ChanceFormat(BaseModel):
-#     id: int = 0
-#     value: int = 0
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/chance"
 
