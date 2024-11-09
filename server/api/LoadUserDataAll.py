@@ -53,7 +53,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         # TODO: implement coupon, then use it to edit all levels
         # personality, ego, user, etc.
         userInfo=UserInfo(
-            uid=user_auth.uid, level=297, last_stamina_recover=get_date_time()
+            uid=user_auth.uid, level=302, last_stamina_recover=get_date_time()
         ),
         personalityList=get_personality_formats_by_uid(user_auth.uid),
         egoList=get_ego_formats_by_uid(user_auth.uid),
@@ -166,40 +166,39 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         egobackground_id=32,
         sentence_id=36,
         word_id=3,
-        # TODO: bikin banner full sepuh
         banners=[
             UserPublicBannerFormat(
-                id=35,
+                id=35, # LoR banner
                 value=-1,
                 value2=-1,
                 idx=0,
             ),
             UserPublicBannerFormat(
-                id=42,
+                id=7, # maxed out rail line 1
                 value=-1,
                 value2=-1,
                 idx=1,
             ),
             UserPublicBannerFormat(
-                id=7,
+                id=19, # maxed out rail line 2
                 value=-1,
                 value2=-1,
                 idx=2,
             ),
             UserPublicBannerFormat(
-                id=19,
+                id=27, # maxed out rail line 3
                 value=-1,
                 value2=-1,
                 idx=3,
             ),
             UserPublicBannerFormat(
-                id=24,
+                id=40, # maxed out rail line 4
                 value=-1,
                 value2=-1,
                 idx=4,
             ),
         ],
-        level=297,
+        level=302,
         date=get_date_time(),
         # TODO: fill support character list
         support_personalities=[
