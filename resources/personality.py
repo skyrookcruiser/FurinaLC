@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import List, Optional
-import os
+from pathlib import Path
+from utils import get_date_time
+from limbus.formats import PersonalityFormat
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/personality"
 
@@ -74,15 +76,60 @@ class PersonalityDataList(BaseModel):
 
 def fetch_personality_ids(directory: str = FOLDER) -> List[int]:
     ids = []
-    for root, _, files in os.walk(directory):
-        for file_name in files:
-            if file_name.endswith(".json"):
-                file_path = os.path.join(root, file_name)
-                try:
-                    personality_data_list = PersonalityDataList.parse_file(file_path)
-                    ids.extend(
-                        personality.id for personality in personality_data_list.list
-                    )
-                except Exception as e:
-                    print(f"Error parsing {file_path}: {e}")
+    folder_path = Path(directory)
+    for file_path in folder_path.glob("**/*.json"):
+        try:
+            personality_data_list = PersonalityDataList.parse_file(file_path)
+            ids.extend(personality.id for personality in personality_data_list.list)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
+
     return ids
+
+
+def get_order_id(personality_id: int) -> int:
+    match str(personality_id)[:3]:
+        case "101":
+            return 1
+        case "102":
+            return 2
+        case "103":
+            return 3
+        case "104":
+            return 4
+        case "105":
+            return 5
+        case "106":
+            return 6
+        case "107":
+            return 7
+        case "108":
+            return 8
+        case "109":
+            return 9
+        case "110":
+            return 10
+        case "111":
+            return 11
+        case "112":
+            return 12
+        case _:
+            return 0
+
+
+def create_personality_format_list(directory: str = FOLDER) -> List[PersonalityFormat]:
+    personality_ids = fetch_personality_ids(directory)
+    personality_format_list = [
+        PersonalityFormat(
+            personality_id=personality_id,
+            level=0,
+            exp=0,
+            gacksung=4,
+            order_id=get_order_id(personality_id),
+            gacksung_illust_type=1,
+            acquire_time=get_date_time(),
+        )
+        for personality_id in personality_ids
+    ]
+
+    return personality_format_list

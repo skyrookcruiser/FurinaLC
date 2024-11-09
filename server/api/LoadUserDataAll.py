@@ -39,6 +39,8 @@ from limbus.formats import (
     NoticeFormat,
     MailContentFormat,
 )
+from database.ego import get_ego_formats_by_uid
+from database.personality import get_personality_formats_by_uid
 
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
@@ -48,20 +50,8 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         userInfo=UserInfo(
             uid=user_auth.uid, level=404, last_stamina_recover=user_auth.last_login_date
         ),
-        personalityList=[
-            PersonalityFormat(
-                personality_id=10101,
-                level=50,
-                exp=0,
-                gacksung=4,
-                order_id=1,
-                gacksung_illust_type=1,
-                acquire_time=user_auth.last_login_date,
-            )
-        ],
-        egoList=[
-            EgoFormat(ego_id=20101, gacksung=4, acquire_time=user_auth.last_login_date)
-        ],
+        personalityList=get_personality_formats_by_uid(user_auth.uid),
+        egoList=get_ego_formats_by_uid(user_auth.uid),
         formationList=[
             FormationFormat(
                 id=0,

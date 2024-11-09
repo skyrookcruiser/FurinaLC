@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import List, Optional
-import os
+from pathlib import Path
+from utils import get_date_time
+from limbus.formats import EgoFormat
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/ego"
 
@@ -33,7 +35,7 @@ class EgoData(BaseModel):
     attributeResistList: List[EgoAttributeResistData]
     requirementList: List[EgoRequirementData]
     corrosionSectionList: List[EgoCorrosionChanceData]
-    # passiveList: Optional[List[]]
+    passiveList: Optional[List[None]] = None
     awakeningSkillId: int
     corrosionSkillId: Optional[int] = None
 
@@ -44,13 +46,22 @@ class EgoDataList(BaseModel):
 
 def fetch_ego_ids(directory: str = FOLDER) -> List[int]:
     ids = []
-    for root, _, files in os.walk(directory):
-        for file_name in files:
-            if file_name.endswith(".json"):
-                file_path = os.path.join(root, file_name)
-                try:
-                    ego_data_list = EgoDataList.parse_file(file_path)
-                    ids.extend(ego.id for ego in ego_data_list.list)
-                except Exception as e:
-                    print(f"Error parsing {file_path}: {e}")
+    folder_path = Path(directory)
+    for file_path in folder_path.glob("**/*.json"):
+        try:
+            ego_data_list = EgoDataList.parse_file(file_path)
+            ids.extend(ego.id for ego in ego_data_list.list)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
+
     return ids
+
+
+def create_ego_format_list(directory: str = FOLDER) -> List[EgoFormat]:
+    ego_ids = fetch_ego_ids(directory)
+    ego_format_list = [
+        EgoFormat(ego_id=ego_id, gacksung=4, acquire_time=get_date_time())
+        for ego_id in ego_ids
+    ]
+
+    return ego_format_list

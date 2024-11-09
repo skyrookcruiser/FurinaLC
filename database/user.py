@@ -3,6 +3,8 @@ from pydantic import BaseModel
 from typing import Optional
 from database.client import db
 from utils import get_date_time
+from database.ego import insert_ego_formats
+from database.personality import insert_personality_formats
 
 
 class FurinaUser(BaseModel):
@@ -17,11 +19,14 @@ user_collection = db["users"]
 def create_user(uid: int, token: str) -> int:
     try:
         user = FurinaUser(uid=uid, token=token, register_date=get_date_time()).dict()
-
         user_collection.insert_one(user)
+        insert_ego_formats(uid)
+        insert_personality_formats(uid)
+
         return uid
     except Exception as e:
         print("WARN:     " + str(e))
+
         return -1
 
 
@@ -35,7 +40,7 @@ def check_user(token: str) -> Optional[int]:
         new_uid = max_user["uid"] + 1 if max_user else 1
 
         return create_user(new_uid, token)
-
     except Exception as e:
         print("WARN:     " + str(e))
+
         return None
