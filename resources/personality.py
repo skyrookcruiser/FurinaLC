@@ -122,7 +122,7 @@ def create_personality_format_list(directory: str = FOLDER) -> List[PersonalityF
     personality_format_list = [
         PersonalityFormat(
             personality_id=personality_id,
-            level=0,
+            level=50,
             exp=0,
             gacksung=4,
             order_id=get_order_id(personality_id),

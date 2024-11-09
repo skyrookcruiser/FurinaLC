@@ -6,7 +6,9 @@ from utils import get_date_time
 
 
 async def handle(req: Cs[ReqSignInAsSteam]):
-    token = req.parameters.steamToken
+    # hardcoding this because i don't want to use a mod
+    # just to modify the token field given by client
+    token = "furinatoken" # req.parameters.googleToken
     user_id = check_user(token, "steam")
     auth = UserAuthFormat(
         last_update_date=get_date_time(),
