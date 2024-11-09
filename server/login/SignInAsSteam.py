@@ -6,7 +6,7 @@ from utils import get_date_time
 
 
 async def handle(req: Cs[ReqSignInAsSteam]):
-    token = bytes.fromhex(req.parameters.steamToken).decode("utf-8")
+    token = req.parameters.steamToken
     user_id = check_user(token, "steam")
     auth = UserAuthFormat(
         last_update_date=get_date_time(),
