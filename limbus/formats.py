@@ -876,6 +876,17 @@ class SupportPersonalitySlotFormat(BaseModel):
 
 
 class UserPublicProfileWithSupportersFormat(BaseModel):
+    public_uid: str = ""
+    illust_id: int = 0
+    illust_gacksung_level: int = 0
+    leftborder_id: int = 0
+    rightborder_id: int = 0
+    egobackground_id: int = 0
+    sentence_id: int = 0
+    word_id: int = 0
+    banners: List[UserPublicBannerFormat] = []
+    level: int = 0
+    date: str = ""
     support_personalities: List[SupportPersonalitySlotFormat] = []
 
 

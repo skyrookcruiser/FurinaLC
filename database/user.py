@@ -5,6 +5,7 @@ from database.client import db
 from utils import get_date_time
 from database.ego import insert_ego_formats
 from database.personality import insert_personality_formats
+from database.item import insert_item_formats
 
 
 class FurinaUser(BaseModel):
@@ -28,6 +29,7 @@ def create_user(uid: int, token: str, account_type: str) -> int:
         user_collection.insert_one(user)
         insert_ego_formats(uid)
         insert_personality_formats(uid)
+        insert_item_formats(uid)
 
         return uid
     except Exception as e:

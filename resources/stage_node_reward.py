@@ -5,7 +5,7 @@ from limbus.formats import (
     SubChapterStateFormat,
     NodeStateFormat,
 )
-import os
+from pathlib import Path
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/stagenodereward"
 
@@ -32,17 +32,13 @@ class StageNodeRewardList(BaseModel):
 
 def fetch_node_ids(directory: str = FOLDER) -> List[int]:
     ids = []
-    for root, _, files in os.walk(directory):
-        for file_name in files:
-            if file_name.endswith(".json"):
-                file_path = os.path.join(root, file_name)
-                try:
-                    stage_node_data_list = StageNodeRewardList.parse_file(file_path)
-                    ids.extend(
-                        stage_node.nodeid for stage_node in stage_node_data_list.list
-                    )
-                except Exception as e:
-                    print(f"Error parsing {file_path}: {e}")
+    folder_path = Path(directory)
+    for file_path in folder_path.glob("**/*.json"):
+        try:
+            stage_node_data_list = StageNodeRewardList.parse_file(file_path)
+            ids.extend(stage_node.nodeid for stage_node in stage_node_data_list.list)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
     return ids
 
 

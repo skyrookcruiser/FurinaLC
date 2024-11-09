@@ -48,7 +48,7 @@ def get_personality_formats_by_uid(uid: int) -> List[PersonalityFormat]:
     try:
         personality_docs = personality_collection.find({"uid": uid})
 
-        personality_format_list = [
+        return [
             PersonalityFormat(
                 personality_id=doc["personality_id"],
                 level=doc["level"],
@@ -61,7 +61,6 @@ def get_personality_formats_by_uid(uid: int) -> List[PersonalityFormat]:
             for doc in personality_docs
         ]
 
-        return personality_format_list
     except Exception as e:
         print("WARN:     " + str(e))
 

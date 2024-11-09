@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
-import os
+from pathlib import Path
+from limbus.formats import ItemFormat
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/item"
 
@@ -56,13 +57,26 @@ class ItemDataList(BaseModel):
 
 def fetch_item_ids(directory: str = FOLDER) -> List[int]:
     ids = []
-    for root, _, files in os.walk(directory):
-        for file_name in files:
-            if file_name.endswith(".json"):
-                file_path = os.path.join(root, file_name)
-                try:
-                    item_data_list = ItemDataList.parse_file(file_path)
-                    ids.extend(item.id for item in item_data_list.list)
-                except Exception as e:
-                    print(f"Error parsing {file_path}: {e}")
+    folder_path = Path(directory)
+    for file_path in folder_path.glob("**/*.json"):
+        try:
+            item_data_list = ItemDataList.parse_file(file_path)
+            ids.extend(item.id for item in item_data_list.list)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
     return ids
+
+
+def create_item_format_list(directory: str = FOLDER) -> List[ItemFormat]:
+    item_ids = fetch_item_ids(directory)
+    item_format_list = []
+
+    for item_id in item_ids:
+        item_format_list.append(
+            ItemFormat(
+                item_id=item_id,
+                num=100,
+            )
+        )
+
+    return item_format_list

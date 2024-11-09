@@ -6,7 +6,7 @@ A = TypeVar("A")
 
 
 class Cs(BaseModel, Generic[A]):
-    userAuth: UserAuthFormat = UserAuthFormat()
+    userAuth: ServerUserAuth = ServerUserAuth()
     parameters: Optional[A] = None
 
 
