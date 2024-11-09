@@ -47,6 +47,8 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
     user_auth = req.userAuth
     update = UpdatedFormat(
         isInitialized=True,
+        # TODO: implement coupon, then use it to edit all levels
+        # personality, ego, user, etc.
         userInfo=UserInfo(
             uid=user_auth.uid, level=297, last_stamina_recover=get_date_time()
         ),
@@ -74,20 +76,25 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         lobbyCG=LobbyCgFormat(
             characterId=1,
             lobbycgdetails=[
-                # LobbyCgDetailFormat(
-                #     id=10101,
-                #     g=1,
-                # )
+                LobbyCgDetailFormat(
+                    id=10101,
+                    g=1,
+                )
             ],
             isShowProfile=True,
         ),
         itemList=get_item_formats_by_uid(user_auth.uid),
+        # TODO: parse this shit from chance static data
+        # btw, the chance here isn't like gacha drop chance
+        # but rather how many more times can you win/claim something
         chanceList=[
             # ChanceFormat(
             #     id=1,
             #     value=1,
             # )
         ],
+        # TODO: make this maxed out bp lv5000 because its funny
+        # mission should be parsed from staticdata, methinks
         battlePass=BattlePassFormat(
             is_limbus=True,
             # level=5000,
@@ -103,6 +110,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             # ex_reward_limbus_level=5000,
         ),
         mainChapterStateList=create_main_chapter_state_list(),
+        # TODO: find how the fuck u make actual mails
         mailList=[
             # MailFormat(
             #     mail_id=1,
@@ -126,9 +134,12 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             announcer_ids=list(range(100)),
             cur_announcer_ids=[9],
         ),
+        # TODO: make p2w account fr
         membershipList=[
             # MembershipFormat(iap_id=0, expiry_date="datetime")
         ],
+        # TODO: edge the player with 199 pity point
+        # oh and, implement actual gacha?
         gachaList=[
             # GachaRecordFormat(
             #     gachaId=197,
@@ -136,6 +147,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             # )
         ],
         userUnlockCodeList=create_unlock_code_format_list(),
+        # this should just be empty, theres no event anyways
         eventRewardStateList=[
             # EventRewardStateFormat(
             #     eventID=1,
@@ -145,6 +157,8 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ],
         isUpdateUserBanner=False,
         isResetMirrorDungeon=False,
+        # TODO: parse from static data and give
+        # misisonstate finish to all of them
         missionList=[
             # MissionFormat(
             #     category=MISSION_CATEGORY.UNRECOGNIZED,
@@ -179,6 +193,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         egobackground_id=32,
         sentence_id=36,
         word_id=3,
+        # TODO: bikin banner full sepuh
         banners=[
             UserPublicBannerFormat(
                 id=35,
@@ -213,6 +228,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ],
         level=297,
         date=get_date_time(),
+        # TODO: fill support character list
         support_personalities=[
             SupportPersonalitySlotFormat(
                 idx=10101,
@@ -231,12 +247,10 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ],
     )
 
-    daily = DailyLoginRewardStateFormat(weekid=0, id=0)
-
     rsp = RspLoadUserDataAll(
         profile=user,
         danteNoteTodayPage=49,
-        dailyLoginRewardStates=[daily],
+        dailyLoginRewardStates=[],
         dailyLoginWeekId=-1,
         showedWeekByMinistory=-1,
         date=get_date_time(),
@@ -244,6 +258,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
 
     return Sc[RspLoadUserDataAll](
         updated=update,
+        # TODO: implement this in fetchlatestsynchronousdata?
         # synchronized=SynchronizedFormat(
         #     version=user_auth.synchronousDataVersion,
         #     noticelist=[
