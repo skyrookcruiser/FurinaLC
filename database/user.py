@@ -8,6 +8,7 @@ from database.personality import insert_personality_formats
 from database.item import insert_item_formats
 from database.announcer import insert_announcer_format
 
+
 class FurinaUser(BaseModel):
     uid: int
     token: str

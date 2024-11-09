@@ -44,7 +44,7 @@ from resources.stage_node_reward import create_main_chapter_state_list
 from resources.unlockcode_subchapter import create_unlock_code_format_list
 from resources.chance import create_chance_format_list
 from resources.battlepass import create_battlepass_format
-
+from resources.iap_membership import create_membership_formats
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
     user_auth = req.userAuth
@@ -109,11 +109,8 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             #     parameters=[""],
             # )
         ],
-        announcer=get_announcer_format_by_uid(),
-        # TODO: make p2w account fr
-        membershipList=[
-            # MembershipFormat(iap_id=0, expiry_date="datetime")
-        ],
+        announcer=get_announcer_format_by_uid(user_auth.uid),
+        membershipList=create_membership_formats(),
         # TODO: edge the player with 199 pity point
         # oh and, implement actual gacha?
         gachaList=[
