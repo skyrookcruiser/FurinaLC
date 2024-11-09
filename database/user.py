@@ -11,14 +11,20 @@ class FurinaUser(BaseModel):
     uid: int
     token: str
     register_date: str
+    account_type: str
 
 
 user_collection = db["users"]
 
 
-def create_user(uid: int, token: str) -> int:
+def create_user(uid: int, token: str, account_type: str) -> int:
     try:
-        user = FurinaUser(uid=uid, token=token, register_date=get_date_time()).dict()
+        user = FurinaUser(
+            uid=uid,
+            token=token,
+            register_date=get_date_time(),
+            account_type=account_type,
+        ).dict()
         user_collection.insert_one(user)
         insert_ego_formats(uid)
         insert_personality_formats(uid)
@@ -30,7 +36,7 @@ def create_user(uid: int, token: str) -> int:
         return -1
 
 
-def check_user(token: str) -> Optional[int]:
+def check_user(token: str, account_type: str = "unk") -> Optional[int]:
     try:
         existing_user = user_collection.find_one({"token": token})
         if existing_user:
@@ -39,7 +45,7 @@ def check_user(token: str) -> Optional[int]:
         max_user = user_collection.find_one(sort=[("uid", DESCENDING)])
         new_uid = max_user["uid"] + 1 if max_user else 1
 
-        return create_user(new_uid, token)
+        return create_user(new_uid, token, account_type)
     except Exception as e:
         print("WARN:     " + str(e))
 

@@ -7,7 +7,7 @@ from utils import get_date_time
 
 async def handle(req: Cs[ReqSignInAsGoogle]):
     token = req.parameters.googleToken
-    user_id = check_user(token)
+    user_id = check_user(token, "google")
     auth = UserAuthFormat(
         last_update_date=get_date_time(),
         last_login_date=get_date_time(),
