@@ -50,7 +50,9 @@ def chunk_by(vec: List[int], chunk_size: int) -> List[List[int]]:
     return [vec[i : i + chunk_size] for i in range(0, len(vec), chunk_size)]
 
 
-def load_main_chapter_state(directory: str = FOLDER) -> List[MainChapterStateFormat]:
+def create_main_chapter_state_list(
+    directory: str = FOLDER,
+) -> List[MainChapterStateFormat]:
     node_ids = fetch_node_ids(directory)
     chunked_ids = chunk_by(node_ids, 100)
     main_chapter_states = []

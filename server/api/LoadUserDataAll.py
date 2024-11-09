@@ -8,14 +8,11 @@ from limbus.formats import (
     UpdatedFormat,
     SynchronizedFormat,
     UserInfo,
-    PersonalityFormat,
-    EgoFormat,
     FormationFormat,
     LobbyCgFormat,
     ItemFormat,
     ChanceFormat,
     BattlePassFormat,
-    MainChapterStateFormat,
     MailFormat,
     AnnouncerFormat,
     MembershipFormat,
@@ -29,8 +26,6 @@ from limbus.formats import (
     LobbyCgDetailFormat,
     BattlePassMissionState,
     MISSION_STATE,
-    SubChapterStateFormat,
-    NodeStateFormat,
     Element,
     STR_ELEMENT_TYPE,
     ELEMENT_TYPE,
@@ -41,6 +36,7 @@ from limbus.formats import (
 )
 from database.ego import get_ego_formats_by_uid
 from database.personality import get_personality_formats_by_uid
+from resources.stage_node_reward import create_main_chapter_state_list
 
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
@@ -107,25 +103,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             special_product_state=0,
             ex_reward_limbus_level=5000,
         ),
-        mainChapterStateList=[
-            MainChapterStateFormat(
-                id=1,
-                subcss=[
-                    SubChapterStateFormat(
-                        id=1,
-                        nss=[
-                            NodeStateFormat(
-                                id=1,
-                                ct=1,
-                                cn=1,
-                                dn=1,
-                            )
-                        ],
-                        rss=[1],
-                    )
-                ],
-            )
-        ],
+        mainChapterStateList=create_main_chapter_state_list(),
         mailList=[
             MailFormat(
                 mail_id=1,
