@@ -75,7 +75,7 @@ def create_item_format_list(directory: str = FOLDER) -> List[ItemFormat]:
         item_format_list.append(
             ItemFormat(
                 item_id=item_id,
-                num=100,
+                num=10000,
             )
         )
 

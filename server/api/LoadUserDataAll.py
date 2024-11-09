@@ -79,15 +79,23 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         lobbyCG=LobbyCgFormat(
             characterId=1,
             lobbycgdetails=[
-                LobbyCgDetailFormat(
-                    id=10101,
-                    g=1,
-                )
+
+                # NOTE: ADDING THESE BREAK THE FUCKING
+                # LOADING INTO MENU!!! maybe needs to be the same
+                # as line 167??
+
+                # LobbyCgDetailFormat(
+                #     id=10101,
+                #     g=1,
+                # )
             ],
             isShowProfile=True,
         ),
         itemList=get_item_formats_by_uid(user_auth.uid),
         chanceList=create_chance_format_list(),
+        # TODO: FIGURE OUT WHICH MISSION STATE
+        # TO DISPLAY AS CLAIMED
+        # AND FIX CRATE COUNT FOR EX REWARDS
         battlePass=create_battlepass_format(),
         mainChapterStateList=create_main_chapter_state_list(),
         # TODO: find how the fuck u make actual mails
@@ -110,7 +118,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             # )
         ],
         announcer=get_announcer_format_by_uid(user_auth.uid),
-        membershipList=create_membership_formats(),
+        membershipList=None, #create_membership_formats(),
         # TODO: edge the player with 199 pity point
         # oh and, implement actual gacha?
         gachaList=[
@@ -120,7 +128,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             # )
         ],
         userUnlockCodeList=create_unlock_code_format_list(),
-        # this should just be empty, theres no event anyways
+        # NOTE: this should just be empty, theres no event anyways
         eventRewardStateList=[
             # EventRewardStateFormat(
             #     eventID=1,
@@ -167,6 +175,8 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         sentence_id=36,
         word_id=3,
         banners=[
+            # TODO: FIGURE OUT
+            # WHICH VALUE IS TURN USED
             UserPublicBannerFormat(
                 id=35, # LoR banner
                 value=-1,
