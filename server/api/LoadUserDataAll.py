@@ -42,6 +42,8 @@ from database.item import get_item_formats_by_uid
 from resources.stage_node_reward import create_main_chapter_state_list
 from resources.unlockcode_subchapter import create_unlock_code_format_list
 from resources.chance import create_chance_format_list
+from resources.battlepass import create_battlepass_format
+
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
     user_auth = req.userAuth
@@ -85,22 +87,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ),
         itemList=get_item_formats_by_uid(user_auth.uid),
         chanceList=create_chance_format_list(),
-        # TODO: make this maxed out bp lv5000 because its funny
-        # mission should be parsed from staticdata, methinks
-        battlePass=BattlePassFormat(
-            is_limbus=True,
-            # level=5000,
-            # exp=0,
-            today_rand_value=12,
-            # ex_reward_level=5000,
-            limbus_apply_level=4,
-            # rewards_state=[1],
-            # missions_state=[
-            #     BattlePassMissionState(id=100, count=100, state=MISSION_STATE.REWARDED)
-            # ],
-            # special_product_state=0,
-            # ex_reward_limbus_level=5000,
-        ),
+        battlePass=create_battlepass_format(),
         mainChapterStateList=create_main_chapter_state_list(),
         # TODO: find how the fuck u make actual mails
         mailList=[
