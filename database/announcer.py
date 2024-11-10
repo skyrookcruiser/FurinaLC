@@ -51,7 +51,7 @@ def update_announcer_format(
 ) -> bool:
     try:
         if new_cur_announcer_ids is not None:
-            result = announcer_collection.update_one(
+            announcer_collection.update_one(
                 {"uid": uid}, {"$set": {"cur_announcer_ids": new_cur_announcer_ids}}
             )
 

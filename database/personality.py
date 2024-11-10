@@ -67,11 +67,39 @@ def get_personality_formats_by_uid(uid: int) -> List[PersonalityFormat]:
         return []
 
 
+def get_one_personality_format(
+    uid: int, personality_id: int
+) -> Optional[PersonalityFormat]:
+    try:
+        doc = personality_collection.find_one(
+            {"uid": uid, "personality_id": personality_id}
+        )
+
+        if doc:
+            return PersonalityFormat(
+                personality_id=doc["personality_id"],
+                level=doc["level"],
+                exp=doc["exp"],
+                gacksung=doc["gacksung"],
+                order_id=doc["order_id"],
+                gacksung_illust_type=doc["gacksung_illust_type"],
+                acquire_time=doc["acquire_time"],
+            )
+
+        return None
+
+    except Exception as e:
+        print("WARN:     " + str(e))
+
+        return None
+
+
 def update_personality_format(
     uid: int,
     personality_id: int,
     level: Optional[int] = None,
     gacksung: Optional[int] = None,
+    gacksung_illust_type: Optional[int] = None,
 ) -> bool:
     try:
         update_fields = {}
@@ -79,9 +107,11 @@ def update_personality_format(
             update_fields["level"] = level
         if gacksung is not None:
             update_fields["gacksung"] = gacksung
+        if gacksung_illust_type is not None:
+            update_fields["gacksung_illust_type"] = gacksung_illust_type
 
         if update_fields:
-            result = personality_collection.update_one(
+            personality_collection.update_one(
                 {"uid": uid, "personality_id": personality_id}, {"$set": update_fields}
             )
 

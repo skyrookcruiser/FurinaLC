@@ -58,7 +58,7 @@ def update_item_format(uid: int, item_id: int, num: Optional[int] = None) -> boo
             update_fields["num"] = num
 
         if update_fields:
-            result = item_collection.update_one(
+            item_collection.update_one(
                 {"uid": uid, "item_id": item_id}, {"$set": update_fields}
             )
 

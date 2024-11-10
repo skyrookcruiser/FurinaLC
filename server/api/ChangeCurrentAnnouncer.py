@@ -18,7 +18,7 @@ async def handle(req: Cs[ReqChangeCurrentAnnouncer]):
     ):
         raise HTTPException(
             status_code=500,
-            detail="Formation not found or update failed.",
+            detail="Announcer not found or update failed.",
         )
 
     updated_announcer = get_announcer_format_by_uid(uid)

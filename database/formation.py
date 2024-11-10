@@ -91,7 +91,7 @@ def update_formation_format(
             ]
 
         if update_fields:
-            result = formation_collection.update_one(
+            formation_collection.update_one(
                 {"uid": uid, "id": formation_id}, {"$set": update_fields}
             )
 

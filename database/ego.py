@@ -59,7 +59,7 @@ def update_ego_format(uid: int, ego_id: int, gacksung: Optional[int] = None) -> 
             update_fields["gacksung"] = gacksung
 
         if update_fields:
-            result = ego_collection.update_one(
+            ego_collection.update_one(
                 {"uid": uid, "ego_id": ego_id}, {"$set": update_fields}
             )
 
