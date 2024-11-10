@@ -4,6 +4,7 @@ from . import (
     FetchLatestSynchronousData,
     LoadUserDataAll,
     UpdateFormation,
+    ChangeCurrentAnnouncer,
 )
 
 
@@ -12,3 +13,4 @@ def add_api_handler(app: FastAPI):
     app.post("/api/LoadUserDataAll")(LoadUserDataAll.handle)
     app.post("/api/CheckSeasonLog")(CheckSeasonLog.handle)
     app.post("/api/UpdateFormation")(UpdateFormation.handle)
+    app.post("/api/ChangeCurrentAnnouncer")(ChangeCurrentAnnouncer.handle)
