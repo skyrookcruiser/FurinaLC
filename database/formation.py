@@ -54,6 +54,25 @@ def get_formation_formats_by_uid(uid: int) -> List[FormationFormat]:
         return []
 
 
+def get_one_formation_format(uid: int, formation_id: int) -> Optional[FormationFormat]:
+    try:
+        formation_doc = formation_collection.find_one({"uid": uid, "id": formation_id})
+
+        if formation_doc:
+            return FormationFormat(
+                id=formation_doc["id"],
+                formationDetails=formation_doc["formationDetails"],
+                formationNameFormat=formation_doc["formationNameFormat"],
+            )
+
+        return None
+
+    except Exception as e:
+        print("WARN:     " + str(e))
+
+        return None
+
+
 def update_formation_format(
     uid: int,
     formation_id: int,
