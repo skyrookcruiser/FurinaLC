@@ -51,6 +51,8 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
     curr_date = get_date_time()
     user_auth = req.userAuth
     update = UpdatedFormat(
+        # isInitialize pretty much sets the base updatedformat
+        # for future update shenanigans
         isInitialized=True,
         # TODO: implement coupon, then use it to edit all levels
         # personality, ego, user, etc.
@@ -71,7 +73,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             lobbycgdetails=[
                 # NOTE: ADDING THESE BREAK THE FUCKING
                 # LOADING INTO MENU!!! maybe needs to be the same
-                # as line 167??
+                # as user illust id???
                 # LobbyCgDetailFormat(
                 #     id=10101,
                 #     g=1,
@@ -176,28 +178,29 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ],
         level=302,
         date=curr_date,
-        # TODO: fill support character list
         support_personalities=[
-            SupportPersonalitySlotFormat(
-                idx=10101,
-                pid=1,
-                l=50,
-                egos=[
-                    # ProfileEgoContainIndexFormat(
-                    #     idx=20101,
-                    #     id=20101,
-                    #     g=4,
-                    # )
-                ],
-                gl=4,
-                gi=1,
-            )
+            # SupportPersonalitySlotFormat(
+            #     idx=10101,
+            #     pid=1,
+            #     l=50,
+            #     egos=[
+            #         # ProfileEgoContainIndexFormat(
+            #         #     idx=20101,
+            #         #     id=20101,
+            #         #     g=4,
+            #         # )
+            #     ],
+            #     gl=4,
+            #     gi=1,
+            # )
         ],
     )
 
     rsp = RspLoadUserDataAll(
         profile=user,
         danteNoteTodayPage=49,
+        # daily login reward is only for
+        # new players (?) currently, atleast
         dailyLoginRewardStates=[],
         dailyLoginWeekId=-1,
         showedWeekByMinistory=-1,
