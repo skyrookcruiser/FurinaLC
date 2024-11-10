@@ -95,9 +95,9 @@ def update_formation_format(
                 {"uid": uid, "id": formation_id}, {"$set": update_fields}
             )
 
-            return result.modified_count > 0
+            return True
 
-        return False
+        return True
 
     except Exception as e:
         print("WARN:     " + str(e))

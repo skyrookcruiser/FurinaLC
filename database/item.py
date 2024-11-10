@@ -61,9 +61,11 @@ def update_item_format(uid: int, item_id: int, num: Optional[int] = None) -> boo
             result = item_collection.update_one(
                 {"uid": uid, "item_id": item_id}, {"$set": update_fields}
             )
-            return result.modified_count > 0
 
-        return False
+            return True
+
+        return True
+
     except Exception as e:
         print("WARN:     " + str(e))
 

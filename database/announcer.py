@@ -55,9 +55,9 @@ def update_announcer_format(
                 {"uid": uid}, {"$set": {"cur_announcer_ids": new_cur_announcer_ids}}
             )
 
-            return result.modified_count > 0
+            return True
 
-        return False
+        return True
 
     except Exception as e:
         print("WARN:     " + str(e))

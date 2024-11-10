@@ -63,9 +63,9 @@ def update_ego_format(uid: int, ego_id: int, gacksung: Optional[int] = None) -> 
                 {"uid": uid, "ego_id": ego_id}, {"$set": update_fields}
             )
 
-            return result.modified_count > 0
+            return True
 
-        return False
+        return True
 
     except Exception as e:
         print("WARN:     " + str(e))

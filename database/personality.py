@@ -85,9 +85,9 @@ def update_personality_format(
                 {"uid": uid, "personality_id": personality_id}, {"$set": update_fields}
             )
 
-            return result.modified_count > 0
+            return True
 
-        return False
+        return True
 
     except Exception as e:
         print("WARN:     " + str(e))
