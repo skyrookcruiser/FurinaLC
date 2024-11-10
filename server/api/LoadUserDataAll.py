@@ -36,6 +36,7 @@ from limbus.formats import (
 )
 from utils import get_date_time
 from database.ego import get_ego_formats_by_uid
+from database.user import get_user_info_by_uid
 from database.personality import get_personality_formats_by_uid
 from database.item import get_item_formats_by_uid
 from database.announcer import get_announcer_format_by_uid
@@ -56,15 +57,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         isInitialized=True,
         # TODO: implement coupon, then use it to edit all levels
         # personality, ego, user, etc.
-        userInfo=UserInfo(
-            uid=user_auth.uid,
-            level=302,
-            exp=0,
-            stamina=183,
-            last_stamina_recover=curr_date,
-            current_storybattle_nodeid=-1,
-            first_login_today=curr_date,
-        ),
+        userInfo=get_user_info_by_uid(user_auth.uid),
         personalityList=get_personality_formats_by_uid(user_auth.uid),
         egoList=get_ego_formats_by_uid(user_auth.uid),
         formationList=get_formation_formats_by_uid(user_auth.uid),
