@@ -256,10 +256,6 @@ class RspUpdateSteamPendingPurchase(BaseModel):
     finalizedTransactionIds: List[str] = []
 
 
-class RspUpdateSteamPendingPurchase(BaseModel):
-    finalizedTransactionIds: List[str] = []
-
-
 class RspGetSteamWalletCurrency(BaseModel):
     walletCurrency: str = ""
 

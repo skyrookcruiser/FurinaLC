@@ -143,6 +143,3 @@ def create_battlepass_format(directory: str = FOLDER) -> BattlePassFormat:
         print(f"Error creating BattlePassFormat: {e}")
 
         return None
-
-
-print(create_battlepass_format())
