@@ -1,21 +1,22 @@
+import re
 from pydantic import BaseModel
 from typing import List, Optional
 from pathlib import Path
-from utils import get_date_time
 from limbus.formats import BattlePassFormat, BattlePassMissionState, MISSION_STATE
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/battlepass"
+SEASON = 5
 
 
 class PassUiConfigData(BaseModel):
     bannerId: str
-    newSubchapterId: int
+    newSubchapterId: Optional[int] = None
 
 
 class PassPriceData(BaseModel):
     requiredItemId: int
     requiredItemNum: int
-    requiredChaneId: int
+    requiredChanceId: int
 
 
 class PassRewardInfoRewardData(BaseModel):
@@ -26,7 +27,7 @@ class PassRewardInfoRewardData(BaseModel):
 
 class SpecialPassData(BaseModel):
     isIncludeLimbusPass: bool
-    requiredChanceForLimbusPass: int
+    requiredChanceForLimbusPass: Optional[int] = None
     requiredChanceId: int
     requiredItemId: int
     requiredItemNum: int
@@ -105,33 +106,43 @@ def create_battlepass_format(directory: str = FOLDER) -> BattlePassFormat:
     folder_path = Path(directory)
     try:
         for file_path in folder_path.glob("**/*.json"):
+            season = file_path.stem.split("-")
+            current_season = int(season[1])
+
+            if current_season is not SEASON:
+                continue
+
             battlepass_data_list = BattlepassDataList.parse_file(file_path)
             battlepass_data = battlepass_data_list.list[0]
             max_level = battlepass_data.passRewardsInfo.maxLevel
-            rewards_state = list(range(1, max_level + 1))
+            rewards_state = [1] * (max_level + 1)
 
             missions_state = [
                 BattlePassMissionState(
                     id=mission.missionId,
                     count=mission.countMax,
-                    state=MISSION_STATE.REWARDED,
+                    state=MISSION_STATE.OPENED,
                 )
                 for mission in battlepass_data.passMissionsInfo.missionList
             ]
 
             return BattlePassFormat(
+                current_pass_id=current_season,
                 is_limbus=True,
                 level=5000,
                 exp=0,
-                today_rand_value=0,
-                ex_reward_level=4880,
+                today_rand_value=12,
+                ex_reward_level=max_level,
                 limbus_apply_level=5000,
                 rewards_state=rewards_state,
                 missions_state=missions_state,
-                special_product_state=1,
-                ex_reward_limbus_level=4880,
+                special_product_state=max_level + 1,
+                ex_reward_limbus_level=max_level,
             )
     except Exception as e:
         print(f"Error creating BattlePassFormat: {e}")
 
         return None
+
+
+print(create_battlepass_format())

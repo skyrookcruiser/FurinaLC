@@ -700,7 +700,7 @@ class NoticeFormat(BaseModel):
 
 class SynchronizedFormat(BaseModel):
     version: int = 0
-    noticelist: List[NoticeFormat] = []
+    noticeList: List[NoticeFormat] = []
     mailContentList: List[MailContentFormat] = []
 
 
@@ -1239,6 +1239,7 @@ class BattlePassMissionState(BaseModel):
 
 
 class BattlePassFormat(BaseModel):
+    current_pass_id: int = 0
     is_limbus: bool = False
     level: int = 0
     exp: int = 0
@@ -1496,6 +1497,8 @@ class UserInfo(BaseModel):
     exp: int = 0
     stamina: int = 0
     last_stamina_recover: str = ""
+    current_storybattle_nodeid: int = 0
+    first_login_today: str = ""
 
 
 class Credits(BaseModel):
@@ -1540,6 +1543,7 @@ class MailLog(BaseModel):
 
 
 class TermsOfUseState(BaseModel):
+    uid: int = 0
     version: int = 0
     state: TERMSOFUSE_STATE = TERMSOFUSE_STATE.NONE
 

@@ -1,6 +1,6 @@
 from limbus.requests import Cs, ReqNull
-from limbus.responses import Sc, RspNull
+from limbus.responses import Sc, RspUpdateSteamPendingPurchase
 
 
 async def handle(req: Cs[ReqNull]):
-    return Sc[RspNull](result=RspNull())
+    return Sc[RspUpdateSteamPendingPurchase](result=RspUpdateSteamPendingPurchase())

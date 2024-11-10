@@ -32,7 +32,6 @@ from limbus.formats import (
     MISSION_CATEGORY,
     DANTE_ABILITY_CATEGORY,
     UserPublicBannerFormat,
-    NoticeFormat,
     MailContentFormat,
 )
 from utils import get_date_time
@@ -45,6 +44,7 @@ from resources.unlockcode_subchapter import create_unlock_code_format_list
 from resources.chance import create_chance_format_list
 from resources.battlepass import create_battlepass_format
 from resources.iap_membership import create_membership_formats
+
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
     user_auth = req.userAuth
@@ -79,11 +79,9 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         lobbyCG=LobbyCgFormat(
             characterId=1,
             lobbycgdetails=[
-
                 # NOTE: ADDING THESE BREAK THE FUCKING
                 # LOADING INTO MENU!!! maybe needs to be the same
                 # as line 167??
-
                 # LobbyCgDetailFormat(
                 #     id=10101,
                 #     g=1,
@@ -93,32 +91,12 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ),
         itemList=get_item_formats_by_uid(user_auth.uid),
         chanceList=create_chance_format_list(),
-        # TODO: FIGURE OUT WHICH MISSION STATE
-        # TO DISPLAY AS CLAIMED
-        # AND FIX CRATE COUNT FOR EX REWARDS
+        # TODO: FIX CLAIMED REWARDS
         battlePass=create_battlepass_format(),
         mainChapterStateList=create_main_chapter_state_list(),
-        # TODO: find how the fuck u make actual mails
-        mailList=[
-            # MailFormat(
-            #     mail_id=1,
-            #     sent_date="",
-            #     expiry_date="",
-            #     content_id=0,
-            #     attachments=[
-            #         Element(
-            #             type=STR_ELEMENT_TYPE.ITEM,
-            #             _type=ELEMENT_TYPE.ITEM,
-            #             id=1,
-            #             num=1,
-            #             tags=[""],
-            #         )
-            #     ],
-            #     parameters=[""],
-            # )
-        ],
+        mailList=[],
         announcer=get_announcer_format_by_uid(user_auth.uid),
-        membershipList=None, #create_membership_formats(),
+        membershipList=create_membership_formats(),
         # TODO: edge the player with 199 pity point
         # oh and, implement actual gacha?
         gachaList=[
@@ -175,35 +153,33 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         sentence_id=36,
         word_id=3,
         banners=[
-            # TODO: FIGURE OUT
-            # WHICH VALUE IS TURN USED
             UserPublicBannerFormat(
-                id=35, # LoR banner
+                id=35,  # LoR banner
                 value=-1,
                 value2=-1,
                 idx=0,
             ),
             UserPublicBannerFormat(
-                id=7, # maxed out rail line 1
-                value=-1,
-                value2=-1,
+                id=7,  # maxed out rail line 1
+                value=52,  # turn count
+                value2=-1,  # cycle count
                 idx=1,
             ),
             UserPublicBannerFormat(
-                id=19, # maxed out rail line 2
-                value=-1,
-                value2=-1,
+                id=19,  # maxed out rail line 2
+                value=70,
+                value2=5,
                 idx=2,
             ),
             UserPublicBannerFormat(
-                id=27, # maxed out rail line 3
-                value=-1,
+                id=27,  # maxed out rail line 3
+                value=31,
                 value2=-1,
                 idx=3,
             ),
             UserPublicBannerFormat(
-                id=40, # maxed out rail line 4
-                value=-1,
+                id=40,  # maxed out rail line 4
+                value=29,
                 value2=-1,
                 idx=4,
             ),
@@ -240,15 +216,5 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
 
     return Sc[RspLoadUserDataAll](
         updated=update,
-        # TODO: implement this in fetchlatestsynchronousdata?
-        # synchronized=SynchronizedFormat(
-        #     version=user_auth.synchronousDataVersion,
-        #     noticelist=[
-        #         # NoticeFormat()
-        #     ],
-        #     mailContentList=[
-        #         # MailContentFormat()
-        #     ],
-        # ),
         result=rsp,
     )

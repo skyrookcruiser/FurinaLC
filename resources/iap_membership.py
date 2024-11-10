@@ -35,14 +35,22 @@ def create_membership_formats(directory: str = FOLDER) -> List[MembershipFormat]
 
     for file_path in folder_path.glob("**/*.json"):
         try:
+            if "a1" in file_path.stem:
+                continue
             iap_membership_data_list = IapMembershipDataList.parse_file(file_path)
 
             for membership_data in iap_membership_data_list.list:
-                if membership_data.productId is None:
-                    pass
-                elif "monthly" in membership_data.productId.lower():
+                if (
+                    membership_data.productId
+                    and any(
+                        keyword in membership_data.productId.lower()
+                        for keyword in ["monthly", "pass"]
+                    )
+                    and "fixed" not in membership_data.productId.lower()
+                ):
                     membership_format = MembershipFormat(
-                        iap_id=membership_data.id, expiry_date=""
+                        iap_id=membership_data.id,
+                        expiry_date="2098-11-09T22:10:00.864Z",
                     )
                     membership_formats.append(membership_format)
 
