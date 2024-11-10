@@ -47,13 +47,20 @@ from resources.iap_membership import create_membership_formats
 
 
 async def handle(req: Cs[ReqLoadUserDataAll]):
+    curr_date = get_date_time()
     user_auth = req.userAuth
     update = UpdatedFormat(
         isInitialized=True,
         # TODO: implement coupon, then use it to edit all levels
         # personality, ego, user, etc.
         userInfo=UserInfo(
-            uid=user_auth.uid, level=302, last_stamina_recover=get_date_time()
+            uid=user_auth.uid,
+            level=302,
+            exp=0,
+            stamina=183,
+            last_stamina_recover=curr_date,
+            current_storybattle_nodeid=-1,
+            first_login_today=curr_date,
         ),
         personalityList=get_personality_formats_by_uid(user_auth.uid),
         egoList=get_ego_formats_by_uid(user_auth.uid),
@@ -185,7 +192,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             ),
         ],
         level=302,
-        date=get_date_time(),
+        date=curr_date,
         # TODO: fill support character list
         support_personalities=[
             SupportPersonalitySlotFormat(
@@ -211,7 +218,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         dailyLoginRewardStates=[],
         dailyLoginWeekId=-1,
         showedWeekByMinistory=-1,
-        date=get_date_time(),
+        date=curr_date,
     )
 
     return Sc[RspLoadUserDataAll](
