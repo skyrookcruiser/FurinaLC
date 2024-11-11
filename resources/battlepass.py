@@ -115,7 +115,8 @@ def create_battlepass_format(directory: str = FOLDER) -> BattlePassFormat:
             battlepass_data_list = BattlepassDataList.parse_file(file_path)
             battlepass_data = battlepass_data_list.list[0]
             max_level = battlepass_data.passRewardsInfo.maxLevel
-            rewards_state = [1] * (max_level + 1)
+            # TODO: use intenum for rewardstate
+            rewards_state = [2] * max_level
 
             missions_state = [
                 BattlePassMissionState(

@@ -76,7 +76,6 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ),
         itemList=get_item_formats_by_uid(user_auth.uid),
         chanceList=create_chance_format_list(),
-        # TODO: FIX CLAIMED REWARDS
         battlePass=create_battlepass_format(),
         mainChapterStateList=create_main_chapter_state_list(),
         mailList=[],
