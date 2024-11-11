@@ -131,4 +131,5 @@ def update_user_info(
 
     except Exception as e:
         print("WARN:     " + str(e))
+
         return False
