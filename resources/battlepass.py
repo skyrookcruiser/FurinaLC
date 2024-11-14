@@ -2,7 +2,12 @@ import re
 from pydantic import BaseModel
 from typing import List, Optional
 from pathlib import Path
-from limbus.formats import BattlePassFormat, BattlePassMissionState, MISSION_STATE
+from limbus.formats import (
+    BattlePassFormat,
+    BattlePassMissionState,
+    MISSION_STATE,
+    BATTLEPASS_REWARDSTATE,
+)
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/battlepass"
 SEASON = 5
@@ -115,9 +120,9 @@ def create_battlepass_format(directory: str = FOLDER) -> BattlePassFormat:
             battlepass_data_list = BattlepassDataList.parse_file(file_path)
             battlepass_data = battlepass_data_list.list[0]
             max_level = battlepass_data.passRewardsInfo.maxLevel
-            # TODO: use intenum for rewardstate
-            rewards_state = [2] * max_level
-
+            # to display bp rewards as claimed
+            rewards_state = [BATTLEPASS_REWARDSTATE.WITHLIMPASS] * max_level
+            # self explanatory
             missions_state = [
                 BattlePassMissionState(
                     id=mission.missionId,
@@ -128,17 +133,27 @@ def create_battlepass_format(directory: str = FOLDER) -> BattlePassFormat:
             ]
 
             return BattlePassFormat(
+                # season is currently hardcoded, idgaf
                 current_pass_id=current_season,
+                # islimbus is just well,
+                # has battle pass or not
                 is_limbus=True,
-                level=5000,
-                exp=0,
-                today_rand_value=12,
-                ex_reward_level=max_level,
-                limbus_apply_level=5000,
+                level=2024,
+                exp=2,
+                # no fucking clue what this does
+                today_rand_value=6,
+                # to display ex rewards as claimed,
+                # we must set it equal to level
+                ex_reward_level=2024,
+                ex_reward_limbus_level=2024,
+                # no fucking clue what this does
+                limbus_apply_level=1,
                 rewards_state=rewards_state,
                 missions_state=missions_state,
-                special_product_state=max_level + 1,
-                ex_reward_limbus_level=max_level,
+                # as long as this is above 0,
+                # the limbus pass plus banners
+                # will be shown as claimed
+                special_product_state=2,
             )
     except Exception as e:
         print(f"Error creating BattlePassFormat: {e}")
