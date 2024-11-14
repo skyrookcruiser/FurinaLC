@@ -1031,18 +1031,18 @@ class UserPublicBannerFormat(BaseModel):
     idx: int = 0
 
 
-class UserPublicProfileFormat(BaseModel):
-    public_uid: str = ""
-    illust_id: int = 0
-    illust_gacksung_level: int = 0
-    leftborder_id: int = 0
-    rightborder_id: int = 0
-    egobackground_id: int = 0
-    sentence_id: int = 0
-    word_id: int = 0
-    banners: List[UserPublicBannerFormat] = []
-    level: int = 0
-    date: str = ""
+class UserPublicProfileWithSupportersFormat(BaseModel):
+    public_uid: Optional[str] = None
+    illust_id: Optional[int] = None
+    illust_gacksung_level: Optional[int] = None
+    leftborder_id: Optional[int] = None
+    rightborder_id: Optional[int] = None
+    egobackground_id: Optional[int] = None
+    sentence_id: Optional[int] = None
+    word_id: Optional[int] = None
+    banners: Optional[List[UserPublicBannerFormat]] = None
+    level: Optional[int] = None
+    date: Optional[str] = None
 
 
 class ProfileEgoFormat(BaseModel):
@@ -1074,18 +1074,18 @@ class SupportPersonalitySlotFormat(BaseModel):
 
 
 class UserPublicProfileWithSupportersFormat(BaseModel):
-    public_uid: str = ""
-    illust_id: int = 0
-    illust_gacksung_level: int = 0
-    leftborder_id: int = 0
-    rightborder_id: int = 0
-    egobackground_id: int = 0
-    sentence_id: int = 0
-    word_id: int = 0
-    banners: List[UserPublicBannerFormat] = []
-    level: int = 0
-    date: str = ""
-    support_personalities: List[SupportPersonalitySlotFormat] = []
+    public_uid: Optional[str] = None
+    illust_id: Optional[int] = None
+    illust_gacksung_level: Optional[int] = None
+    leftborder_id: Optional[int] = None
+    rightborder_id: Optional[int] = None
+    egobackground_id: Optional[int] = None
+    sentence_id: Optional[int] = None
+    word_id: Optional[int] = None
+    banners: Optional[List[UserPublicBannerFormat]] = None
+    level: Optional[int] = None
+    date: Optional[str] = None
+    support_personalities: Optional[List[SupportPersonalitySlotFormat]] = None
 
 
 class BattlePassParameterFormat(BaseModel):

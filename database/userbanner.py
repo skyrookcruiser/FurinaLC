@@ -38,7 +38,6 @@ def insert_user_banner_data_formats(uid: int) -> None:
     except Exception as e:
         print("WARN:     " + str(e))
 
-insert_user_banner_data_formats(1)
 
 def get_user_banner_data_by_uid(uid: int) -> List[UserBannerDataFormat]:
     try:
