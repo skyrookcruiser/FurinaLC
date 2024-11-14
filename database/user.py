@@ -9,6 +9,8 @@ from database.personality import insert_personality_formats
 from database.item import insert_item_formats
 from database.announcer import insert_announcer_format
 from database.formation import insert_formation_formats
+from database.userbanner import insert_user_banner_data_formats
+from database.userticket import insert_profile_ticket_data
 
 user_collection = db["users"]
 
@@ -49,6 +51,8 @@ def create_user(uid: int, token: str, account_type: str) -> int:
         insert_item_formats(uid)
         insert_announcer_format(uid)
         insert_formation_formats(uid)
+        insert_user_banner_data_formats(uid)
+        insert_profile_ticket_data(uid)
 
         return uid
 

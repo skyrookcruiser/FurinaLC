@@ -1,10 +1,11 @@
 from limbus.requests import Cs, ReqNull
 from limbus.responses import Sc, RspGetUserBanners
-from resources.userbanner import create_user_banner_data_format_list
+from database.userbanner import get_user_banner_data_by_uid
 
 
-# TODO: Use DB for this
-def handle(req: Cs[ReqNull]):
+async def handle(req: Cs[ReqNull]):
+    uid = req.userAuth.uid
+
     return Sc[RspGetUserBanners](
-        result=RspGetUserBanners(banners=create_user_banner_data_format_list())
+        result=RspGetUserBanners(banners=get_user_banner_data_by_uid(uid))
     )

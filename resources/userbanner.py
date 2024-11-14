@@ -35,6 +35,7 @@ def fetch_user_banner_ids(directory: str = FOLDER) -> List[int]:
             print(f"Error parsing {file_path}: {e}")
     return ids
 
+
 def create_user_banner_data_format_list(
     directory: str = FOLDER,
 ) -> List[UserBannerDataFormat]:
@@ -52,7 +53,7 @@ def create_user_banner_data_format_list(
                 banner_data_format_list.append(
                     UserBannerDataFormat(
                         id=banner_id,
-                        acquire_time=get_date_time(),
+                        acquiretime=get_date_time(),
                         value=52,
                         value2=-1,
                     )
@@ -62,7 +63,7 @@ def create_user_banner_data_format_list(
                 banner_data_format_list.append(
                     UserBannerDataFormat(
                         id=banner_id,
-                        acquire_time=get_date_time(),
+                        acquiretime=get_date_time(),
                         value=70,
                         value2=5,
                     )
@@ -72,7 +73,7 @@ def create_user_banner_data_format_list(
                 banner_data_format_list.append(
                     UserBannerDataFormat(
                         id=banner_id,
-                        acquire_time=get_date_time(),
+                        acquiretime=get_date_time(),
                         value=31,
                         value2=-1,
                     )
@@ -82,7 +83,7 @@ def create_user_banner_data_format_list(
                 banner_data_format_list.append(
                     UserBannerDataFormat(
                         id=banner_id,
-                        acquire_time=get_date_time(),
+                        acquiretime=get_date_time(),
                         value=29,
                         value2=-1,
                     )
@@ -92,7 +93,7 @@ def create_user_banner_data_format_list(
                 banner_data_format_list.append(
                     UserBannerDataFormat(
                         id=banner_id,
-                        acquire_time=get_date_time(),
+                        acquiretime=get_date_time(),
                         value=-1,
                         value2=-1,
                     )
