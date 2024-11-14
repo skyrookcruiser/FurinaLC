@@ -35,7 +35,6 @@ def fetch_user_banner_ids(directory: str = FOLDER) -> List[int]:
             print(f"Error parsing {file_path}: {e}")
     return ids
 
-
 def create_user_banner_data_format_list(
     directory: str = FOLDER,
 ) -> List[UserBannerDataFormat]:
@@ -47,54 +46,56 @@ def create_user_banner_data_format_list(
         # im not gonna bother checking
         # localize resource and
         # get the highest tier lol
-        if banner_id in [5, 6, 13, 14, 15, 16, 17, 18, 26, 39]:
-            continue
-        else:
-            match banner_id:
-                case _:
-                    banner_data_format_list.append(
-                        UserBannerDataFormat(
-                            id=banner_id,
-                            acquire_time=get_date_time(),
-                            value=-1,
-                            value2=-1,
-                        )
+        match banner_id:
+            # railway 1
+            case 5 | 6 | 7:
+                banner_data_format_list.append(
+                    UserBannerDataFormat(
+                        id=banner_id,
+                        acquire_time=get_date_time(),
+                        value=52,
+                        value2=-1,
                     )
-                case 7:
-                    banner_data_format_list.append(
-                        UserBannerDataFormat(
-                            id=banner_id,
-                            acquire_time=get_date_time(),
-                            value=52,
-                            value2=-1,
-                        )
+                )
+            # railway 2
+            case 13 | 14 | 15 | 16 | 17 | 18 | 19:
+                banner_data_format_list.append(
+                    UserBannerDataFormat(
+                        id=banner_id,
+                        acquire_time=get_date_time(),
+                        value=70,
+                        value2=5,
                     )
-                case 19:
-                    banner_data_format_list.append(
-                        UserBannerDataFormat(
-                            id=banner_id,
-                            acquire_time=get_date_time(),
-                            value=70,
-                            value2=5,
-                        )
+                )
+            # railway 3
+            case 26 | 27:
+                banner_data_format_list.append(
+                    UserBannerDataFormat(
+                        id=banner_id,
+                        acquire_time=get_date_time(),
+                        value=31,
+                        value2=-1,
                     )
-                case 27:
-                    banner_data_format_list.append(
-                        UserBannerDataFormat(
-                            id=banner_id,
-                            acquire_time=get_date_time(),
-                            value=31,
-                            value2=-1,
-                        )
+                )
+            # railway 4
+            case 39 | 40:
+                banner_data_format_list.append(
+                    UserBannerDataFormat(
+                        id=banner_id,
+                        acquire_time=get_date_time(),
+                        value=29,
+                        value2=-1,
                     )
-                case 40:
-                    banner_data_format_list.append(
-                        UserBannerDataFormat(
-                            id=banner_id,
-                            acquire_time=get_date_time(),
-                            value=29,
-                            value2=-1,
-                        )
+                )
+            # everything else
+            case _:
+                banner_data_format_list.append(
+                    UserBannerDataFormat(
+                        id=banner_id,
+                        acquire_time=get_date_time(),
+                        value=-1,
+                        value2=-1,
                     )
+                )
 
     return banner_data_format_list
