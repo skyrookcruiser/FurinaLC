@@ -2,6 +2,204 @@ from enum import IntEnum, StrEnum
 from pydantic import BaseModel
 from typing import List, Optional
 
+from enum import IntEnum, StrEnum
+
+
+class BATTLE_RESULT_STATE(IntEnum):
+    WIN = 0
+    DEFEAT = 1
+    NONE = 2
+    UNRECOGNIZED = -1
+
+
+class STR_BATTLE_RESULT_STATE(StrEnum):
+    WIN = "WIN"
+    DEFEAT = "DEFEAT"
+    NONE = "NONE"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class BATTLE_EGO_STATE(IntEnum):
+    Normal = 0
+    Disabled = 1
+    Selected = 2
+    Irrevocable = 3
+    UNRECOGNIZED = -1
+
+
+class STR_BATTLE_EGO_STATE(StrEnum):
+    Normal = "Normal"
+    Disabled = "Disabled"
+    Selected = "Selected"
+    Irrevocable = "Irrevocable"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class BATTLEPASS_REWARDSTATE(IntEnum):
+    NOTHING = 0
+    NORMALONLY = 1
+    WITHLIMPASS = 2
+    UNRECOGNIZED = -1
+
+
+class STR_BATTLEPASS_REWARDSTATE(StrEnum):
+    NOTHING = "NOTHING"
+    NORMALONLY = "NORMALONLY"
+    WITHLIMPASS = "WITHLIMPASS"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class SCENE_STATE(IntEnum):
+    Login = 0
+    Battle = 1
+    Main = 2
+    Story = 3
+    Dungeon = 4
+    MirrorDungeon = 5
+    RailwayDungeon = 6
+    StoryMirrorDungeon = 7
+    UNRECOGNIZED = -1
+
+
+class STR_SCENE_STATE(StrEnum):
+    Login = "Login"
+    Battle = "Battle"
+    Main = "Main"
+    Story = "Story"
+    Dungeon = "Dungeon"
+    MirrorDungeon = "MirrorDungeon"
+    RailwayDungeon = "RailwayDungeon"
+    StoryMirrorDungeon = "StoryMirrorDungeon"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class GACHAUI_STATE(IntEnum):
+    Limit = 0
+    One = 1
+    Ten = 2
+    UNRECOGNIZED = -1
+
+
+class STR_GACHAUI_STATE(StrEnum):
+    Limit = "Limit"
+    One = "One"
+    Ten = "Ten"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class PERSONALITY_ILLUST_STATE(IntEnum):
+    NONE = -1
+    BEFORE_GACKSUNG = 0
+    AFTER_GACKSUNG = 1
+
+
+class STR_PERSONALITY_ILLUST_STATE(StrEnum):
+    NONE = "NONE"
+    BEFORE_GACKSUNG = "BEFORE_GACKSUNG"
+    AFTER_GACKSUNG = "AFTER_GACKSUNG"
+
+
+class UMIDA_EVENTSTATE(IntEnum):
+    NOT_CLEAR_CP4 = 0
+    BEFORE_START = 1
+    ONGOING = 2
+    EVENT_COMPLETE = 3
+    END_EVENT = 4
+    UNRECOGNIZED = -1
+
+
+class STR_UMIDA_EVENTSTATE(StrEnum):
+    NOT_CLEAR_CP4 = "NOT_CLEAR_CP4"
+    BEFORE_START = "BEFORE_START"
+    ONGOING = "ONGOING"
+    EVENT_COMPLETE = "EVENT_COMPLETE"
+    END_EVENT = "END_EVENT"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class CLEARNODE_STATE(IntEnum):
+    NOTCLEAR = 0
+    CLEAR = 1
+    EXCLEAR = 2
+    NOTEXIST = 3
+    UNRECOGNIZED = -1
+
+
+class STR_CLEARNODE_STATE(StrEnum):
+    NOTCLEAR = "NOTCLEAR"
+    CLEAR = "CLEAR"
+    EXCLEAR = "EXCLEAR"
+    NOTEXIST = "NOTEXIST"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class LINE_STATE(IntEnum):
+    DEFAULT = 0
+    PASSED = 1
+    CLEARED = 2
+    MOVABLE = 3
+    UNRECOGNIZED = -1
+
+
+class STR_LINE_STATE(StrEnum):
+    DEFAULT = "DEFAULT"
+    PASSED = "PASSED"
+    CLEARED = "CLEARED"
+    MOVABLE = "MOVABLE"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class RESULT_STATE(IntEnum):
+    SUCCESS = 0
+    FAIL = 1
+    SKIP = 2
+    UNRECOGNIZED = -1
+
+
+class STR_RESULT_STATE(StrEnum):
+    SUCCESS = "SUCCESS"
+    FAIL = "FAIL"
+    SKIP = "SKIP"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class CONFIRM_BUTTON_STATE(IntEnum):
+    NEXT = 0
+    RESUME = 1
+    START_JUDGEMENT = 2
+    INTOBATTLE = 3
+    QUIT = 4
+    SELECT = 5
+    UNRECOGNIZED = -1
+
+
+class STR_CONFIRM_BUTTON_STATE(StrEnum):
+    NEXT = "NEXT"
+    RESUME = "RESUME"
+    START_JUDGEMENT = "START_JUDGEMENT"
+    INTOBATTLE = "INTOBATTLE"
+    QUIT = "QUIT"
+    SELECT = "SELECT"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
+
+class PORTRAIT_STATE(IntEnum):
+    BASE = 0
+    SELECTED = 1
+    CANT_SELECT = 2
+    DEACTIVE = 3
+    DEAD = 4
+    UNRECOGNIZED = -1
+
+
+class STR_PORTRAIT_STATE(StrEnum):
+    BASE = "BASE"
+    SELECTED = "SELECTED"
+    CANT_SELECT = "CANT_SELECT"
+    DEACTIVE = "DEACTIVE"
+    DEAD = "DEAD"
+    UNRECOGNIZED = "UNRECOGNIZED"
+
 
 class MISSION_CATEGORY(IntEnum):
     NONE = 0
@@ -1246,7 +1444,7 @@ class BattlePassFormat(BaseModel):
     today_rand_value: int = 0
     ex_reward_level: int = 0
     limbus_apply_level: int = 0
-    rewards_state: List[int] = []
+    rewards_state: List[BATTLEPASS_REWARDSTATE] = []
     missions_state: List[BattlePassMissionState] = []
     special_product_state: int = 0
     ex_reward_limbus_level: int = 0
