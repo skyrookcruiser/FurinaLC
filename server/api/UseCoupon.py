@@ -1,0 +1,2 @@
+# Req = ReqUseCoupon
+# Rsp = RspUseCoupon

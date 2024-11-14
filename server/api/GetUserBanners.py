@@ -1,0 +1,2 @@
+# Req = Null
+# Rsp = RspGetUserBanners

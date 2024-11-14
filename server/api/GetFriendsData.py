@@ -1,0 +1,2 @@
+# Req = ReqNull
+# Rsp = RspGetFriendsData
