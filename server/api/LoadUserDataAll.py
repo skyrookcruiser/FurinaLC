@@ -126,7 +126,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             ),
         ],
     )
-
+    # TODO: make db for user profiles
     user = UserPublicProfileWithSupportersFormat(
         public_uid=str(user_auth.uid),
         illust_id=10209,

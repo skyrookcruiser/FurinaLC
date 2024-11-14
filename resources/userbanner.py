@@ -1,0 +1,100 @@
+from pydantic import BaseModel
+from typing import List, Optional
+from pathlib import Path
+from limbus.formats import UserBannerDataFormat
+from utils import get_date_time
+
+FOLDER = "./resources/LimbusStaticData/StaticData/static-data/userbanner"
+
+
+class ValueText(BaseModel):
+    prefix: str
+
+
+class StaticUserBannerData(BaseModel):
+    id: int
+    value1Text: Optional[ValueText] = None
+    value2Text: Optional[ValueText] = None
+    value1Max: Optional[int] = None
+    value2Max: Optional[int] = None
+    effectId: Optional[int] = None
+
+
+class StaticUserBannerDataList(BaseModel):
+    list: List[StaticUserBannerData]
+
+
+def fetch_user_banner_ids(directory: str = FOLDER) -> List[int]:
+    ids = []
+    folder_path = Path(directory)
+    for file_path in folder_path.glob("**/*.json"):
+        try:
+            user_banner_data_list = StaticUserBannerDataList.parse_file(file_path)
+            ids.extend(banner.id for banner in user_banner_data_list.list)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
+    return ids
+
+
+def create_user_banner_data_format_list(
+    directory: str = FOLDER,
+) -> List[UserBannerDataFormat]:
+    banner_ids = fetch_user_banner_ids(directory)
+    banner_data_format_list = []
+
+    for banner_id in banner_ids:
+        # hardcoding this because
+        # im not gonna bother checking
+        # localize resource and
+        # get the highest tier lol
+        if banner_id in [5, 6, 13, 14, 15, 16, 17, 18, 26, 39]:
+            continue
+        else:
+            match banner_id:
+                case _:
+                    banner_data_format_list.append(
+                        UserBannerDataFormat(
+                            id=banner_id,
+                            acquire_time=get_date_time(),
+                            value=-1,
+                            value2=-1,
+                        )
+                    )
+                case 7:
+                    banner_data_format_list.append(
+                        UserBannerDataFormat(
+                            id=banner_id,
+                            acquire_time=get_date_time(),
+                            value=52,
+                            value2=-1,
+                        )
+                    )
+                case 19:
+                    banner_data_format_list.append(
+                        UserBannerDataFormat(
+                            id=banner_id,
+                            acquire_time=get_date_time(),
+                            value=70,
+                            value2=5,
+                        )
+                    )
+                case 27:
+                    banner_data_format_list.append(
+                        UserBannerDataFormat(
+                            id=banner_id,
+                            acquire_time=get_date_time(),
+                            value=31,
+                            value2=-1,
+                        )
+                    )
+                case 40:
+                    banner_data_format_list.append(
+                        UserBannerDataFormat(
+                            id=banner_id,
+                            acquire_time=get_date_time(),
+                            value=29,
+                            value2=-1,
+                        )
+                    )
+
+    return banner_data_format_list
