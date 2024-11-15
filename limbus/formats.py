@@ -1460,9 +1460,9 @@ class DanteAbilityFormat(BaseModel):
 
 
 class EgoFormat(BaseModel):
-    ego_id: int = 0
-    gacksung: int = 0
-    acquire_time: str = ""
+    ego_id: Optional[int] = None
+    gacksung: Optional[int] = None
+    acquire_time: Optional[str] = None
 
 
 class EgoContainIndexFormat(BaseModel):
@@ -1521,13 +1521,13 @@ class MembershipFormat(BaseModel):
 
 
 class PersonalityFormat(BaseModel):
-    personality_id: int = 0
-    level: int = 0
-    exp: int = 0
-    gacksung: int = 0
-    order_id: int = 0
-    gacksung_illust_type: int = 0
-    acquire_time: str = ""
+    personality_id: Optional[int] = None
+    level: Optional[int] = None
+    exp: Optional[int] = None
+    gacksung: Optional[int] = None
+    order_id: Optional[int] = None
+    gacksung_illust_type: Optional[int] = None
+    acquire_time: Optional[str] = None
 
 
 class UserProfileFormat(BaseModel):

@@ -7,6 +7,7 @@ from limbus.formats import (
     SupportPersonalitySlotFormat,
 )
 from typing import Optional, List
+from utils import get_date_time
 
 user_profile_collection = db["userprofiles"]
 
@@ -70,7 +71,7 @@ def get_user_profile_data_by_uid(
                 word_id=profile_doc["word_id"],
                 banners=profile_doc["banners"],
                 level=profile_doc["level"],
-                date=profile_doc["date"],
+                date=get_date_time(),
                 support_personalities=profile_doc["support_personalities"],
             )
 
@@ -94,7 +95,7 @@ def update_user_profile_data(
     word_id: Optional[int] = None,
     banners: Optional[List[UserPublicBannerFormat]] = None,
     level: Optional[int] = None,
-    date: Optional[str] = None,
+    date: Optional[str] = get_date_time(),
     support_personalities: Optional[List[SupportPersonalitySlotFormat]] = None,
 ) -> bool:
     try:

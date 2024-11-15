@@ -47,9 +47,9 @@ class RspBattlePassExLevelReward(BaseModel):
 
 class RspUseCoupon(BaseModel):
     state: int = 0
-    rewards: List[Element] = []
-    backoffdate: str = ""
-    backoffduration: int = 0
+    rewards: Optional[List[Element]] = None
+    backoffdate: Optional[str] = None
+    backoffduration: Optional[int] = None
 
 
 class RspGetUserCouponState(BaseModel):
