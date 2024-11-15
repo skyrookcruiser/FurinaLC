@@ -1,38 +1,10 @@
 from limbus.requests import Cs, ReqLoadUserDataAll
 from limbus.responses import Sc, RspLoadUserDataAll
 from limbus.formats import (
-    UserPublicProfileWithSupportersFormat,
-    DailyLoginRewardStateFormat,
-    SupportPersonalitySlotFormat,
-    ProfileEgoContainIndexFormat,
     UpdatedFormat,
-    SynchronizedFormat,
-    UserInfo,
-    FormationFormat,
     LobbyCgFormat,
-    ItemFormat,
-    ChanceFormat,
-    BattlePassFormat,
-    MailFormat,
-    AnnouncerFormat,
-    MembershipFormat,
-    GachaRecordFormat,
-    UnlockCodeFormat,
-    EventRewardStateFormat,
-    MissionFormat,
     DanteAbilityFormat,
-    FormationDetailFormat,
-    FormationNameElement,
-    LobbyCgDetailFormat,
-    BattlePassMissionState,
-    MISSION_STATE,
-    Element,
-    STR_ELEMENT_TYPE,
-    ELEMENT_TYPE,
-    MISSION_CATEGORY,
     DANTE_ABILITY_CATEGORY,
-    UserPublicBannerFormat,
-    MailContentFormat,
 )
 from utils import get_date_time
 from database.ego import get_ego_formats_by_uid
@@ -42,6 +14,8 @@ from database.item import get_item_formats_by_uid
 from database.announcer import get_announcer_format_by_uid
 from database.formation import get_formation_formats_by_uid
 from database.userprofile import get_user_profile_data_by_uid
+
+# from database.lobbycg import get_one_lobby_cg_format
 from resources.stage_node_reward import create_main_chapter_state_list
 from resources.unlockcode_subchapter import create_unlock_code_format_list
 from resources.chance import create_chance_format_list
@@ -66,17 +40,9 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         formationList=get_formation_formats_by_uid(uid),
         lobbyCG=LobbyCgFormat(
             characterId=1,
-            lobbycgdetails=[
-                # NOTE: ADDING THESE BREAK THE FUCKING
-                # LOADING INTO MENU!!! maybe needs to be the same
-                # as user illust id???
-                # LobbyCgDetailFormat(
-                #     id=10101,
-                #     g=1,
-                # )
-            ],
+            lobbycgdetails=[],
             isShowProfile=True,
-        ),
+        ),  # get_one_lobby_cg_format(uid),
         itemList=get_item_formats_by_uid(uid),
         chanceList=create_chance_format_list(),
         battlePass=create_battlepass_format(),
@@ -84,37 +50,12 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         mailList=[],
         announcer=get_announcer_format_by_uid(uid),
         membershipList=create_membership_formats(),
-        # TODO: edge the player with 199 pity point
-        # oh and, implement actual gacha?
-        gachaList=[
-            # GachaRecordFormat(
-            #     gachaId=197,
-            #     pityPoint=199,
-            # )
-        ],
+        gachaList=[],
         userUnlockCodeList=create_unlock_code_format_list(),
-        # NOTE: this should just be empty, theres no event anyways
-        eventRewardStateList=[
-            # EventRewardStateFormat(
-            #     eventID=1,
-            #     rewardID=1,
-            #     count=1,
-            # )
-        ],
+        eventRewardStateList=[],
         isUpdateUserBanner=False,
         isResetMirrorDungeon=False,
-        # TODO: parse from static data and give
-        # misisonstate finish to all of them
-        missionList=[
-            # MissionFormat(
-            #     category=MISSION_CATEGORY.UNRECOGNIZED,
-            #     id=0,
-            #     state=MISSION_STATE.UNRECOGNIZED,
-            #     initconditionvalue=-1,
-            #     conditionvalue=-1,
-            #     expiredate="datetime",
-            # )
-        ],
+        missionList=[],
         # TODO: get dante ability from resources
         danteAbilityList=[
             DanteAbilityFormat(
@@ -133,8 +74,6 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
     rsp = RspLoadUserDataAll(
         profile=get_user_profile_data_by_uid(uid),
         danteNoteTodayPage=49,
-        # daily login reward is only for
-        # new players (?) currently, atleast
         dailyLoginRewardStates=[],
         dailyLoginWeekId=-1,
         showedWeekByMinistory=-1,

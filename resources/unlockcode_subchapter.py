@@ -1,7 +1,6 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List
 from limbus.formats import UnlockCodeFormat
-from pathlib import Path
 
 FILE = "./resources/LimbusStaticData/StaticData/static-data/unlockcode/unlockcode-subchapter/unlockcode-subchapter.json"
 

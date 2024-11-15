@@ -12,6 +12,7 @@ from database.formation import insert_formation_formats
 from database.userbanner import insert_user_banner_data_formats
 from database.userticket import insert_profile_ticket_data
 from database.userprofile import insert_user_public_profile_with_supporters_format
+# from database.lobbycg import insert_lobby_cg_format
 
 user_collection = db["users"]
 
@@ -55,6 +56,7 @@ def create_user(uid: int, token: str, account_type: str) -> int:
         insert_user_banner_data_formats(uid)
         insert_profile_ticket_data(uid)
         insert_user_public_profile_with_supporters_format(uid)
+        # insert_lobby_cg_format(uid)
 
         return uid
 

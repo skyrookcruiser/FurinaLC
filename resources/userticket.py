@@ -26,7 +26,7 @@ def fetch_unique_ids_from_directory(directory: str) -> List[int]:
     for file_path in folder_path.glob("**/*.json"):
         try:
             data_list = UserTicketDataList.parse_file(file_path)
-            ids.update(ticket.id for ticket in data_list.list)
+            ids.update(ticket.id for ticket in data_list.list if ticket.id > 7)
         except Exception as e:
             print(f"Error parsing {file_path}: {e}")
 

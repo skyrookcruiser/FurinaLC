@@ -3,3 +3,6 @@ __pycache__/
 .venv
 .ruff_cache
 utils/mitmlimbus
+
+# this shit is autistic im not gonna bother anymore
+lobbycg.py

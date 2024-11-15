@@ -1,7 +1,7 @@
 from limbus.requests import Cs, ReqUpdateFormationCommand
 from limbus.responses import Sc, RspNull
 from limbus.formats import UpdatedFormat
-from database.formation import update_formation_format, get_one_formation_format
+from database.formation import update_formation_format
 from fastapi import HTTPException
 
 
@@ -26,9 +26,7 @@ async def handle(req: Cs[ReqUpdateFormationCommand]):
             detail="Formation not found or update failed.",
         )
 
-    updated_formation = get_one_formation_format(uid, formation_id)
-
     return Sc[RspNull](
-        updated=UpdatedFormat(formationList=[updated_formation]),
+        updated=UpdatedFormat(formationList=[req_formation]),
         result=RspNull(),
     )
