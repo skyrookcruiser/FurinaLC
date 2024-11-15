@@ -17,4 +17,9 @@ dependencies = [
 exclude = ["./limbus/crypto.py"]
 
 [tool.ruff.lint]
-ignore = ["F403", "E741", "F405"]
+ignore = [
+    "F403", 
+    "E741", 
+    "F405",
+    # "F401",
+    ]

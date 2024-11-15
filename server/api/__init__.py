@@ -11,7 +11,8 @@ from . import (
     # GetFriendsData,
     GetUserBanners,
     GetProfileTicketDecoDatas,
-    # UpdateUserProfile
+    UpdateUserProfile,
+    UpdateProfileTicketDeco,
 )
 
 
@@ -27,4 +28,5 @@ def add_api_handler(app: FastAPI):
     # app.post("/api/GetFriendsData")(GetFriendsData.handle)
     app.post("/api/GetUserBanners")(GetUserBanners.handle)
     app.post("/api/GetProfileTicketDecoDatas")(GetProfileTicketDecoDatas.handle)
-    # app.post("/api/UpdateUserProfile")(UpdateUserProfile.handle)
+    app.post("/api/UpdateUserProfile")(UpdateUserProfile.handle)
+    app.post("/api/UpdateProfileTicketDeco")(UpdateProfileTicketDeco.handle)

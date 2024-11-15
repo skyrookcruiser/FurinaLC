@@ -76,7 +76,7 @@ def update_user_banner_data(
 
             return True
 
-        return False
+        return True
 
     except Exception as e:
         print("WARN:     " + str(e))

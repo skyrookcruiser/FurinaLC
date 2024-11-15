@@ -41,6 +41,7 @@ from database.personality import get_personality_formats_by_uid
 from database.item import get_item_formats_by_uid
 from database.announcer import get_announcer_format_by_uid
 from database.formation import get_formation_formats_by_uid
+from database.userprofile import get_user_profile_data_by_uid
 from resources.stage_node_reward import create_main_chapter_state_list
 from resources.unlockcode_subchapter import create_unlock_code_format_list
 from resources.chance import create_chance_format_list
@@ -51,16 +52,18 @@ from resources.iap_membership import create_membership_formats
 async def handle(req: Cs[ReqLoadUserDataAll]):
     curr_date = get_date_time()
     user_auth = req.userAuth
+    uid = user_auth.uid
+
     update = UpdatedFormat(
         # isInitialize pretty much sets the base updatedformat
         # for future update shenanigans
         isInitialized=True,
         # TODO: implement coupon, then use it to edit all levels
         # personality, ego, user, etc.
-        userInfo=get_user_info_by_uid(user_auth.uid),
-        personalityList=get_personality_formats_by_uid(user_auth.uid),
-        egoList=get_ego_formats_by_uid(user_auth.uid),
-        formationList=get_formation_formats_by_uid(user_auth.uid),
+        userInfo=get_user_info_by_uid(uid),
+        personalityList=get_personality_formats_by_uid(uid),
+        egoList=get_ego_formats_by_uid(uid),
+        formationList=get_formation_formats_by_uid(uid),
         lobbyCG=LobbyCgFormat(
             characterId=1,
             lobbycgdetails=[
@@ -74,12 +77,12 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             ],
             isShowProfile=True,
         ),
-        itemList=get_item_formats_by_uid(user_auth.uid),
+        itemList=get_item_formats_by_uid(uid),
         chanceList=create_chance_format_list(),
         battlePass=create_battlepass_format(),
         mainChapterStateList=create_main_chapter_state_list(),
         mailList=[],
-        announcer=get_announcer_format_by_uid(user_auth.uid),
+        announcer=get_announcer_format_by_uid(uid),
         membershipList=create_membership_formats(),
         # TODO: edge the player with 199 pity point
         # oh and, implement actual gacha?
@@ -126,70 +129,9 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
             ),
         ],
     )
-    # TODO: make db for user profiles
-    user = UserPublicProfileWithSupportersFormat(
-        public_uid=str(user_auth.uid),
-        illust_id=10209,
-        illust_gacksung_level=3,
-        leftborder_id=29,
-        rightborder_id=29,
-        egobackground_id=32,
-        sentence_id=36,
-        word_id=3,
-        banners=[
-            UserPublicBannerFormat(
-                id=35,  # LoR banner
-                value=-1,
-                value2=-1,
-                idx=0,
-            ),
-            UserPublicBannerFormat(
-                id=7,  # maxed out rail line 1
-                value=52,  # turn count
-                value2=-1,  # cycle count
-                idx=1,
-            ),
-            UserPublicBannerFormat(
-                id=19,  # maxed out rail line 2
-                value=70,
-                value2=5,
-                idx=2,
-            ),
-            UserPublicBannerFormat(
-                id=27,  # maxed out rail line 3
-                value=31,
-                value2=-1,
-                idx=3,
-            ),
-            UserPublicBannerFormat(
-                id=40,  # maxed out rail line 4
-                value=29,
-                value2=-1,
-                idx=4,
-            ),
-        ],
-        level=302,
-        date=curr_date,
-        support_personalities=[
-            # SupportPersonalitySlotFormat(
-            #     idx=10101,
-            #     pid=1,
-            #     l=50,
-            #     egos=[
-            #         # ProfileEgoContainIndexFormat(
-            #         #     idx=20101,
-            #         #     id=20101,
-            #         #     g=4,
-            #         # )
-            #     ],
-            #     gl=4,
-            #     gi=1,
-            # )
-        ],
-    )
 
     rsp = RspLoadUserDataAll(
-        profile=user,
+        profile=get_user_profile_data_by_uid(uid),
         danteNoteTodayPage=49,
         # daily login reward is only for
         # new players (?) currently, atleast

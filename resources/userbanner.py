@@ -25,15 +25,17 @@ class StaticUserBannerDataList(BaseModel):
 
 
 def fetch_user_banner_ids(directory: str = FOLDER) -> List[int]:
-    ids = []
+    ids = set()
     folder_path = Path(directory)
+
     for file_path in folder_path.glob("**/*.json"):
         try:
             user_banner_data_list = StaticUserBannerDataList.parse_file(file_path)
-            ids.extend(banner.id for banner in user_banner_data_list.list)
+            ids.update(banner.id for banner in user_banner_data_list.list)
         except Exception as e:
             print(f"Error parsing {file_path}: {e}")
-    return ids
+
+    return list(ids)
 
 
 def create_user_banner_data_format_list(

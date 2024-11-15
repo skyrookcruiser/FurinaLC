@@ -7,7 +7,7 @@ from resources.userticket import (
 )
 from limbus.formats import UserProfileBorderFormat, UserProfileEgobackgroundFormat
 from limbus.responses import RspGetProfileTicketDecoDatas
-from typing import List
+from typing import List, Optional
 
 user_tickets_collection = db["usertickets"]
 
@@ -38,7 +38,7 @@ def insert_profile_ticket_data(uid: int) -> None:
         print("WARN:     " + str(e))
 
 
-def get_profile_ticket_data_by_uid(uid: int) -> RspGetProfileTicketDecoDatas:
+def get_profile_ticket_data_by_uid(uid: int) -> Optional[RspGetProfileTicketDecoDatas]:
     try:
         ticket_doc = user_tickets_collection.find_one({"uid": uid})
 

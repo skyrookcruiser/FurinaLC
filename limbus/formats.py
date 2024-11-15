@@ -2,8 +2,6 @@ from enum import IntEnum, StrEnum
 from pydantic import BaseModel
 from typing import List, Optional
 
-from enum import IntEnum, StrEnum
-
 
 class BATTLE_RESULT_STATE(IntEnum):
     WIN = 0
@@ -1031,7 +1029,7 @@ class UserPublicBannerFormat(BaseModel):
     idx: int = 0
 
 
-class UserPublicProfileWithSupportersFormat(BaseModel):
+class UserPublicProfileFormat(BaseModel):
     public_uid: Optional[str] = None
     illust_id: Optional[int] = None
     illust_gacksung_level: Optional[int] = None

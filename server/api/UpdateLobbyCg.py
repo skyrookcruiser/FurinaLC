@@ -1,0 +1,2 @@
+# RECV:     {"userAuth":{"uid":1,"dbid":0,"authCode":"furinalc","version":"1.63.0","synchronousDataVersion":513},"parameters":{"lobbyCg":{"characterId":1,"lobbycgdetails":[{"id":10101,"g":0},{"id":10201,"g":0},{"id":10301,"g":0},{"id":10401,"g":0},{"id":10501,"g":0},{"id":10601,"g":0},{"id":10701,"g":0},{"id":10801,"g":0},{"id":10901,"g":0},{"id":11001,"g":0},{"id":11101,"g":0},{"id":11201,"g":0}],"isShowProfile":true}}}
+# SEND:     {"detail":"Not Found"}
