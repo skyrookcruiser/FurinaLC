@@ -42,7 +42,7 @@ async def handle(req: Cs[ReqLoadUserDataAll]):
         ),  # get_one_lobby_cg_format(uid),
         itemList=get_item_formats_by_uid(uid),
         chanceList=create_chance_format_list(),
-        battlePass=create_battlepass_format(),
+        battlePass=create_battlepass_format(season="5"),
         mainChapterStateList=create_main_chapter_state_list(),
         mailList=[],
         announcer=get_announcer_format_by_uid(uid),

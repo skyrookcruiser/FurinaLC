@@ -9,7 +9,6 @@ from limbus.formats import (
 )
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/battlepass"
-SEASON = 5
 
 
 class PassUiConfigData(BaseModel):
@@ -106,14 +105,17 @@ class BattlepassDataList(BaseModel):
     list: List[BattlepassData]
 
 
-def create_battlepass_format(directory: str = FOLDER) -> BattlePassFormat:
+def create_battlepass_format(
+    directory: str = FOLDER, season: str = "5"
+) -> BattlePassFormat:
     folder_path = Path(directory)
     try:
         for file_path in folder_path.glob("**/*.json"):
-            season = file_path.stem.split("-")
-            current_season = int(season[1])
+            szn = file_path.stem.split("-")
+            current_season = str(szn[1])
+            print(current_season)
 
-            if current_season is not SEASON:
+            if current_season is not season:
                 continue
 
             battlepass_data_list = BattlepassDataList.parse_file(file_path)

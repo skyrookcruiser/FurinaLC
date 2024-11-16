@@ -38,7 +38,7 @@ async def handle(req: Cs[ReqUseCoupon]):
         case "P":
             pid, pl, pg = extract_ints(code, 3)
             if pid == 0:
-                return Sc[RspUseCoupon](result=RspUseCoupon(state=0))
+                return Sc[RspUseCoupon](result=RspUseCoupon(state=2))
             else:
                 update_personality_format(
                     uid=uid, personality_id=pid, level=pl, gacksung=pg
@@ -72,7 +72,7 @@ async def handle(req: Cs[ReqUseCoupon]):
         case "E":
             eid, eg = extract_ints(code, 2)
             if eid == 0:
-                return Sc[RspUseCoupon](result=RspUseCoupon(state=0))
+                return Sc[RspUseCoupon](result=RspUseCoupon(state=2))
             else:
                 update_ego_format(
                     uid=uid,
@@ -107,7 +107,7 @@ async def handle(req: Cs[ReqUseCoupon]):
         case "I":
             iid, ic = extract_ints(code, 2)
             if iid == 0:
-                return Sc[RspUseCoupon](result=RspUseCoupon(state=0))
+                return Sc[RspUseCoupon](result=RspUseCoupon(state=2))
             else:
                 update_item_format(
                     uid=uid,
@@ -144,7 +144,7 @@ async def handle(req: Cs[ReqUseCoupon]):
         case "U":
             uid, ul, us = extract_ints(code, 3)
             if uid == 0:
-                return Sc[RspUseCoupon](result=RspUseCoupon(state=0))
+                return Sc[RspUseCoupon](result=RspUseCoupon(state=2))
             else:
                 update_user_info(uid=uid, level=ul, stamina=us)
                 user = get_user_info_by_uid(uid)
@@ -165,4 +165,4 @@ async def handle(req: Cs[ReqUseCoupon]):
                 )
         # UNKNOWN
         case _:
-            return Sc[RspUseCoupon](result=RspUseCoupon(state=0))
+            return Sc[RspUseCoupon](result=RspUseCoupon(state=2))
