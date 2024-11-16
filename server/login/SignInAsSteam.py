@@ -1,7 +1,7 @@
 from limbus.requests import Cs, ReqSignInAsSteam
 from limbus.responses import Sc, RspSignInAsSteam
 from limbus.formats import UserAuthFormat, AccountInfoFormat
-from database.user import check_user
+from database.user_profile.user import check_user
 from utils import get_date_time
 
 

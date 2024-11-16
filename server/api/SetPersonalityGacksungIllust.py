@@ -1,7 +1,10 @@
 from limbus.requests import Cs, ReqSetPersonalityGacksungIllust
 from limbus.responses import Sc, RspNull
 from limbus.formats import UpdatedFormat
-from database.personality import get_one_personality_format, update_personality_format
+from database.user_stuff.personality import (
+    get_one_personality_format,
+    update_personality_format,
+)
 from fastapi import HTTPException
 
 

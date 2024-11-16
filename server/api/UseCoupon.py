@@ -10,10 +10,10 @@ from limbus.formats import (
     EgoFormat,
     ItemFormat,
 )
-from database.personality import update_personality_format
-from database.ego import update_ego_format
-from database.item import update_item_format
-from database.user import update_user_info, get_user_info_by_uid
+from database.user_stuff.personality import update_personality_format
+from database.user_stuff.ego import update_ego_format
+from database.user_stuff.item import update_item_format
+from database.user_profile.user import update_user_info, get_user_info_by_uid
 
 
 def extract_ints(input_str: str, expected_count: int) -> tuple:

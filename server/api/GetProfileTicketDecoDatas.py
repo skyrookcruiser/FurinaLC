@@ -1,6 +1,6 @@
 from limbus.requests import Cs, ReqNull
 from limbus.responses import Sc, RspGetProfileTicketDecoDatas
-from database.userticket import get_profile_ticket_data_by_uid
+from database.user_profile.ticket import get_profile_ticket_data_by_uid
 
 
 async def handle(req: Cs[ReqNull]):

@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from database.client import db
 from limbus.formats import PersonalityFormat
-from resources.personality import create_personality_format_list
+from resources.user_stuff.personality import create_personality_format_list
 from typing import List, Optional
 
 personality_collection = db["personalities"]

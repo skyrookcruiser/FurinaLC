@@ -4,14 +4,16 @@ from typing import Optional
 from database.client import db
 from utils import get_date_time
 from limbus.formats import UserInfo
-from database.ego import insert_ego_formats
-from database.personality import insert_personality_formats
-from database.item import insert_item_formats
-from database.announcer import insert_announcer_format
-from database.formation import insert_formation_formats
-from database.userbanner import insert_user_banner_data_formats
-from database.userticket import insert_profile_ticket_data
-from database.userprofile import insert_user_public_profile_with_supporters_format
+from database.user_stuff.ego import insert_ego_formats
+from database.user_stuff.personality import insert_personality_formats
+from database.user_stuff.item import insert_item_formats
+from database.user_stuff.announcer import insert_announcer_format
+from database.user_stuff.formation import insert_formation_formats
+from database.user_profile.banner import insert_user_banner_data_formats
+from database.user_profile.ticket import insert_profile_ticket_data
+from database.user_profile.profile import (
+    insert_user_public_profile_with_supporters_format,
+)
 # from database.lobbycg import insert_lobby_cg_format
 
 user_collection = db["users"]

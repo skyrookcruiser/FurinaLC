@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from pathlib import Path
-from resources.unlockcode_subchapter import fetch_unlockcode_ids
+from resources.story_stuff.unlock_code import fetch_unlockcode_ids
 from limbus.formats import (
     MainChapterStateFormat,
     SubChapterStateFormat,

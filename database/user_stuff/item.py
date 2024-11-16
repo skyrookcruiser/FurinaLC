@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.item import create_item_format_list
+from resources.user_stuff.item import create_item_format_list
 from limbus.formats import ItemFormat
 from typing import List, Optional
 

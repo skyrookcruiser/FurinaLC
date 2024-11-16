@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.announcer import create_announcer_format
+from resources.user_stuff.announcer import create_announcer_format
 from limbus.formats import AnnouncerFormat
 from typing import List, Optional
 

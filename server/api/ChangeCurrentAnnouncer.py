@@ -1,7 +1,10 @@
 from limbus.requests import Cs, ReqChangeCurrentAnnouncer
 from limbus.responses import Sc, RspNull
 from limbus.formats import UpdatedFormat
-from database.announcer import get_announcer_format_by_uid, update_announcer_format
+from database.user_stuff.announcer import (
+    get_announcer_format_by_uid,
+    update_announcer_format,
+)
 from fastapi import HTTPException
 
 

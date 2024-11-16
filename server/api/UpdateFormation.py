@@ -1,7 +1,7 @@
 from limbus.requests import Cs, ReqUpdateFormationCommand
 from limbus.responses import Sc, RspNull
 from limbus.formats import UpdatedFormat
-from database.formation import update_formation_format
+from database.user_stuff.formation import update_formation_format
 from fastapi import HTTPException
 
 

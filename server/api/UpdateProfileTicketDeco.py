@@ -1,6 +1,6 @@
 from limbus.requests import Cs, ReqUpdateProfileTicketDeco
 from limbus.responses import Sc, RspUpdateProfileTicketDeco
-from database.userprofile import update_user_profile_data
+from database.user_profile.profile import update_user_profile_data
 from fastapi import HTTPException
 
 

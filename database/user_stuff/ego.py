@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.ego import create_ego_format_list
+from resources.user_stuff.ego import create_ego_format_list
 from limbus.formats import EgoFormat
 from typing import List, Optional
 
