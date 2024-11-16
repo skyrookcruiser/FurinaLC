@@ -245,7 +245,7 @@ class RspUseGachaPityPoint(BaseModel):
 
 
 class RspClaimClosedGachaRewards(BaseModel):
-    pityPointDataList: List[int] = []
+    pityPointDataList: Optional[List[int]] = None
 
 
 class RspInitPurchase(BaseModel):
