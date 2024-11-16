@@ -15,6 +15,8 @@ from . import (
     UpdateLobbyCg,
     GetFriendsData,
     GetDungeonSaveInfoAll,
+    GetRailwayDungeonNodeAndLogAll,
+    EnterRailwayDungeon,
 )
 
 
@@ -34,3 +36,7 @@ def add_api_handler(app: FastAPI):
     app.post("/api/UpdateLobbyCg")(UpdateLobbyCg.handle)
     app.post("/api/GetFriendsData")(GetFriendsData.handle)
     app.post("/api/GetDungeonSaveInfoAll")(GetDungeonSaveInfoAll.handle)
+    app.post("/api/GetRailwayDungeonNodeAndLogAll")(
+        GetRailwayDungeonNodeAndLogAll.handle
+    )
+    app.post("/api/EnterRailwayDungeon")(EnterRailwayDungeon.handle)
