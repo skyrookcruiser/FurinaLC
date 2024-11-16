@@ -1378,7 +1378,7 @@ class RailwayDungeonSaveInfoFormat(BaseModel):
     buffsets: List[RailwayBuffSetFormat] = []
     initseed: int = 0
     currentseed: int = 0
-    enemySaveData: SaveDataForRailwayDungeon = SaveDataForRailwayDungeon()
+    enemySaveData: Optional[SaveDataForRailwayDungeon] = None
 
 
 class RailwayNodeDataFormat(BaseModel):
@@ -1600,6 +1600,7 @@ class MirrorDungeonSaveUnitInfoFormat(BaseModel):
 
 
 class MirrorDungeonCurrentInfoFormat(BaseModel):
+    cn: DungeonMapNodeFormat = DungeonMapNodeFormat()
     eid: int = 0
     dul: List[MirrorDungeonSaveUnitInfoFormat] = []
     sepsId: int = 0

@@ -14,6 +14,7 @@ from . import (
     UpdateProfileTicketDeco,
     UpdateLobbyCg,
     GetFriendsData,
+    GetDungeonSaveInfoAll,
 )
 
 
@@ -32,3 +33,4 @@ def add_api_handler(app: FastAPI):
     app.post("/api/UpdateProfileTicketDeco")(UpdateProfileTicketDeco.handle)
     app.post("/api/UpdateLobbyCg")(UpdateLobbyCg.handle)
     app.post("/api/GetFriendsData")(GetFriendsData.handle)
+    app.post("/api/GetDungeonSaveInfoAll")(GetDungeonSaveInfoAll.handle)
