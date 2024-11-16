@@ -1,17 +1,18 @@
 from pydantic import BaseModel
 from typing import List, Optional
+from pathlib import Path
+from itertools import groupby
 from limbus.formats import (
     MainChapterStateFormat,
     SubChapterStateFormat,
     NodeStateFormat,
 )
-from pathlib import Path
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/stagenodereward"
 
 
 class StageNodeClearRewardData(BaseModel):
-    # check ELEMENT_TYPE in limbus.formats
+    # Check ELEMENT_TYPE in limbus.formats
     type: str
     id: int
     num: Optional[int] = None
@@ -42,26 +43,43 @@ def fetch_node_ids(directory: str = FOLDER) -> List[int]:
     return ids
 
 
-def chunk_by(vec: List[int], chunk_size: int) -> List[List[int]]:
-    return [vec[i : i + chunk_size] for i in range(0, len(vec), chunk_size)]
+def create_main_chapter_state_list() -> List[MainChapterStateFormat]:
+    node_ids = fetch_node_ids()
 
+    grouped_by_main = {
+        key: list(group)
+        for key, group in groupby(sorted(node_ids), key=lambda x: x // 100)
+    }
 
-def create_main_chapter_state_list(
-    directory: str = FOLDER,
-) -> List[MainChapterStateFormat]:
-    node_ids = fetch_node_ids(directory)
-    chunked_ids = chunk_by(node_ids, 100)
     main_chapter_states = []
-    for chunk in chunked_ids:
-        main_chapter_state = MainChapterStateFormat(id=chunk[0] // 100, subcss=[])
+    for main_chapter_state_id, sub_node_ids in grouped_by_main.items():
+        grouped_by_sub = {
+            key: list(group)
+            for key, group in groupby(sorted(sub_node_ids), key=lambda x: x // 100)
+        }
 
-        for node_id in chunk:
-            sub_css = SubChapterStateFormat(
-                id=node_id,
+        sub_chapters = [
+            SubChapterStateFormat(
+                id=sub_chapter_id,
                 rss=[1, 2, 3, 10],
-                nss=[NodeStateFormat(id=node_id, ct=2, cn=1, dn=0)],
+                nss=[
+                    NodeStateFormat(
+                        id=node_id,
+                        ct=2,
+                        cn=1,
+                        dn=0,
+                    )
+                    for node_id in nodes
+                ],
             )
-            main_chapter_state.subcss.append(sub_css)
-        main_chapter_states.append(main_chapter_state)
+            for sub_chapter_id, nodes in grouped_by_sub.items()
+        ]
+
+        main_chapter_states.append(
+            MainChapterStateFormat(
+                id=main_chapter_state_id,
+                subcss=sub_chapters,
+            )
+        )
 
     return main_chapter_states

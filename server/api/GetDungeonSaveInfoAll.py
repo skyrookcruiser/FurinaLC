@@ -24,15 +24,13 @@ async def handle(req: Cs[ReqGetDungeonSaveInfoAll]):
         idx=-1,
         currentInfo=MirrorDungeonCurrentInfoFormat(
             eid=-1,
-            startKeyword="None",
         ),
     )
 
     railway_save_info = RailwayDungeonSaveInfoFormat(
-        id=(railway_id - 1),
+        id=railway_id,
         prevclearnode=-1,
-        lastclearnode=-1,
-        lastenternodeid=-1,
+        lastenternodeid=1,
     )
 
     story_mirror_save_info = StoryMirrorDungeonSaveInfoFormat(
@@ -47,7 +45,7 @@ async def handle(req: Cs[ReqGetDungeonSaveInfoAll]):
             dungeonid=railway_id,
             idx=0,
             clearnumber=1,
-            defeatnumber=0,
+            defeatnumber=1,
         )
     ]
 

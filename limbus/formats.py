@@ -1015,6 +1015,13 @@ class StoryDungeonCurrentInfoFormat(BaseModel):
     scpn: DungeonMapNodeFormat = DungeonMapNodeFormat()
     scpegl: List[DungeonMapEgoGiftFormat] = []
     opn: List[int] = []
+    cn: DungeonMapNodeFormat = DungeonMapNodeFormat()
+    egs: List[DungeonMapEgoGiftFormat] = []
+    pnids: List[int] = []
+    nr: int = 0
+    pce: List[DungeonChoiceEventSaveDataFormat] = []
+    ess: List[DungeonEgoSkillStockFormat] = []
+    dn: int = 0
 
 
 class StoryDungeonSaveInfoFormat(BaseModel):
@@ -1378,7 +1385,7 @@ class RailwayDungeonSaveInfoFormat(BaseModel):
     buffsets: List[RailwayBuffSetFormat] = []
     initseed: int = 0
     currentseed: int = 0
-    enemySaveData: Optional[SaveDataForRailwayDungeon] = None
+    enemySaveData: SaveDataForRailwayDungeon = SaveDataForRailwayDungeon()
 
 
 class RailwayNodeDataFormat(BaseModel):
@@ -1600,7 +1607,6 @@ class MirrorDungeonSaveUnitInfoFormat(BaseModel):
 
 
 class MirrorDungeonCurrentInfoFormat(BaseModel):
-    cn: DungeonMapNodeFormat = DungeonMapNodeFormat()
     eid: int = 0
     dul: List[MirrorDungeonSaveUnitInfoFormat] = []
     sepsId: int = 0
@@ -1621,6 +1627,13 @@ class MirrorDungeonCurrentInfoFormat(BaseModel):
     consumedChipOut: int = 0
     fundedChip: int = 0
     startKeyword: str = ""
+    cn: DungeonMapNodeFormat = DungeonMapNodeFormat()
+    egs: List[DungeonMapEgoGiftFormat] = []
+    pnids: List[int] = []
+    nr: int = 0
+    pce: List[DungeonChoiceEventSaveDataFormat] = []
+    ess: List[DungeonEgoSkillStockFormat] = []
+    dn: int = 0
 
 
 class MirrorDungeonSaveInfoFormat(BaseModel):
@@ -1685,7 +1698,7 @@ class UserTheaterInfoFormat(BaseModel):
 
 class UnlockCodeFormat(BaseModel):
     unlockcode: int = 0
-    expireDate: str = ""
+    expireDate: Optional[str] = None
 
 
 class UserInfo(BaseModel):

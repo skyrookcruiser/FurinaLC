@@ -1,8 +1,9 @@
 from pydantic import BaseModel
 from typing import List
 from limbus.formats import UnlockCodeFormat
+from pathlib import Path
 
-FILE = "./resources/LimbusStaticData/StaticData/static-data/unlockcode/unlockcode-subchapter/unlockcode-subchapter.json"
+FOLDER = "./resources/LimbusStaticData/StaticData/static-data/unlockcode/"
 
 
 class UnlockCodeSubChapterData(BaseModel):
@@ -15,13 +16,21 @@ class UnlockCodeSubChapterDataList(BaseModel):
     list: List[UnlockCodeSubChapterData]
 
 
-def fetch_unlockcode_ids(directory: str = FILE) -> List[int]:
-    data = UnlockCodeSubChapterDataList.parse_file(FILE)
+def fetch_unlockcode_ids(directory: str = FOLDER) -> List[int]:
+    ids = set()
+    folder_path = Path(directory)
 
-    return [code.id for code in data.list]
+    for file_path in folder_path.glob("**/*.json"):
+        try:
+            unlock_code_data_list = UnlockCodeSubChapterDataList.parse_file(file_path)
+            ids.update(code.id for code in unlock_code_data_list.list)
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
+
+    return list(ids)
 
 
-def create_unlock_code_format_list(directory: str = FILE) -> List[UnlockCodeFormat]:
+def create_unlock_code_format_list(directory: str = FOLDER) -> List[UnlockCodeFormat]:
     unlockcode_ids = fetch_unlockcode_ids(directory)
 
     return [
