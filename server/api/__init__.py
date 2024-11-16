@@ -13,6 +13,7 @@ from . import (
     UpdateUserProfile,
     UpdateProfileTicketDeco,
     UpdateLobbyCg,
+    GetFriendsData,
 )
 
 
@@ -30,3 +31,4 @@ def add_api_handler(app: FastAPI):
     app.post("/api/UpdateUserProfile")(UpdateUserProfile.handle)
     app.post("/api/UpdateProfileTicketDeco")(UpdateProfileTicketDeco.handle)
     app.post("/api/UpdateLobbyCg")(UpdateLobbyCg.handle)
+    app.post("/api/GetFriendsData")(GetFriendsData.handle)
