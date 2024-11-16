@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from pathlib import Path
-from itertools import groupby
+from resources.unlockcode_subchapter import fetch_unlockcode_ids
 from limbus.formats import (
     MainChapterStateFormat,
     SubChapterStateFormat,
@@ -44,42 +44,31 @@ def fetch_node_ids(directory: str = FOLDER) -> List[int]:
 
 
 def create_main_chapter_state_list() -> List[MainChapterStateFormat]:
-    node_ids = fetch_node_ids()
-
-    grouped_by_main = {
-        key: list(group)
-        for key, group in groupby(sorted(node_ids), key=lambda x: x // 100)
-    }
+    main_chapter_state_ids = [1, 91]
 
     main_chapter_states = []
-    for main_chapter_state_id, sub_node_ids in grouped_by_main.items():
-        grouped_by_sub = {
-            key: list(group)
-            for key, group in groupby(sorted(sub_node_ids), key=lambda x: x // 100)
-        }
+    for id in main_chapter_state_ids:
+        sub_chapters = []
 
-        sub_chapters = [
-            SubChapterStateFormat(
-                id=sub_chapter_id,
-                rss=[1, 2, 3, 10],
-                nss=[
+        for code in fetch_unlockcode_ids():
+            if code // 100 == id:
+                node_states = [
                     NodeStateFormat(
-                        id=node_id,
+                        id=code * 100 + sub_id,
                         ct=2,
                         cn=1,
                         dn=0,
                     )
-                    for node_id in nodes
-                ],
-            )
-            for sub_chapter_id, nodes in grouped_by_sub.items()
-        ]
+                    for sub_id in range(1, 100)
+                ]
+                sub_chapter = SubChapterStateFormat(
+                    id=code,
+                    nss=node_states,
+                    rss=[1, 2, 3, 10],
+                )
+                sub_chapters.append(sub_chapter)
 
-        main_chapter_states.append(
-            MainChapterStateFormat(
-                id=main_chapter_state_id,
-                subcss=sub_chapters,
-            )
-        )
+        main_chapter_state = MainChapterStateFormat(id=id, subcss=sub_chapters)
+        main_chapter_states.append(main_chapter_state)
 
     return main_chapter_states

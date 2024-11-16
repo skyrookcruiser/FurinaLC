@@ -22,6 +22,8 @@ def fetch_unlockcode_ids(directory: str = FOLDER) -> List[int]:
 
     for file_path in folder_path.glob("**/*.json"):
         try:
+            if "event" in str(file_path):
+                continue
             unlock_code_data_list = UnlockCodeSubChapterDataList.parse_file(file_path)
             ids.update(code.id for code in unlock_code_data_list.list)
         except Exception as e:
@@ -34,5 +36,7 @@ def create_unlock_code_format_list(directory: str = FOLDER) -> List[UnlockCodeFo
     unlockcode_ids = fetch_unlockcode_ids(directory)
 
     return [
-        UnlockCodeFormat(unlockcode=unlockcode_id) for unlockcode_id in unlockcode_ids
+        UnlockCodeFormat(unlockcode=unlockcode_id)
+        for unlockcode_id in unlockcode_ids
+        if unlockcode_id != 107
     ]
