@@ -8,6 +8,8 @@ Feel free to make a pull request if you do implement it.
 
 For any inquiries, please email southernbookhunter@gmail.com.
 
+Also, as stated in the license, there is no liability. This project breaks Limbus Company's Terms of Service, you have been warned.
+
 ## Getting Started
 
 This guide is Windows-oriented. If you use Linux, you already know how to set it all up, I'm sure. (I use arch btw.)
