@@ -1,9 +1,12 @@
-
----
-
 # FurinaLC
 
-**FurinaLC** is a server reimplementation for *Limbus Company*, named after the second-best girl from *Genshin Impact*.
+**FurinaLC** is a server reimplementation for *Limbus Company*, named after the second-best girl from *Genshin Impact*. 
+
+If you get a server error while playing in this private server, it's probably because whatever you're doing isn't implemented yet.
+
+Feel free to make a pull request if you do implement it.
+
+For any inquiries, please email southernbookhunter@gmail.com.
 
 ## Getting Started
 
@@ -34,8 +37,6 @@ Before you start, ensure you have the following installed:
   Download from [Telerik's official website](https://www.telerik.com/fiddler/fiddler-classic).  
   Alternatively, you can use any HTTP proxy tool that allows modifying requests.
 
----
-
 ## Step-by-Step Setup
 
 ### 1. **Setting Up MongoDB**
@@ -50,8 +51,6 @@ Before you start, ensure you have the following installed:
   ```
 
 That’s all for MongoDB setup!
-
----
 
 ### 2. **Setting Up Fiddler Classic (Proxy)**
 
@@ -84,8 +83,6 @@ Fiddler Classic redirects API requests to your local server. Follow these steps 
    ```
    This script will redirect API requests to your local server.
 
----
-
 ### 3. **Setting Up FurinaLC**
 
 Now that you have MongoDB and Fiddler configured, follow these steps to set up **FurinaLC**:
@@ -105,8 +102,6 @@ Now that you have MongoDB and Fiddler configured, follow these steps to set up *
    ```bash
    uv run -m server
    ```
-
----
 
 ### 4. **Play the Game**
 
