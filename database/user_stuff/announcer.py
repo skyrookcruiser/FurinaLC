@@ -63,3 +63,60 @@ def update_announcer_format(
         print("WARN:     " + str(e))
 
         return False
+
+
+def sync_announcer_format(uid: int) -> Optional[AnnouncerFormat]:
+    try:
+        existing_announcer_doc = announcer_collection.find_one({"uid": uid})
+
+        new_announcer_format = create_announcer_format()
+
+        announcer_ids_to_add = []
+        updated_cur_announcer_ids = []
+
+        if existing_announcer_doc:
+            existing_announcer_ids = set(existing_announcer_doc["announcer_ids"])
+            announcer_ids_to_add = [
+                announcer_id
+                for announcer_id in new_announcer_format.announcer_ids
+                if announcer_id not in existing_announcer_ids
+            ]
+            updated_cur_announcer_ids = existing_announcer_doc["cur_announcer_ids"]
+        else:
+            announcer_ids_to_add = new_announcer_format.announcer_ids
+            updated_cur_announcer_ids = new_announcer_format.cur_announcer_ids
+
+        if announcer_ids_to_add:
+            if existing_announcer_doc:
+                updated_announcer_ids = (
+                    existing_announcer_doc["announcer_ids"] + announcer_ids_to_add
+                )
+                announcer_collection.update_one(
+                    {"uid": uid}, {"$set": {"announcer_ids": updated_announcer_ids}}
+                )
+            else:
+                announcer_format_with_uid = AnnouncerFormatWithUID(
+                    uid=uid,
+                    announcer_ids=new_announcer_format.announcer_ids,
+                    cur_announcer_ids=new_announcer_format.cur_announcer_ids,
+                )
+                announcer_collection.insert_one(announcer_format_with_uid.dict())
+
+            print(
+                "INFO:     "
+                + f"{len(announcer_ids_to_add)} new announcer(s) inserted for UID {uid}."
+            )
+        else:
+            print("INFO:     " + f"No new announcer data to insert for UID {uid}.")
+
+        return AnnouncerFormat(
+            announcer_ids=updated_announcer_ids
+            if announcer_ids_to_add
+            else existing_announcer_doc["announcer_ids"],
+            cur_announcer_ids=updated_cur_announcer_ids,
+        )
+
+    except Exception as e:
+        print("WARN:     " + str(e))
+
+        return None

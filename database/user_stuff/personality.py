@@ -123,3 +123,63 @@ def update_personality_format(
         print("WARN:     " + str(e))
 
         return False
+
+
+def sync_personality_formats(uid: int) -> Optional[List[PersonalityFormat]]:
+    try:
+        existing_personality_docs = personality_collection.find({"uid": uid})
+        existing_personality_ids = {
+            doc["personality_id"] for doc in existing_personality_docs
+        }
+
+        new_personality_formats = create_personality_format_list()
+
+        new_personalities_to_add = [
+            personality
+            for personality in new_personality_formats
+            if personality.personality_id not in existing_personality_ids
+        ]
+
+        if new_personalities_to_add:
+            personality_format_with_uid_list = [
+                PersonalityFormatWithUID(
+                    uid=uid,
+                    personality_id=personality.personality_id,
+                    level=personality.level,
+                    exp=personality.exp,
+                    gacksung=personality.gacksung,
+                    order_id=personality.order_id,
+                    gacksung_illust_type=personality.gacksung_illust_type,
+                    acquire_time=personality.acquire_time,
+                )
+                for personality in new_personalities_to_add
+            ]
+
+            personality_collection.insert_many(
+                [pf.dict() for pf in personality_format_with_uid_list]
+            )
+
+            print(
+                "INFO:     "
+                + f"{len(new_personalities_to_add)} new personality(ies) inserted for UID {uid}."
+            )
+
+            return [
+                PersonalityFormat(
+                    personality_id=personality.personality_id,
+                    level=personality.level,
+                    exp=personality.exp,
+                    gacksung=personality.gacksung,
+                    order_id=personality.order_id,
+                    gacksung_illust_type=personality.gacksung_illust_type,
+                    acquire_time=personality.acquire_time,
+                )
+                for personality in new_personalities_to_add
+            ]
+        else:
+            print("INFO:     " + f"No new personality data to insert for UID {uid}.")
+            return None
+
+    except Exception as e:
+        print("WARN:     " + str(e))
+        return None

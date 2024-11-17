@@ -1,4 +1,5 @@
 import re
+from server.config import ALLOW_SYNC_COMMAND
 from limbus.requests import Cs, ReqUseCoupon
 from limbus.responses import Sc, RspUseCoupon
 from limbus.formats import (
@@ -10,9 +11,15 @@ from limbus.formats import (
     EgoFormat,
     ItemFormat,
 )
-from database.user_stuff.personality import update_personality_format
-from database.user_stuff.ego import update_ego_format
-from database.user_stuff.item import update_item_format
+from database.user_stuff.personality import (
+    update_personality_format,
+    sync_personality_formats,
+)
+from database.user_stuff.ego import update_ego_format, sync_ego_formats
+from database.user_stuff.item import update_item_format, sync_item_formats
+from database.user_stuff.announcer import sync_announcer_format
+from database.user_profile.banner import sync_profile_banner_data
+from database.user_profile.ticket import sync_profile_ticket_data
 from database.user_profile.user import update_user_info, get_user_info_by_uid
 
 
@@ -32,6 +39,73 @@ async def handle(req: Cs[ReqUseCoupon]):
     uid = req.userAuth.uid
     code = req.parameters.code
     match code[:1]:
+        case "S":
+            if code[:4] != "SYNC" and ALLOW_SYNC_COMMAND is not True:
+                return Sc[RspUseCoupon](result=RspUseCoupon(state=2))
+            else:
+                # We can do multiple flags!
+                # ...I think.
+                sync_flags = code[4:]
+
+                if "ITEM" in sync_flags:
+                    sync_item_format = sync_item_formats(uid)
+
+                if "EGO" in sync_flags:
+                    new_ego_format = sync_ego_formats(uid)
+
+                if "ANNOUNCER" in sync_flags:
+                    new_announcer_format = sync_announcer_format(uid)
+
+                if "PERSONALITY" in sync_flags:
+                    new_personality_format = sync_personality_formats(uid)
+
+                if "TICKET" in sync_flags:
+                    sync_profile_ticket_data(uid)
+
+                banner_update = "BANNER" in sync_flags
+                if banner_update is not False:
+                    sync_profile_banner_data(uid)
+
+                # If not specified, just sync everything.
+                if not sync_flags:
+                    sync_profile_banner_data(uid)
+                    sync_profile_ticket_data(uid)
+                    new_ego_format = sync_ego_formats(uid)
+                    new_announcer_format = sync_announcer_format(uid)
+                    new_personality_format = sync_personality_formats(uid)
+                    sync_item_format = sync_item_formats(uid)
+
+                return Sc[RspUseCoupon](
+                    updated=UpdatedFormat(
+                        personalityList=new_personality_format
+                        if "personality" in sync_flags or not sync_flags
+                        else None,
+                        egoList=new_ego_format
+                        if "ego" in sync_flags or not sync_flags
+                        else None,
+                        itemList=sync_item_format
+                        if "item" in sync_flags or not sync_flags
+                        else None,
+                        announcer=new_announcer_format
+                        if "announcer" in sync_flags or not sync_flags
+                        else None,
+                        isUpdateUserBanner=banner_update,
+                        # Ticket decos are loaded everytime you open the menu
+                        # We don't need to add anything in here.
+                        # well, there's no field for ticket deco anyways lol.
+                    ),
+                    result=RspUseCoupon(
+                        state=1,
+                        rewards=[
+                            Element(
+                                type=STR_ELEMENT_TYPE.ITEM,
+                                _type=ELEMENT_TYPE.ITEM,
+                                id=2,
+                                num=1,
+                            )
+                        ],
+                    ),
+                )
         # PERSONALITY, EXAMPLE USAGE:
         # P10101L50G4
         # Personality ID 10101, set level 50, set gacksung to 4

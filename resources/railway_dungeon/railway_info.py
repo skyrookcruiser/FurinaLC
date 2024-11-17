@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
 from pathlib import Path
-from limbus.formats import MembershipFormat
 
 FOLDER = "./resources/LimbusStaticData/StaticData/static-data/railway-dungeon"
 
