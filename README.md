@@ -1,32 +1,113 @@
-# POSS
-POSS (Piece Of Shyt Server) is Y. Corp's Singularity. A shitty server reimplementation for Limbus Company.
 
-## Requirements
+---
 
-### Python [3.12]
-- fastapi v0.115.0
-- pydantic v2.9.2
-- uvicorn v0.31.1
-- pymongo v4.10.1
-- ruff v0.6.9 (optional)
-- uv v0.4.22 (optional)
+# FurinaLC
 
-### MongoDB
-- Windows: [Community Edition](https://www.mongodb.com/try/download/community-edition)
-- Arch Linux: `yay -S mongodb-bin` then `sudo systemctl start mongodb`
+**FurinaLC** is a server reimplementation for *Limbus Company*, named after the second-best girl from *Genshin Impact*.
 
-### Mitmproxy
-- Windows: https://mitmproxy.org/
-- Arch Linux: `yay -S mitmproxy`
+## Getting Started
 
-## Tutorial
+This guide is Windows-oriented. If you use Linux, you already know how to set it all up, I'm sure. (I use arch btw.)
 
-1. Clone this repo
-2. Run `uv run -m solemn.database --setup`
-3. Run `uv run -m server`
-4. Run `mitmproxy -s redirect.py`
-4. Open Limbus Company and enjoy
+### Requirements
 
-If you don't want to use uv, replace `uv run` with `python`.
+~~Most important requirement: a brain.~~
 
-If you want to contribute, please do install `ruff`.
+Before you start, ensure you have the following installed:
+
+- **Python 3.13+**  
+  Download from [Python's official website](https://www.python.org/downloads/).
+  
+- **uv (v0.4.22+)**  
+  Install **uv** by running the following PowerShell command:
+  ```bash
+  powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+  ```
+
+- **MongoDB (v8.0.3+)**  
+  Download and install from [MongoDB's official website](https://www.mongodb.com/try/download/community-edition).
+
+- **Git**  
+  Install **Git** from [Git's official website](https://git-scm.com/downloads). This is required for cloning the repository.
+
+- **Fiddler Classic**  
+  Download from [Telerik's official website](https://www.telerik.com/fiddler/fiddler-classic).  
+  Alternatively, you can use any HTTP proxy tool that allows modifying requests.
+
+---
+
+## Step-by-Step Setup
+
+### 1. **Setting Up MongoDB**
+
+- **Install MongoDB**:  
+  Follow the installation guide for your operating system from the [MongoDB installation page](https://www.mongodb.com/try/download/community-edition).
+
+- **Configure MongoDB Connection**:  
+  Once installed, connect to MongoDB by using the following connection string:
+  ```bash
+  mongodb://127.0.0.1:27017
+  ```
+
+That’s all for MongoDB setup!
+
+---
+
+### 2. **Setting Up Fiddler Classic (Proxy)**
+
+Fiddler Classic redirects API requests to your local server. Follow these steps to configure it:
+
+1. **Install Fiddler Classic**:  
+   Download and install it from [Telerik's website](https://www.telerik.com/fiddler/fiddler-classic).
+
+2. **Configure the Fiddler Script**:  
+   - Open Fiddler.
+   - Go to the **FiddlerScript** tab.
+   - Copy and paste the following script, then save it:
+   ```csharp
+   import System;
+   import System.Windows.Forms;
+   import Fiddler;
+   import System.Text.RegularExpressions;
+
+   class Handlers
+   {
+       static function OnBeforeRequest(oS: Session) {
+           if (oS.host.EndsWith(".limbuscompanyapi.com") || 
+           oS.host.EndsWith(".limbuscompanyapi-2.com")) {
+               oS.oRequest.headers.UriScheme = "http";
+               oS.host = "127.0.0.1";
+               oS.port = 21000;
+           }
+       }
+   };
+   ```
+   This script will redirect API requests to your local server.
+
+---
+
+### 3. **Setting Up FurinaLC**
+
+Now that you have MongoDB and Fiddler configured, follow these steps to set up **FurinaLC**:
+
+1. **Clone the Repository**:  
+   Clone the repository to your machine using Git:
+   ```bash
+   git clone --recursive https://github.com/LEAGUE-OF-NINE/FurinaLC.git
+   ```
+   Recursive flag is required for submodules.
+
+2. **Navigate to the Project Directory**:  
+   Open a terminal or command prompt and navigate to the directory where you downloaded or cloned **FurinaLC**.
+
+3. **Start the Server**:  
+   Run the following command to start the server:
+   ```bash
+   uv run -m server
+   ```
+
+---
+
+### 4. **Play the Game**
+
+Once the server is running, you can launch **Limbus Company**. Make sure that Fiddler is running and properly redirecting the API requests to your local server.
