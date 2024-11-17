@@ -121,17 +121,17 @@ class RspEnterStageBattleCommand(BaseModel):
 
 
 class RspExitStageBattleCommand(BaseModel):
-    stageid: int = 0
-    iswin: bool = False
-    cleartype: int = 0
+    stageid: int
+    iswin: bool
+    cleartype: int
     addexptouser: int = 0
-    personalityinfos: List[StagePersonalityInfoFormat] = []
-    expticket: List[Element] = []
-    rewarditem: List[Element] = []
-    exrewarditem: List[Element] = []
-    firstrewarditem: List[Element] = []
-    givebackstaminabyDefeat: Element = Element()
-    abnormalityLogs: List[AbnormalityUnlockInformationFormat] = []
+    personalityinfos: List[StagePersonalityInfoFormat]
+    expticket: Optional[List[Element]] = None
+    rewarditem: Optional[List[Element]] = None
+    exrewarditem: Optional[List[Element]] = None
+    firstrewarditem: Optional[List[Element]] = None
+    givebackstaminabyDefeat: Optional[Element] = None
+    abnormalityLogs: Optional[List[AbnormalityUnlockInformationFormat]] = None
 
 
 class RspGetDungeonSaveInfoAll(BaseModel):

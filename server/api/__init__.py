@@ -18,6 +18,8 @@ from . import (
     GetRailwayDungeonNodeAndLogAll,
     EnterRailwayDungeon,
     ClaimClosedGachaRewards,
+    EnterStageBattle,
+    ExitStageBattle,
 )
 
 
@@ -42,3 +44,5 @@ def add_api_handler(app: FastAPI):
     )
     app.post("/api/EnterRailwayDungeon")(EnterRailwayDungeon.handle)
     app.post("/api/ClaimClosedGachaRewards")(ClaimClosedGachaRewards.handle)
+    app.post("/api/EnterStageBattle")(EnterStageBattle.handle)
+    app.post("/api/ExitStageBattle")(ExitStageBattle.handle)
