@@ -28,6 +28,7 @@ Before you start, ensure you have the following installed:
   ```bash
   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
   ```
+  Optional but recommend: set up enviroment variable for `uv`. By default you can find `uv.exe` in `C:\Users\<username>\.local\bin`.
 
 - **MongoDB (v8.0.3+)**  
   Download and install from [MongoDB's official website](https://www.mongodb.com/try/download/community-edition).
@@ -64,6 +65,7 @@ Fiddler Classic redirects API requests to your local server. Follow these steps 
 2. **Configure the Fiddler Script**:  
    - Open Fiddler.
    - Go to the **FiddlerScript** tab.
+   - Enable capture and decrypt https traffic, which can be done by `Tools` -> `Options` -> `HTTPS` -> Tick `Capture HTTPS CONNECTS` and `Decrypt HTTPS traffic`. 
    - Copy and paste the following script, then save it:
    ```csharp
    import System;
