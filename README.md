@@ -26,6 +26,7 @@ Before you start, ensure you have the following installed:
   ```bash
   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
   ```
+  Optional but recommend: set up enviroment variable for `uv`. By default you can find `uv.exe` in `C:\Users\<username>\.local\bin`
 
 - **MongoDB (v8.0.3+)**  
   Download and install from [MongoDB's official website](https://www.mongodb.com/try/download/community-edition).
