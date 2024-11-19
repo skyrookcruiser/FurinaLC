@@ -24,6 +24,8 @@ from . import (
     EnterExpDungeon,
     ExitExpDungeon,
     GetAbnormalityLogData,
+    GetTheaterInfo,
+    CompleteTheaterStory,
 )
 
 
@@ -54,3 +56,5 @@ def add_api_handler(app: FastAPI):
     app.post("/api/EnterExpDungeon")(EnterExpDungeon.handle)
     app.post("/api/ExitExpDungeon")(ExitExpDungeon.handle)
     app.post("/api/GetAbnormalityLogData")(GetAbnormalityLogData.handle)
+    app.post("/api/GetTheaterInfo")(GetTheaterInfo.handle)
+    app.post("/api/CompleteTheaterStory")(CompleteTheaterStory.handle)
