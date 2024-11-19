@@ -1,6 +1,7 @@
 from limbus.requests import Cs, ReqNull
 from limbus.responses import Sc, RspNull
 from limbus.formats import SynchronizedFormat, NoticeFormat, UpdatedFormat
+from server.config import CUSTOM_NOTICE
 
 FURINA_NOTICE_TITLE = "Welcome to FurinaLC"
 FURINA_NOTICE_CONTENT = r"""
@@ -36,25 +37,24 @@ FURINA_NOTICE_CONTENT = r"""
 
 
 async def handle(req: Cs[ReqNull]):
-    notice_ps = NoticeFormat(
-        id=200001,
-        version=219,
-        type=0,
-        startDate="2023-01-01T00:00:00.000Z",
-        endDate="2098-12-31T21:00:00.000Z",
-        sprNameList=["200001"],
-        title_EN=FURINA_NOTICE_TITLE,
-        content_EN=FURINA_NOTICE_CONTENT,
-        title_KR=FURINA_NOTICE_TITLE,
-        content_KR=FURINA_NOTICE_CONTENT,
-        title_JP=FURINA_NOTICE_TITLE,
-        content_JP=FURINA_NOTICE_CONTENT,
-    )
+    if CUSTOM_NOTICE == True:
+        notice_ps = NoticeFormat(
+            id=200001,
+            version=219,
+            type=0,
+            startDate="2023-01-01T00:00:00.000Z",
+            endDate="2098-12-31T21:00:00.000Z",
+            sprNameList=["200001"],
+            title_EN=FURINA_NOTICE_TITLE,
+            content_EN=FURINA_NOTICE_CONTENT,
+            title_KR=FURINA_NOTICE_TITLE,
+            content_KR=FURINA_NOTICE_CONTENT,
+            title_JP=FURINA_NOTICE_TITLE,
+            content_JP=FURINA_NOTICE_CONTENT,
+        )
 
-    sync = SynchronizedFormat(version=513, noticeList=[notice_ps])
+        sync = SynchronizedFormat(version=513, noticeList=[notice_ps])
 
-    return Sc[RspNull](
-        updated=UpdatedFormat(isInitialized=True),
-        synchronized=sync,
-        result=None,
-    )
+        return Sc[RspNull](synchronized=sync, result=RspNull())
+    else:
+        return Sc[RspNull](result=RspNull())

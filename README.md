@@ -6,8 +6,6 @@ If you get a server error while playing in this private server, it's probably be
 
 Feel free to make a pull request if you do implement it.
 
-For any inquiries, please email southernbookhunter@gmail.com.
-
 Also, as stated in the license, there is no liability. This project breaks Limbus Company's Terms of Service, you have been warned.
 
 ## Getting Started
@@ -41,6 +39,8 @@ Before you start, ensure you have the following installed:
   Alternatively, you can use any HTTP proxy tool that allows modifying requests.
 
 ## Step-by-Step Setup
+
+If you prefer a tutorial video, you can watch [this video](https://www.youtube.com/watch?v=gu6zE1KQyyE), made by Ishmael.
 
 ### 1. **Setting Up MongoDB**
 
