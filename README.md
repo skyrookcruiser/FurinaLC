@@ -2,11 +2,9 @@
 
 **FurinaLC** is a server reimplementation for *Limbus Company*, named after the second-best girl from *Genshin Impact*. 
 
-If you get a server error while playing in this private server, it's probably because whatever you're doing isn't implemented yet.
+As stated in the license, there is no liability. This project obviously breaks Limbus Company's terms of service, if anything happens, just remember that you have been warned.
 
-Feel free to make a pull request if you do implement it.
-
-Also, as stated in the license, there is no liability. This project breaks Limbus Company's Terms of Service, you have been warned.
+Also, be sure to check out the [Frequently Asked Questions](https://github.com/LEAGUE-OF-NINE/FurinaLC/blob/main/FAQ.md).
 
 ## Getting Started
 
