@@ -2,10 +2,13 @@
 ### 1. Is this safe to use?
 No. Don't expect me to try convincing you or something. Use it, or don't. I don't care.
 
-### 2. I get a server error when I do X ingame!
+### 2. How do I mod/customize identity skills, play as ricardo etc.?
+This is just a private server, not a modding tool. 
+
+### 3. I get a server error when I do X ingame!
 X is probably not implemented. Feel free to implement it and make a pull request.
 
-### 3. Are there commands?
+### 4. Are there commands?
 Yes. You can use them through the coupon menu. Current commands are such:
 
 (Note: they aren't case sensitive, as limbus client automatically uppercases the input when sending to the server)
