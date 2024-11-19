@@ -20,6 +20,9 @@ from . import (
     ClaimClosedGachaRewards,
     EnterStageBattle,
     ExitStageBattle,
+    GetDailyDungeonInfo,
+    EnterExpDungeon,
+    ExitExpDungeon,
 )
 
 
@@ -46,3 +49,6 @@ def add_api_handler(app: FastAPI):
     app.post("/api/ClaimClosedGachaRewards")(ClaimClosedGachaRewards.handle)
     app.post("/api/EnterStageBattle")(EnterStageBattle.handle)
     app.post("/api/ExitStageBattle")(ExitStageBattle.handle)
+    app.post("/api/GetDailyDungeonInfo")(GetDailyDungeonInfo.handle)
+    app.post("/api/EnterExpDungeon")(EnterExpDungeon.handle)
+    app.post("/api/ExitExpDungeon")(ExitExpDungeon.handle)

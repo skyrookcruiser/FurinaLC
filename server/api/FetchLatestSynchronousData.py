@@ -1,6 +1,6 @@
 from limbus.requests import Cs, ReqNull
 from limbus.responses import Sc, RspNull
-from limbus.formats import SynchronizedFormat, NoticeFormat, UpdatedFormat
+from limbus.formats import SynchronizedFormat, NoticeFormat
 from server.config import CUSTOM_NOTICE
 
 FURINA_NOTICE_TITLE = "Welcome to FurinaLC"
@@ -37,7 +37,7 @@ FURINA_NOTICE_CONTENT = r"""
 
 
 async def handle(req: Cs[ReqNull]):
-    if CUSTOM_NOTICE == True:
+    if CUSTOM_NOTICE:
         notice_ps = NoticeFormat(
             id=200001,
             version=219,
