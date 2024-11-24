@@ -112,9 +112,10 @@ def create_battlepass_format(
     try:
         for file_path in folder_path.glob("**/*.json"):
             szn = file_path.stem.split("-")
+            if len(szn) < 2:
+                continue
+                
             current_season = str(szn[1])
-            print(current_season)
-
             if current_season is not season:
                 continue
 
