@@ -14,7 +14,9 @@ from database.user_stuff.item import get_item_formats_by_uid
 from database.user_stuff.announcer import get_announcer_format_by_uid
 from database.user_stuff.formation import get_formation_formats_by_uid
 from database.user_profile.profile import get_user_profile_data_by_uid
-from resources.parser.story_stuff.stage_node_reward import create_main_chapter_state_list
+from resources.parser.story_stuff.stage_node_reward import (
+    create_main_chapter_state_list,
+)
 from resources.parser.story_stuff.unlock_code import create_unlock_code_format_list
 from resources.parser.user_misc.chance import create_chance_format_list
 from resources.parser.user_misc.battlepass import create_battlepass_format
