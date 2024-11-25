@@ -114,8 +114,8 @@ def create_battlepass_format(
             szn = file_path.stem.split("-")
             if len(szn) < 2:
                 continue
+                
             current_season = str(szn[1])
-
             if current_season is not season:
                 continue
 
