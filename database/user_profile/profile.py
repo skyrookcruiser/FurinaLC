@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.user_profile.profile import (
+from resources.parser.user_profile.profile import (
     create_user_public_profile_with_supporters_format,
 )
 from limbus.formats import (

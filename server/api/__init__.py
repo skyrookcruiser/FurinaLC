@@ -27,6 +27,7 @@ from . import (
     GetTheaterInfo,
     CompleteTheaterStory,
     GetDanteNoteState,
+    PlayGacha,
 )
 
 
@@ -60,3 +61,4 @@ def add_api_handler(app: FastAPI):
     app.post("/api/GetTheaterInfo")(GetTheaterInfo.handle)
     app.post("/api/CompleteTheaterStory")(CompleteTheaterStory.handle)
     app.post("/api/GetDanteNoteState")(GetDanteNoteState.handle)
+    app.post("/api/PlayGacha")(PlayGacha.handle)

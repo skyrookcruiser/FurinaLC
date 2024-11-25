@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.railway_dungeon.railway_info import fetch_railway_info_list
+from resources.parser.railway_dungeon.railway_info import fetch_railway_info_list
 from limbus.formats import (
     RailwayUnitInfoFormat,
     RailwayExtraRewardStateFormat,

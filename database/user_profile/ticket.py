@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.user_profile.ticket import (
+from resources.parser.user_profile.ticket import (
     create_border_left_format_list,
     create_border_right_format_list,
     create_egobg_format_list,

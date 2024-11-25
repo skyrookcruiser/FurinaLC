@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.user_stuff.formation import create_formation_format_list
+from resources.parser.user_stuff.formation import create_formation_format_list
 from limbus.formats import FormationFormat, FormationDetailFormat, FormationNameElement
 from typing import List, Optional
 

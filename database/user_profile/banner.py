@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from database.client import db
-from resources.user_profile.banner import create_user_banner_data_format_list
+from resources.parser.user_profile.banner import create_user_banner_data_format_list
 from limbus.formats import UserBannerDataFormat
 from typing import List, Optional
 
