@@ -8,6 +8,11 @@ This is just a private server, not a modding tool.
 ### 3. I get a server error when I do X ingame!
 X is probably not implemented. Feel free to implement it and make a pull request.
 
+### 4. The game has updated, there is a new ID/EGO/etc., how do I give myself everything?
+First, you want to update your git submodules by running `git submodule update –remote`.
+
+Then, go to FAQ number 5 and read the sync command.
+
 ### 4. Are there commands?
 Yes. You can use them through the coupon menu. Current commands are such:
 
@@ -15,7 +20,7 @@ Yes. You can use them through the coupon menu. Current commands are such:
 
 - SYNC
 
-    This command will update your owned stuff, making sure it's up to date with the latest limbus stuff. Of course, you'll have to update the submodule (LimbusStaticData) first. How? Just go ask ChatGPT "How do I sync a git submodule"
+    This command will update your owned stuff, making sure it's up to date with the latest limbus stuff. Make sure the git submodule is updated before running this.
 
 - P
 
@@ -31,4 +36,4 @@ Yes. You can use them through the coupon menu. Current commands are such:
 
 - U
 
-    This command is used to update user info. Example: "U1L100S100" will make a user with uid 1 be level 100 and have 100 stamina. (The uid doesn't actually matter btw)
+    This command is used to update user info. Example: "U1L100S100" will make a user with uid 1 be level 100 and have 100 stamina.

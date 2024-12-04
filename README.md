@@ -61,7 +61,7 @@ This proxy will redirect API requests to your local server. Follow these steps t
 
 - If you're unable to browse the internet after using and closing this proxy, it might be due to Guardian failing to revert the proxy settings.
   
-- If that happens, simply disable the proxy settings manually (Open windows search, then type "Proxy", the settings menu option should show up). Alternatively, run the proxy app again and close it by clicking the big red X.
+- If that happens, simply disable the proxy settings manually (Open windows search, then type "Proxy", the settings menu option should show up).
 
 ### 3. **Setting Up FurinaLC**
 
