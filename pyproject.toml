@@ -14,8 +14,7 @@ dependencies = [
 [tool.ruff]
 exclude = [
     "./limbus/crypto.py",
-    "./database/railway_dungeon/save_info.py"
-    ]
+]
 
 [tool.ruff.lint]
 ignore = [

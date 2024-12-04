@@ -10,12 +10,12 @@ personality_collection = db["personalities"]
 class PersonalityFormatWithUID(BaseModel):
     uid: int
     personality_id: int
-    level: int = 0
-    exp: int = 0
-    gacksung: int = 0
-    order_id: int = 0
-    gacksung_illust_type: int = 0
-    acquire_time: str = ""
+    level: int
+    exp: int
+    gacksung: int
+    order_id: int
+    gacksung_illust_type: int
+    acquire_time: str
 
 
 def insert_personality_formats(uid: int) -> None:

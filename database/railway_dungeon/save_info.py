@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List, Optional
 from database.client import db
 from resources.parser.railway_dungeon.railway_info import fetch_railway_info_list
 from limbus.formats import (
@@ -19,7 +20,7 @@ class RailwayDungeonSaveInfoFormatWithUID(BaseModel):
     payreward: int
     rewardstate: int
     extrarewardstate: List[RailwayExtraRewardStateFormat]
-    firstcleardate: str = ""
+    firstcleardate: str
     currentclearrotation: int
     lastenternodeid: int
     lastclearrotation: int

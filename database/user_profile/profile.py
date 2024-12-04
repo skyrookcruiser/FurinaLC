@@ -16,18 +16,18 @@ user_profile_collection = db["userprofiles"]
 
 class UserPublicProfileWithSupportersFormatWithUID(BaseModel):
     uid: int
-    public_uid: Optional[str] = None
-    illust_id: Optional[int] = None
-    illust_gacksung_level: Optional[int] = None
-    leftborder_id: Optional[int] = None
-    rightborder_id: Optional[int] = None
-    egobackground_id: Optional[int] = None
-    sentence_id: Optional[int] = None
-    word_id: Optional[int] = None
-    banners: Optional[List[UserPublicBannerFormat]] = None
-    level: Optional[int] = None
-    date: Optional[str] = None
-    support_personalities: Optional[List[SupportPersonalitySlotFormat]] = None
+    public_uid: Optional[str]
+    illust_id: Optional[int]
+    illust_gacksung_level: Optional[int]
+    leftborder_id: Optional[int]
+    rightborder_id: Optional[int]
+    egobackground_id: Optional[int]
+    sentence_id: Optional[int]
+    word_id: Optional[int]
+    banners: Optional[List[UserPublicBannerFormat]]
+    level: Optional[int]
+    date: Optional[str]
+    support_personalities: Optional[List[SupportPersonalitySlotFormat]]
 
 
 def insert_user_public_profile_with_supporters_format(uid: int) -> None:
