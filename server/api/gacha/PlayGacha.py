@@ -7,7 +7,7 @@ from resources.parser.gacha.data import fetch_random_gacha_element_ids
 async def handle(req: Cs[ReqPlayGacha]):
     gacha_id = req.parameters.gachaId
     payment_id = req.parameters.paymentId
-    
+
     # Current implementation isn't scalable
     # A good implementation lets you decide chances for each banner and shit
     # But idgaf
