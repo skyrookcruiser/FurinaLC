@@ -1,3 +1,13 @@
+# Archive Notice
+
+## This repository is "temporarily archived" due to the new encryption and I am currently not in a stable mental state to actively maintain or work on it.
+
+## Thank you for your understanding. I hope to return to this project soon.
+
+## In the meanwhile, join https://discord.gg/lethe for further news and an alternative private server solution.
+
+-- --
+
 # FurinaLC
 
 **FurinaLC** is a server reimplementation for *Limbus Company*, named after the second-best girl from *Genshin Impact*. 
