@@ -28,11 +28,11 @@ def deobfuscate(hex_encoded: bytes, seed: int) -> bytes:
 
     byte_data = bytes.fromhex(hex_str)
 
-    return xor_layer(byte_data, seed - time_offset)
+    return xor_layer(byte_data, seed + time_offset)
 
 
 def obfuscate(data: bytes, seed: int) -> str:
     """Convert data to a hex-encoded string after XOR encryption."""
-    encrypted_bytes = xor_layer(data, seed - time_offset)
+    encrypted_bytes = xor_layer(data, seed + time_offset)
 
     return f'"{encrypted_bytes.hex()}"'
